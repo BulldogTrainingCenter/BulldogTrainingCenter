@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulldog Training Center - Göteborg</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/><g fill="%23333"><circle cx="200" cy="150" r="30"/><circle cx="800" cy="300" r="40"/><circle cx="1000" cy="100" r="20"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #e55a2d 0%, #e57a35 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin: 4rem 0;
+            padding: 2rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #000;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        /* Schedule */
+        .schedule {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .day-schedule {
+            border: 2px solid #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .class-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .class-item:last-child {
+            border-bottom: none;
+        }
+
+        .class-name {
+            font-weight: bold;
+        }
+
+        .class-time {
+            color: #ff6b35;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Training Types */
+        .training-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .training-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #ff6b35;
+            transition: all 0.3s ease;
+        }
+
+        .training-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+        }
+
+        .training-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        /* Zoezi App Info */
+        .app-info {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .app-info h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .app-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-item a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ff6b35;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            background: #000;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .affiliations {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 0 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .app-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom logo styling */
+        .logo-bulldog {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-bulldog::before {
+            content: "🥊";
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-bulldog"></div>
+                <div>
+                    <h2>Bulldog Training Center</h2>
+                    <small>Göteborg</small>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hem">Hem</a></li>
+                <li><a href="#om-oss">Om Oss</a></li>
+                <li><a href="#schema">Schema</a></li>
+                <li><a href="#traning">Träning</a></li>
+                <li><a href="#app">Boka Pass</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hem" class="hero">
+        <div class="hero-content">
+            <h1>Bulldog Training Center</h1>
+            <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt.</p>
+            <a href="#app" class="cta-button">Boka ditt första pass</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="om-oss">
+            <h2>Om Bulldog Training Center</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Vår Vision</h3>
+                    <p>Vi skapar en trygg gemenskap där människor utvecklas både fysiskt och mentalt. Hos oss finns plats för alla - från motionärer till atleter på absolut högsta nivå.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Ideell Förening</h3>
+                    <p>Vi är en 100% ideellt driven förening med familjekänsla där alla är välkomna oavsett bakgrund. Vår gemenskap bygger på respekt, stöd och utveckling tillsammans.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Professionell Träning</h3>
+                    <p>Vi erbjuder allt från Thaiboxning och Boxning till HIIT-pass för styrka och kondition. Nytt för i år är vår barngrupp för thaiboxning från 8-12 år.</p>
+                </div>
+            </div>
+            
+            <div class="about-card">
+                <h3>Anslutningar och Medlemskap</h3>
+                <p>Föreningen är ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet. Därigenom är föreningen också medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsförbund (SDF).</p>
+            </div>
+        </section>
+
+        <section id="schema">
+            <h2>Träningsschema</h2>
+            <div class="schedule">
+                <div class="schedule-grid">
+                    <div class="day-schedule">
+                        <div class="day-header">MÅNDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">HIIT Thaiboxning</div>
+                            <div class="class-time">17:45-18:45</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-time">19:00-20:30</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">TISDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Barn-Thaiboxning</div>
+                            <div class="class-time">17:45-18:45</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Boxning</div>
+                            <div class="class-time">19:00-20:30</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">ONSDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Thaiboxning (nybörjare)</div>
+                            <div class="class-time">17:30-18:45</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-time">19:00-20:30</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">TORSDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Nybörjarpass</div>
+                            <div class="class-time">17:30-18:40</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">HIIT Box</div>
+                            <div class="class-time">18:45-20:00</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Boxning</div>
+                            <div class="class-time">20:30-21:30</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">FREDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Öppen Matta</div>
+                            <div class="class-time">18:00-19:00</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">LÖRDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-time">13:30-15:00</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">SÖNDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Familjepass</div>
+                            <div class="class-time">15:00-16:00</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Barn-Thaiboxning</div>
+                            <div class="class-time">19:00-20:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="traning">
+            <h2>Våra Träningsformer</h2>
+            <div class="training-types">
+                <div class="training-card">
+                    <h3>Thaiboxning</h3>
+                    <p>Thaiboxning, även kallat Muay Thai, är "The Art of Eight Limbs" - kampkonsternas kung. Det är en fullkontaktsport som använder händer, skenben, knän och armbågar. Träningen förbättrar kondition, styrka, flexibilitet och självförtroende. Vi har grupper för alla nivåer från nybörjare till avancerade.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Boxning</h3>
+                    <p>Boxning är en av världens äldsta kampsporter som fokuserar på händer och fotarbete. Det är en fantastisk träning för hela kroppen som utvecklar koordination, snabbhet och mental toughness. Perfekt för både tävling och motion.</p>
+                </div>                <div class="training-card">
+                    <h3>HIIT Training</h3>
+                    <p>Högintensiv intervallträning kombinerat med kampsporsrörelser. Dessa pass är designade för att maximera fettförbränning och bygga funktionell styrka. Perfekt för de som vill få en komplett träning på kort tid.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Barn-Thaiboxning (8-12 år)</h3>
+                    <p>Nytt för i år! Vi tror vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn 8-12 år. Träningen fokuserar på teknik, disciplin, respekt och att ha kul. En perfekt start för unga atleter.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Familjepass</h3>
+                    <p>Ett unikt pass där hela familjen kan träna tillsammans. Fokus ligger på gemenskap, grundläggande tekniker och att ha roligt tillsammans. Passar alla åldrar och nivåer.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Öppen Matta</h3>
+                    <p>Fri träning för medlemmar som vill träna på egen hand eller med träningspartner. Perfekt för att öva tekniker, sparring eller konditionsträning. Tillgängligt för alla medlemmar.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-style: italic;">
+                <strong>Åldersgrupper:</strong> Övriga pass är från 12 år och uppåt, om inte annat är överenskommit med huvudtränarna på klubben.
+            </p>
+        </section>
+
+        <section id="app" class="app-info">
+            <h2>Boka Pass via Zoezi</h2>
+            <p>Använd appen Zoezi för att boka pass, kolla priser och köpa träningskort. Enkelt och smidigt!</p>
+            
+            <div class="app-steps">
+                <div class="app-step">
+                    <div class="step-number">1</div>
+                    <h3>Ladda ner Zoezi</h3>
+                    <p>Sök efter "Zoezi" i App Store eller Google Play och ladda ner appen.</p>
+                </div>
+                <div class="app-step">
+                    <div class="step-number">2</div>
+                    <h3>Skapa konto</h3>
+                    <p>Registrera dig med din e-post och skapa ett personligt konto i appen.</p>
+                </div>
+                <div class="app-step">
+                    <div class="step-number">3</div>
+                    <h3>Sök efter klubben</h3>
+                    <p>Sök efter "Bulldog Training Center" i appen för att hitta oss.</p>
+                </div>
+                <div class="app-step">
+                    <div class="step-number">4</div>
+                    <h3>Boka ditt pass</h3>
+                    <p>Välj det pass du vill gå på, kolla priser och köp träningskort direkt i appen.</p>
+                </div>
+            </div>
+            
+            <a href="https://bdtcgbg.gymsystem.se/" target="_blank" class="cta-button">Boka pass via Zoezi</a>
+        </section>
+
+        <section id="kontakt">
+            <h2>Kontakta Oss</h2>
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div>
+                        <h3>Besök oss</h3>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <a href="https://maps.google.com/?q=Östra+Sörredsvägen+4,+418+78+Göteborg" target="_blank">
+                                Östra Sörredsvägen 4<br>
+                                418 78 Göteborg
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>E-post</h3>
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <a href="mailto:BulldogTrainingCenter@gmail.com">
+                                BulldogTrainingCenter@gmail.com
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://instagram.com/bdtcgbg" target="_blank" class="social-link">
+                        📱 @bdtcgbg
+                    </a>
+                    <a href="https://instagram.com/bulldogthaiboxning" target="_blank" class="social-link">
+                        📱 Bulldog Thaiboxning
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo">
+            <div class="logo-bulldog"></div>
+            <div>
+                <h3>Bulldog Training Center</h3>
+                <p>Klubben med familjekänsla</p>
+            </div>
+        </div>
+        
+        <div class="affiliations">
+            <p>Ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet</p>
+            <p>Medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsförbund (SDF)</p>
+        </div>
+        
+        <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (placeholder for future implementation)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add active header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #000 0%, #333 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
