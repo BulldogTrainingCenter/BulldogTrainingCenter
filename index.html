@@ -339,15 +339,22 @@
         .social-link {
             background: #000;
             color: white;
-            padding: 1rem;
-            border-radius: 50%;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
             text-decoration: none;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .social-link:hover {
             background: #ff6b35;
             transform: translateY(-2px);
+        }
+
+        .instagram-icon {
+            font-size: 1.2rem;
         }
 
         /* Footer */
@@ -369,6 +376,30 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #333;
             }
 
             .mobile-menu {
@@ -398,6 +429,15 @@
             .app-steps {
                 grid-template-columns: 1fr;
             }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-link {
+                justify-content: center;
+            }
         }
 
         /* Smooth scrolling */
@@ -418,8 +458,14 @@
         }
 
         .logo-bulldog::before {
-            content: "🥊";
-            font-size: 24px;
+            content: "BDTC";
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .logo-bulldog {
+            background-color: white;
         }
     </style>
 </head>
@@ -471,13 +517,13 @@
                 </div>
                 <div class="about-card">
                     <h3>Professionell Träning</h3>
-                    <p>Vi erbjuder allt från Thaiboxning och Boxning till HIIT-pass för styrka och kondition. Nytt för i år är vår barngrupp för thaiboxning från 8-12 år.</p>
+                    <p>Vi erbjuder allt från Thaiboxning och Boxning till HIIT-pass för styrka och kondition. Nytt för i år är vår barngrupp för thaiboxning från 6-12 år.</p>
                 </div>
             </div>
             
             <div class="about-card">
                 <h3>Anslutningar och Medlemskap</h3>
-                <p>Föreningen är ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet. Därigenom är föreningen också medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsförbund (SDF).</p>
+                <p>Föreningen är ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet. Därigenom är föreningen också medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsforbund (SDF).</p>
             </div>
         </section>
 
@@ -488,7 +534,7 @@
                     <div class="day-schedule">
                         <div class="day-header">MÅNDAG</div>
                         <div class="class-item">
-                            <div class="class-name">HIIT Thaiboxning</div>
+                            <div class="class-name">HIIT</div>
                             <div class="class-time">17:45-18:45</div>
                         </div>
                         <div class="class-item">
@@ -500,7 +546,7 @@
                     <div class="day-schedule">
                         <div class="day-header">TISDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Barn-Thaiboxning</div>
+                            <div class="class-name">Barn 6-12 år</div>
                             <div class="class-time">17:45-18:45</div>
                         </div>
                         <div class="class-item">
@@ -524,16 +570,16 @@
                     <div class="day-schedule">
                         <div class="day-header">TORSDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Nybörjarpass</div>
+                            <div class="class-name">Boxning</div>
+                            <div class="class-time">16:00-17:15</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Thaiboxning (nybörjare)</div>
                             <div class="class-time">17:30-18:40</div>
                         </div>
                         <div class="class-item">
                             <div class="class-name">HIIT Box</div>
                             <div class="class-time">18:45-20:00</div>
-                        </div>
-                        <div class="class-item">
-                            <div class="class-name">Boxning</div>
-                            <div class="class-time">20:30-21:30</div>
                         </div>
                     </div>
 
@@ -556,11 +602,11 @@
                     <div class="day-schedule">
                         <div class="day-header">SÖNDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Familjepass</div>
-                            <div class="class-time">15:00-16:00</div>
+                            <div class="class-name">Boxning</div>
+                            <div class="class-time">15:00-16:30</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Barn-Thaiboxning</div>
+                            <div class="class-name">Barn 6-12 år</div>
                             <div class="class-time">19:00-20:00</div>
                         </div>
                     </div>
@@ -580,11 +626,11 @@
                     <p>Boxning är en av världens äldsta kampsporter som fokuserar på händer och fotarbete. Det är en fantastisk träning för hela kroppen som utvecklar koordination, snabbhet och mental toughness. Perfekt för både tävling och motion.</p>
                 </div>                <div class="training-card">
                     <h3>HIIT Training</h3>
-                    <p>Högintensiv intervallträning kombinerat med kampsporsrörelser. Dessa pass är designade för att maximera fettförbränning och bygga funktionell styrka. Perfekt för de som vill få en komplett träning på kort tid.</p>
+                    <p>Högintensiv intervallträning kombinerat med kampsportsrörelser. Dessa pass är designade för att maximera fettförbränning och bygga funktionell styrka. Perfekt för de som vill få en komplett träning på kort tid.</p>
                 </div>
                 <div class="training-card">
-                    <h3>Barn-Thaiboxning (8-12 år)</h3>
-                    <p>Nytt för i år! Vi tror vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn 8-12 år. Träningen fokuserar på teknik, disciplin, respekt och att ha kul. En perfekt start för unga atleter.</p>
+                    <h3>Barn 6-12 år</h3>
+                    <p>Nytt för i år! Vi tror vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn 6-12 år. Träningen fokuserar på teknik, disciplin, respekt och att ha kul. En perfekt start för unga atleter.</p>
                 </div>
                 <div class="training-card">
                     <h3>Familjepass</h3>
@@ -596,7 +642,7 @@
                 </div>
             </div>
             <p style="text-align: center; margin-top: 2rem; font-style: italic;">
-                <strong>Åldersgrupper:</strong> Övriga pass är från 12 år och uppåt, om inte annat är överenskommit med huvudtränarna på klubben.
+                <strong>Åldersgrupper:</strong> Övriga pass är från 12 år och uppåt, om inte annat är överenskommet med huvudtränarna på klubben.
             </p>
         </section>
 
@@ -659,10 +705,10 @@
                 
                 <div class="social-links">
                     <a href="https://instagram.com/bdtcgbg" target="_blank" class="social-link">
-                        📱 @bdtcgbg
+                        <span class="instagram-icon">📷</span> @bdtcgbg
                     </a>
                     <a href="https://instagram.com/bulldogthaiboxning" target="_blank" class="social-link">
-                        📱 Bulldog Thaiboxning
+                        <span class="instagram-icon">📷</span> Bulldog Thaiboxning
                     </a>
                 </div>
             </div>
@@ -680,7 +726,7 @@
         
         <div class="affiliations">
             <p>Ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet</p>
-            <p>Medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsförbund (SDF)</p>
+            <p>Medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsforbund (SDF)</p>
         </div>
         
         <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
@@ -701,12 +747,23 @@
             });
         });
 
-        // Mobile menu toggle (placeholder for future implementation)
+        // Mobile menu toggle
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         
         mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = mobileMenu.querySelectorAll('span');
+            spans.forEach(span => span.classList.toggle('active'));
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
         });
 
         // Add active header background on scroll
