@@ -12,7 +12,18 @@
     <meta property="og:description" content="Klubben med familjekänsla där alla är välkomna. Thaiboxning, Boxning och HIIT för alla åldrar och nivåer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bulldogtrainingcenter.se">
+    <meta property="og:image" content="https://bulldogtrainingcenter.se/images/bdtc-logo.jpg">
     <meta property="og:locale" content="sv_SE">
+    <meta property="og:site_name" content="Bulldog Training Center">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bulldog Training Center - Thaiboxning & Boxning i Göteborg">
+    <meta name="twitter:description" content="Klubben med familjekänsla där alla är välkomna. Thaiboxning, Boxning och HIIT för alla åldrar och nivåer.">
+    <meta name="twitter:image" content="https://bulldogtrainingcenter.se/images/bdtc-logo.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bulldogtrainingcenter.se">
     
     <!-- Structured Data för Google -->
     <script type="application/ld+json">
@@ -189,7 +200,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* Enhanced Navigation Links */
+        /* Enhanced Navigation Links - UPPDATERADE FÄRGER */
         .nav-links {
             display: flex;
             list-style: none;
@@ -197,7 +208,7 @@
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
@@ -219,7 +230,7 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent,
-                rgba(255, 107, 53, 0.2),
+                rgba(255, 255, 255, 0.1),
                 transparent
             );
             transition: left 0.5s ease;
@@ -236,19 +247,29 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            background: linear-gradient(90deg, #fff, #f0f0f0);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: #fff;
-            background: rgba(255, 107, 53, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -1074,6 +1095,56 @@
     <script>
         // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle URL hash on page load for direct linking
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
+            
+            // Update URL hash when scrolling to sections
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            // Intersection observer for active nav links
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                        const id = entry.target.getAttribute('id');
+                        // Update URL without scrolling
+                        if (history.replaceState) {
+                            history.replaceState(null, null, '#' + id);
+                        }
+                        
+                        // Update active nav link
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { 
+                root: null, 
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: [0, 0.5, 1] 
+            });
+            
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+            
             // Get elements
             const mobileMenu = document.getElementById('mobileMenu');
             const navLinks = document.getElementById('navLinks');
@@ -1189,9 +1260,6 @@
                 section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(section);
             });
-            
-            // Remove parallax effect from hero background
-            // window.addEventListener('scroll', updateParallax);
             
             // Add loading animation for logo
             const logoBulldog = document.querySelector('.logo-bulldog');
