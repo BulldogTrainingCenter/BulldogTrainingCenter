@@ -3,7 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulldog Training Center - Göteborg</title>
+    <title>Bulldog Training Center - Thaiboxning & Boxning i Göteborg | BDTC</title>
+    <meta name="description" content="Bulldog Training Center i Göteborg - Thaiboxning, Boxning och HIIT för alla nivåer. Barn från 6 år, nybörjare och elitutövare välkomna. Boka pass via Zoezi.">
+    <meta name="keywords" content="thaiboxning göteborg, boxning göteborg, kampsport göteborg, muay thai, HIIT, barn thaiboxning, bulldog training center, bdtc, träning göteborg">
+    
+    <!-- Open Graph för social media -->
+    <meta property="og:title" content="Bulldog Training Center - Thaiboxning & Boxning i Göteborg">
+    <meta property="og:description" content="Klubben med familjekänsla där alla är välkomna. Thaiboxning, Boxning och HIIT för alla åldrar och nivåer.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bulldogtrainingcenter.se">
+    <meta property="og:locale" content="sv_SE">
+    
+    <!-- Structured Data för Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsClub",
+        "name": "Bulldog Training Center",
+        "alternateName": "BDTC",
+        "description": "Thaiboxning, Boxning och HIIT träning för alla åldrar och nivåer i Göteborg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Östra Sörredsvägen 4",
+            "postalCode": "418 78",
+            "addressLocality": "Göteborg",
+            "addressCountry": "SE"
+        },
+        "email": "BulldogTrainingCenter@gmail.com",
+        "sameAs": [
+            "https://instagram.com/bulldogthaiboxning",
+            "https://instagram.com/bdtcgbg"
+        ],
+        "sport": ["Thaiboxning", "Boxning", "Muay Thai", "HIIT"],
+        "priceRange": "Se Zoezi för aktuella priser",
+        "memberOf": [
+            "Svenska Boxningsförbundet",
+            "Svenska Kickboxningsförbundet", 
+            "Svenska Thaiboxningsförbundet",
+            "Riksidrottsförbundet"
+        ]
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -44,6 +84,10 @@
             align-items: center;
             gap: 1rem;
             flex-shrink: 0;
+        }
+
+        .logo h2 {
+            color: white !important;
         }
 
         .logo-bulldog {
@@ -592,10 +636,12 @@
     <header>
         <nav>
             <div class="logo">
-                <div class="logo-bulldog"></div>
+                <div>
+                    <div class="logo-bulldog"></div>
+                    <small style="display: block; text-align: center; margin-top: 0.2rem;">Göteborg</small>
+                </div>
                 <div>
                     <h2>Bulldog Training Center</h2>
-                    <small>Göteborg</small>
                 </div>
             </div>
             <ul class="nav-links" id="navLinks">
@@ -628,10 +674,12 @@
             <div class="about-grid">
                 <div class="about-card">
                     <h3>Vår Vision</h3>
+                    <h4>Där personlig utveckling möter gemenskap</h4>
                     <p>Att stärka både kropp och sinne genom träningens kraft. Vi tror på att en fysisk utmaning bygger mental resiliens, och att en stark vilja formar en stark kropp. Vår ambition är att vara den plats där denna utveckling sker - i en inkluderande miljö där varje steg framåt, oavsett storlek, firas. Här växer du inte bara starkare, utan mer centrerad och självsäker, i en gemenskap som stöttar varandra mot nya mål.</p>
                 </div>
                 <div class="about-card">
                     <h3>Ideell Förening</h3>
+                    <h4>Där eldsjälar möts</h4>
                     <p>Vi är en 100% ideellt driven förening med familjekänsla där alla är välkomna oavsett bakgrund. Vår gemenskap bygger på respekt, stöd och utveckling tillsammans.</p>
                 </div>
                 <div class="about-card">
@@ -678,7 +726,7 @@
                     <div class="day-schedule">
                         <div class="day-header">ONSDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (nybörjare)</div>
+                            <div class="class-name">Thaiboxning (Basic)</div>
                             <div class="class-time">17:30-18:45</div>
                         </div>
                         <div class="class-item">
@@ -694,7 +742,7 @@
                             <div class="class-time">16:00-17:15</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (nybörjare)</div>
+                            <div class="class-name">Thaiboxning (Basic)</div>
                             <div class="class-time">17:30-18:40</div>
                         </div>
                         <div class="class-item">
@@ -751,11 +799,11 @@
                 </div>
                 <div class="training-card">
                     <h3>Barn 6-12 år</h3>
-                    <p>Nytt för i år! Vi tror vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn 6-12 år. Träningen fokuserar på teknik, disciplin, respekt och att ha kul. En perfekt start för unga atleter.</p>
+                    <p>Nytt för i år! Vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn 6-12 år. Träningen fokuserar på teknik, disciplin, respekt och att ha kul. En perfekt start för unga atleter.</p>
                 </div>
                 <div class="training-card">
-                    <h3>Familjepass</h3>
-                    <p>Ett unikt pass där hela familjen kan träna tillsammans. Fokus ligger på gemenskap, grundläggande tekniker och att ha roligt tillsammans. Passar alla åldrar och nivåer.</p>
+                    <h3>Thaiboxning (Basic)</h3>
+                    <p>Perfekt för att komma igång eller slipa på grunderna. Vi fokuserar på de viktigaste teknikerna, korrekt utförande och försvar. Passet är öppet för alla – men i första hand nybörjare och de med lite mer erfarenhet som vill förbättra sina grundtekniker.</p>
                 </div>
                 <div class="training-card">
                     <h3>Öppen Matta</h3>
