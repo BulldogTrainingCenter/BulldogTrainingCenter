@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intresseanmälan - Bulldog Training Center | BDTC</title>
+    <meta name="description" content="Lämna en förbindelsefri intresseanmälan för träning hos Bulldog Training Center i Göteborg. Thaiboxning, Boxning och HIIT för alla nivåer.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Enhanced Header with Glass Effect */
+        header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,26,26,0.85) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        /* Enhanced Logo with Animation */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo h2 {
+            color: white !important;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-bulldog {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 
+                0 0 20px rgba(255, 107, 53, 0.3),
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .logo-bulldog::before {
+            content: "BDTC";
+            font-size: 16px;
+            font-weight: 900;
+            color: #000;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: -0.5px;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            margin-top: 120px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #000;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Interest Form Styles */
+        .interest-form {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+
+        .disclaimer {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            color: #2d5a2d;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #ff6b35;
+            margin-left: 3px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff6b35;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .sport-selection {
+            margin: 2rem 0;
+        }
+
+        .sport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .sport-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sport-option:hover {
+            border-color: #ff6b35;
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .sport-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .sport-option input[type="radio"]:checked + .sport-content {
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .sport-option input[type="radio"]:checked + .sport-content::before {
+            content: "✓";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b35;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .sport-content {
+            position: relative;
+        }
+
+        .sport-content h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .sport-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .thaiboxning-suboptions {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .sport-option input[type="radio"]:checked ~ .thaiboxning-suboptions {
+            display: block;
+        }
+
+        .suboption {
+            margin: 0.5rem 0;
+        }
+
+        .suboption label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .suboption input[type="radio"] {
+            position: relative;
+            opacity: 1;
+            margin-right: 0.5rem;
+        }
+
+        .checkbox-group {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 0.75rem;
+            margin-top: 0.2rem;
+            transform: scale(1.2);
+            flex-shrink: 0;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+            min-width: 200px;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #e55a2d 0%, #e57a35 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .status-message {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        /* Privacy Policy Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .close-modal:hover {
+            color: #ff6b35;
+        }
+
+        .privacy-policy h3 {
+            color: #000;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy-policy h2 {
+            color: #ff6b35;
+            text-align: left;
+            font-size: 1.8rem;
+        }
+
+        .privacy-policy p, .privacy-policy li {
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            main {
+                padding: 0 1rem;
+                margin-top: 100px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sport-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 2% auto;
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .interest-form {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h2 {
+                font-size: 1.2rem;
+            }
+
+            .logo-bulldog {
+                width: 45px;
+                height: 45px;
+            }
+
+            .logo-bulldog::before {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div>
+                    <div class="logo-bulldog"></div>
+                    <small style="display: block; text-align: center; margin-top: 0.2rem; color: rgba(255,255,255,0.8);">Göteborg</small>
+                </div>
+                <div>
+                    <h2>Bulldog Training Center</h2>
+                </div>
+            </div>
+            <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Intresseanmälan</h1>
+        <div class="intro-text">
+            <p>Är du intresserad av att börja träna hos oss? Fyll i formuläret nedan så kontaktar vi dig med mer information om våra träningspass och priser.</p>
+        </div>
+
+        <div class="interest-form">
+            <div class="disclaimer">
+                <strong>Viktigt:</strong> Denna intresseanmälan är helt förbindelsefri och medför inga kostnader eller förpliktelser från din sida.
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+
+            <form id="interestForm">
+                <div class="sport-selection">
+                    <h3>Vilken träningsform är du intresserad av? <span class="required">*</span></h3>
+                    <div class="sport-options">
+                        <div class="sport-option">
+                            <input type="radio" id="thaiboxning" name="sport" value="thaiboxning" required>
+                            <div class="sport-content">
+                                <h4>Thaiboxning</h4>
+                                <p>Traditionell thaiboxning för alla nivåer</p>
+                            </div>
+                            <div class="thaiboxning-suboptions">
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning_level" value="basic">
+                                        Thaiboxning Basic (Nybörjare)
+                                    </label>
+                                </div>
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning_level" value="advanced">
+                                        Thaiboxning Advanced (Erfarna)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sport-option">
+                            <input type="radio" id="boxning" name="sport" value="boxning" required>
+                            <div class="sport-content">
+                                <h4>Boxning</h4>
+                                <p>Klassisk boxning med fokus på teknik och kondition</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sport-option">
+                            <input type="radio" id="hiit" name="sport" value="hiit" required>
+                            <div class="sport-content">
+                                <h4>HIIT</h4>
+                                <p>Högintensiv träning kombinerat med kampsport</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sport-option">
+                            <input type="radio" id="barn" name="sport" value="barn_thaiboxning" required>
+                            <div class="sport-content">
+                                <h4>Barn Thaiboxning</h4>
+                                <p>Thaiboxning för barn 6-12 år</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">Förnamn <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Efternamn <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="personnummer">Personnummer (ÅÅÅÅMMDD-XXXX) <span class="required">*</span></label>
+                        <input type="text" id="personnummer" name="personnummer" placeholder="19901201-1234" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-post <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Mobilnummer <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="070-123 45 67" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="address">Adress <span class="required">*</span></label>
+                        <input type="text" id="address" name="address" placeholder="Gatunamn 12" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">Stad <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="postalCode">Postnummer <span class="required">*</span></label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="123 45" required>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <span>
+                            Jag har läst och godkänner 
+                            <a href="#" id="privacyPolicyLink" style="color: #ff6b35; text-decoration: underline;">personuppgiftspolicyn</a> 
+                            och samtycker till att mina personuppgifter behandlas enligt denna policy. <span class="required">*</span>
+                        </span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Skicka intresseanmälan
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="logo">
+            <div class="logo-bulldog"></div>
+            <div>
+                <h3>Bulldog Training Center</h3>
+                <p>Klubben med familjekänsla</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="privacy-policy">
+                <h2>Personuppgiftspolicy</h2>
+                
+                <h3>1. Personuppgiftsansvarig</h3>
+                <p>Bulldog Training Center är personuppgiftsansvarig för behandlingen av dina personuppgifter.</p>
+                <p><strong>Kontaktuppgifter:</strong><br>
+                E-post: BulldogTrainingCenter@gmail.com<br>
+                Adress: Östra Sörredsvägen 4, 418 78 Göteborg</p>
+
+                <h3>2. Vilka personuppgifter samlar vi in?</h3>
+                <p>Genom intresseanmälan samlar vi in följande personuppgifter:</p>
+                <ul>
+                    <li>Förnamn och efternamn</li>
+                    <li>Personnummer</li>
+                    <li>Adress, stad och postnummer</li>
+                    <li>E-postadress</li>
+                    <li>Mobilnummer</li>
+                    <li>Val av träningsform</li>
+                </ul>
+
+                <h3>3. Ändamål och rättslig grund</h3>
+                <p>Vi behandlar dina personuppgifter för att:</p>
+                <ul>
+                    <li>Kontakta dig med information om våra träningsaktiviteter</li>
+                    <li>Administrera din intresseanmälan</li>
+                    <li>Informera om kommande träningspass och evenemang</li>
+                </ul>
+                <p><strong>Rättslig grund:</strong> Samtycke enligt artikel 6.1(a) i GDPR.</p>
+
+                <h3>4. Hur länge sparar vi dina uppgifter?</h3>
+                <p>Dina personuppgifter sparas i maximalt 2 år från det att intresseanmälan lämnades in. Efter denna tid raderas alla uppgifter permanent, såvida du inte har blivit medlem i föreningen.</p>
+
+                <h3>5. Vem delar vi dina uppgifter med?</h3>
+                <p>Dina personuppgifter delas inte med tredje part utan ditt uttryckliga samtycke, utom när det krävs enligt lag.</p>
+
+                <h3>6. Dina rättigheter</h3>
+                <p>Du har rätt att:</p>
+                <ul>
+                    <li>Få information om vilka personuppgifter vi behandlar</li>
+                    <li>Få felaktiga uppgifter rättade</li>
+                    <li>Få dina uppgifter raderade</li>
+                    <li>Begränsa behandlingen av dina uppgifter</li>
+                    <li>Invända mot behandlingen</li>
+                    <li>Få ut dina uppgifter i ett strukturerat format (dataportabilitet)</li>
+                    <li>Återkalla ditt samtycke när som helst</li>
+                </ul>
+
+                <h3>7. Säkerhet</h3>
+                <p>Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter mot obehörig åtkomst, förlust, förstöring eller skada.</p>
+
+                <h3>8. Klagomål</h3>
+                <p>Om du är missnöjd med hur vi behandlar dina personuppgifter har du rätt att lämna klagomål till Integritetsskyddsmyndigheten (IMY).</p>
+
+                <h3>9. Kontakt</h3>
+                <p>Vid frågor om denna policy eller dina personuppgifter, kontakta oss på BulldogTrainingCenter@gmail.com</p>
+
+                <p><strong>Senast uppdaterad:</strong> Januari 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            'use strict';
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                try {
+                    // Initialize EmailJS with your public key
+                    if (typeof emailjs !== 'undefined') {
+                        emailjs.init('uD75Ns8xauRHn_8HU');
+                        console.log('EmailJS initialized successfully');
+                    }
+                    
+                    // Privacy Policy Modal
+                    const privacyModal = document.getElementById('privacyModal');
+                    const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+                    const closeModal = document.querySelector('.close-modal');
+                    
+                    if (privacyPolicyLink && privacyModal) {
+                        privacyPolicyLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            privacyModal.style.display = 'block';
+                        });
+                    }
+                    
+                    if (closeModal && privacyModal) {
+                        closeModal.addEventListener('click', function() {
+                            privacyModal.style.display = 'none';
+                        });
+                    }
+                    
+                    if (privacyModal) {
+                        window.addEventListener('click', function(e) {
+                            if (e.target === privacyModal) {
+                                privacyModal.style.display = 'none';
+                            }
+                        });
+                    }
+                    
+                    // Interest Form Handling
+                    const interestForm = document.getElementById('interestForm');
+                    const sportRadios = document.querySelectorAll('input[name="sport"]');
+                    const thaiboxningLevelRadios = document.querySelectorAll('input[name="thaiboxning_level"]');
+                    const statusMessage = document.getElementById('statusMessage');
+                    
+                    function showMessage(message, isError = false) {
+                        if (statusMessage) {
+                            statusMessage.textContent = message;
+                            statusMessage.className = 'status-message' + (isError ? ' error' : '');
+                            statusMessage.style.display = 'block';
+                            
+                            setTimeout(() => {
+                                statusMessage.style.display = 'none';
+                            }, 5000);
+                        }
+                    }
+                    
+                    // Show/hide thaiboxning suboptions and handle clicking
+                    sportRadios.forEach(function(radio) {
+                        radio.addEventListener('change', function() {
+                            // Remove selected class from all options
+                            document.querySelectorAll('.sport-option').forEach(function(option) {
+                                option.classList.remove('selected');
+                            });
+                            
+                            // Add selected class to current option
+                            this.closest('.sport-option').classList.add('selected');
+                            
+                            const thaiboxningSuboptions = document.querySelector('.thaiboxning-suboptions');
+                            if (this.value === 'thaiboxning' && thaiboxningSuboptions) {
+                                thaiboxningSuboptions.style.display = 'block';
+                                thaiboxningLevelRadios.forEach(function(levelRadio) {
+                                    levelRadio.setAttribute('required', 'required');
+                                });
+                            } else if (thaiboxningSuboptions) {
+                                thaiboxningSuboptions.style.display = 'none';
+                                thaiboxningLevelRadios.forEach(function(levelRadio) {
+                                    levelRadio.removeAttribute('required');
+                                    levelRadio.checked = false;
+                                });
+                            }
+                        });
+                    });
+
+                    // Add click handlers for the entire sport option div
+                    document.querySelectorAll('.sport-option').forEach(function(option) {
+                        option.addEventListener('click', function(e) {
+                            // Don't trigger if clicking on radio button directly
+                            if (e.target.type === 'radio') return;
+                            
+                            const radio = this.querySelector('input[type="radio"]');
+                            if (radio) {
+                                radio.checked = true;
+                                // Trigger the change event
+                                radio.dispatchEvent(new Event('change'));
+                            }
+                        });
+                    });
+                    
+                    // Form validation and submission
+                    if (interestForm) {
+                        interestForm.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            
+                            const formData = new FormData(interestForm);
+                            const data = {};
+                            
+                            for (let [key, value] of formData.entries()) {
+                                data[key] = value;
+                            }
+                            
+                            // Validate personnummer format (only if filled)
+                            const personnummer = data.personnummer;
+                            if (personnummer && personnummer.trim() !== '') {
+                                const personnummerRegex = /^\d{8}-\d{4}$/;
+                                if (!personnummerRegex.test(personnummer)) {
+                                    showMessage('Personnummer måste vara i formatet ÅÅÅÅMMDD-XXXX (t.ex. 19901201-1234)', true);
+                                    return;
+                                }
+                            }
+                            
+                            // Validate phone number
+                            const phone = data.phone.replace(/\s+/g, '').replace(/-/g, '');
+                            const phoneRegex = /^(07\d{8}|46\d{9})$/;
+                            if (!phoneRegex.test(phone)) {
+                                showMessage('Ange ett giltigt svenskt mobilnummer (t.ex. 070-123 45 67)', true);
+                                return;
+                            }
+                            
+                            // Validate postal code
+                            const postalCode = data.postalCode.replace(/\s+/g, '');
+                            const postalCodeRegex = /^\d{5}$/;
+                            if (!postalCodeRegex.test(postalCode)) {
+                                showMessage('Postnummer måste vara 5 siffror (t.ex. 41878 eller 418 78)', true);
+                                return;
+                            }
+                            
+                            // Check if thaiboxning is selected and level is chosen
+                            if (data.sport === 'thaiboxning' && !data.thaiboxning_level) {
+                                showMessage('Vänligen välj nivå för thaiboxning (Basic eller Advanced)', true);
+                                return;
+                            }
+                            
+                            // Check privacy consent
+                            if (!data.privacyConsent) {
+                                showMessage('Du måste godkänna personuppgiftspolicyn för att skicka intresseanmälan', true);
+                                return;
+                            }
+                            
+                            const submitButton = interestForm.querySelector('.submit-button');
+                            const originalText = submitButton.textContent;
+                            
+                            submitButton.disabled = true;
+                            submitButton.textContent = 'Skickar...';
+                            
+                            // Simple mailto solution (fallback)
+                            const mailtoLink = `mailto:BulldogTrainingCenter@gmail.com?subject=Intresseanmälan från ${data.firstName} ${data.lastName}&body=Ny intresseanmälan från ${data.firstName} ${data.lastName}%0D%0A%0D%0ATräningsform: ${data.sport}${data.thaiboxning_level ? ` (${data.thaiboxning_level})` : ''}%0D%0A%0D%0APersonuppgifter:%0D%0A- Namn: ${data.firstName} ${data.lastName}%0D%0A- Personnummer: ${data.personnummer}%0D%0A- E-post: ${data.email}%0D%0A- Telefon: ${data.phone}%0D%0A- Adress: ${data.address}, ${data.city} ${data.postalCode}%0D%0A%0D%0ASkickat från: bulldogtrainingcenter.se`;
+                            
+                            // Prepare email data for EmailJS
+                            const emailData = {
+                                to_email: 'BulldogTrainingCenter@gmail.com',
+                                from_name: data.firstName + ' ' + data.lastName,
+                                from_email: data.email,
+                                sport: data.sport,
+                                thaiboxning_level: data.thaiboxning_level || 'Ej vald',
+                                firstName: data.firstName,
+                                lastName: data.lastName,
+                                personnummer: data.personnummer,
+                                email: data.email,
+                                phone: data.phone,
+                                address: data.address,
+                                city: data.city,
+                                postalCode: data.postalCode,
+                                message: `Ny intresseanmälan från ${data.firstName} ${data.lastName}
+
+Träningsform: ${data.sport}${data.thaiboxning_level ? ` (${data.thaiboxning_level})` : ''}
+
+Personuppgifter:
+- Namn: ${data.firstName} ${data.lastName}
+- Personnummer: ${data.personnummer}
+- E-post: ${data.email}
+- Telefon: ${data.phone}
+- Adress: ${data.address}, ${data.city} ${data.postalCode}
+
+Skickat från: bulldogtrainingcenter.se`
+                            };
+                            
+                            // If EmailJS is not configured, use mailto
+                            if (typeof emailjs === 'undefined' || !emailjs) {
+                                window.location.href = mailtoLink;
+                                submitButton.disabled = false;
+                                submitButton.textContent = originalText;
+                                showMessage('E-postklienten öppnades. Skicka e-posten för att slutföra din intresseanmälan.');
+                                return;
+                            }
+                            
+                            // Send email via EmailJS
+                            emailjs.send('service_aihjv9s', 'template_njw033y', emailData)
+                                .then(function(response) {
+                                    console.log('EmailJS SUCCESS!', response.status, response.text);
+                                    showMessage('Tack för din intresseanmälan! Vi kontaktar dig inom kort med mer information.');
+                                    interestForm.reset();
+                                    
+                                    // Hide thaiboxning suboptions after reset
+                                    const thaiboxningSuboptions = document.querySelector('.thaiboxning-suboptions');
+                                    if (thaiboxningSuboptions) {
+                                        thaiboxningSuboptions.style.display = 'none';
+                                    }
+                                }, function(error) {
+                                    console.log('EmailJS FAILED...', error);
+                                    showMessage('Ett fel uppstod när intresseanmälan skulle skickas. Vänligen kontakta oss direkt på BulldogTrainingCenter@gmail.com', true);
+                                    
+                                    // Fallback to mailto
+                                    window.location.href = mailtoLink;
+                                })
+                                .finally(function() {
+                                    submitButton.disabled = false;
+                                    submitButton.textContent = originalText;
+                                });
+                            
+                            console.log('Form data:', data);
+                        });
+                        
+                        // Real-time validation feedback
+                        const inputs = interestForm.querySelectorAll('input[required]');
+                        inputs.forEach(function(input) {
+                            input.addEventListener('blur', function() {
+                                if (this.value.trim() === '') {
+                                    this.style.borderColor = '#ff6b35';
+                                } else {
+                                    this.style.borderColor = '#e1e1e1';
+                                }
+                            });
+                            
+                            input.addEventListener('input', function() {
+                                if (this.style.borderColor === 'rgb(255, 107, 53)' && this.value.trim() !== '') {
+                                    this.style.borderColor = '#e1e1e1';
+                                }
+                            });
+                        });
+                        
+                        // Format personnummer input
+                        const personnummerInput = document.getElementById('personnummer');
+                        if (personnummerInput) {
+                            personnummerInput.addEventListener('input', function(e) {
+                                let value = e.target.value.replace(/\D/g, '');
+                                if (value.length > 8) {
+                                    value = value.substring(0, 8) + '-' + value.substring(8, 12);
+                                }
+                                e.target.value = value;
+                            });
+                        }
+                        
+                        // Format phone number input
+                        const phoneInput = document.getElementById('phone');
+                        if (phoneInput) {
+                            phoneInput.addEventListener('input', function(e) {
+                                let value = e.target.value.replace(/\D/g, '');
+                                if (value.length > 3 && value.length <= 6) {
+                                    value = value.substring(0, 3) + '-' + value.substring(3);
+                                } else if (value.length > 6) {
+                                    value = value.substring(0, 3) + '-' + value.substring(3, 6) + ' ' + value.substring(6, 8) + ' ' + value.substring(8, 10);
+                                }
+                                e.target.value = value;
+                            });
+                        }
+                        
+                        // Format postal code input
+                        const postalCodeInput = document.getElementById('postalCode');
+                        if (postalCodeInput) {
+                            postalCodeInput.addEventListener('input', function(e) {
+                                let value = e.target.value.replace(/\D/g, '');
+                                if (value.length > 3) {
+                                    value = value.substring(0, 3) + ' ' + value.substring(3, 5);
+                                }
+                                e.target.value = value;
+                            });
+                        }
+                    }
+                    
+                } catch (error) {
+                    console.error('Error in DOMContentLoaded handler:', error);
+                }
+            });
+            
+        })();
+    </script>
+</body>
+</html>
