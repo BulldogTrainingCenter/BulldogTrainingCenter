@@ -150,54 +150,25 @@
             background-clip: text;
         }
 
-        /* Enhanced Logo Bulldog with Glow Effect */
-        .logo-bulldog {
+        /* Header Logo - Real Images */
+        .header-logo {
             width: 55px;
             height: 55px;
-            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 
-                0 0 20px rgba(255, 107, 53, 0.3),
-                0 4px 15px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            object-fit: contain;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: pulse 3s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 20px rgba(255, 107, 53, 0.3),
-                    0 4px 15px rgba(0, 0, 0, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 30px rgba(255, 107, 53, 0.5),
-                    0 6px 20px rgba(0, 0, 0, 0.3),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            }
-        }
-
-        .logo-bulldog:hover {
+        .header-logo:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 
-                0 0 40px rgba(255, 107, 53, 0.6),
-                0 8px 25px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
-        .logo-bulldog::before {
-            content: "BDTC";
-            font-size: 16px;
-            font-weight: 900;
-            color: #000;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            letter-spacing: -0.5px;
+        .header-logo.desktop {
+            display: block;
+        }
+
+        .header-logo.mobile {
+            display: none;
         }
 
         /* Enhanced Navigation Links */
@@ -306,7 +277,7 @@
             max-width: 1000px;
         }
 
-        /* Main Logo in Hero Section - REMOVED ORANGE GLOW */
+        /* Main Logo in Hero Section - NO ORANGE GLOW */
         .main-logo {
             width: 250px;
             height: 250px;
@@ -315,12 +286,10 @@
             transition: all 0.3s ease;
             object-fit: contain;
             display: block;
-            /* REMOVED: box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3); */
         }
 
         .main-logo:hover {
             transform: scale(1.05);
-            /* REMOVED: box-shadow: 0 25px 80px rgba(255, 107, 53, 0.4); */
         }
 
         .mobile-logo {
@@ -383,17 +352,6 @@
         header.scrolled .header-logo {
             width: 48px;
             height: 48px;
-        }
-
-        /* Mobile responsive for header logos */
-        @media (max-width: 768px) {
-            .header-logo.desktop {
-                display: none;
-            }
-            
-            .header-logo.mobile {
-                display: block;
-            }
         }
 
         header.scrolled .logo h2 {
@@ -677,7 +635,6 @@
             margin-top: 4rem;
         }
 
-        /* Updated Footer Logo */
         .footer-logo {
             display: flex;
             align-items: center;
@@ -779,6 +736,14 @@
                 height: 200px;
             }
 
+            .header-logo.desktop {
+                display: none;
+            }
+            
+            .header-logo.mobile {
+                display: block;
+            }
+
             .footer-logo-desktop {
                 display: none;
             }
@@ -809,13 +774,9 @@
                 font-size: 1rem;
             }
 
-            .logo-bulldog {
+            .header-logo {
                 width: 40px;
                 height: 40px;
-            }
-
-            .logo-bulldog::before {
-                font-size: 14px;
             }
 
             .hero-content h1 {
@@ -842,7 +803,8 @@
         <nav>
             <div class="logo">
                 <div>
-                    <div class="logo-bulldog"></div>
+                    <img src="images/image0.png" alt="Bulldog Training Center Logo" class="header-logo desktop">
+                    <img src="images/image001.png" alt="Bulldog Training Center Logo" class="header-logo mobile">
                     <small style="display: block; text-align: center; margin-top: 0.2rem; color: rgba(255,255,255,0.8);">Göteborg</small>
                 </div>
                 <div>
@@ -868,10 +830,7 @@
 
     <section id="hem" class="hero">
         <div class="hero-content">
-            <!-- Desktop logo -->
             <img src="images/image0.png" alt="Bulldog Training Center Logo" class="main-logo desktop-logo">
-            
-            <!-- Mobile logo -->
             <img src="images/image001.png" alt="Bulldog Training Center Logo" class="main-logo mobile-logo">
             
             <h1>Bulldog Training Center</h1>
@@ -1105,7 +1064,6 @@
 
     <footer>
         <div class="footer-logo">
-            <!-- Single footer logo that switches between desktop/mobile -->
             <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
             <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
             
@@ -1334,14 +1292,6 @@
                             section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                             observer.observe(section);
                         });
-                    }
-                    
-                    // Add loading animation for logo
-                    const logoBulldog = document.querySelector('.logo-bulldog');
-                    if (logoBulldog) {
-                        setTimeout(function() {
-                            logoBulldog.style.animation = 'pulse 3s ease-in-out infinite';
-                        }, 500);
                     }
                     
                 } catch (error) {
