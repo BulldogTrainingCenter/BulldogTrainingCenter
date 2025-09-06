@@ -306,7 +306,7 @@
             max-width: 1000px;
         }
 
-        /* Main Logo in Hero Section - NO ORANGE EFFECTS */
+        /* Main Logo in Hero Section - SIMPLIFIED */
         .main-logo {
             width: 250px;
             height: 250px;
@@ -314,15 +314,14 @@
             transition: all 0.3s ease;
             object-fit: contain;
             display: block;
-            /* No border-radius, no box-shadow */
         }
 
         .main-logo:hover {
             transform: scale(1.05);
-            /* No orange glow effects */
         }
 
-        .mobile-logo {
+        /* Hide mobile logo by default */
+        .main-logo.mobile-logo {
             display: none;
         }
 
