@@ -214,6 +214,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
+            user-select: none;
         }
 
         .sport-option:hover {
@@ -223,7 +224,13 @@
 
         .sport-option input[type="radio"] {
             position: absolute;
-            opacity: 0;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+            cursor: pointer;
+            z-index: 10;
         }
 
         .sport-option input[type="radio"]:checked + .sport-content {
@@ -231,11 +238,20 @@
             font-weight: 600;
         }
 
-        .sport-option input[type="radio"]:checked + .sport-content::before {
+        .sport-option input[type="radio"]:checked {
+            accent-color: #ff6b35;
+        }
+
+        .sport-option.selected {
+            border-color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .sport-option.selected::after {
             content: "✓";
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: 5px;
+            right: 30px;
             background: #ff6b35;
             color: white;
             width: 20px;
@@ -250,6 +266,8 @@
 
         .sport-content {
             position: relative;
+            margin-right: 40px;
+            cursor: pointer;
         }
 
         .sport-content h4 {
@@ -567,8 +585,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="personnummer">Personnummer (ÅÅÅÅMMDD-XXXX) <span class="required">*</span></label>
-                        <input type="text" id="personnummer" name="personnummer" placeholder="19901201-1234" required>
+                        <label for="personnummer">Personnummer (ÅÅÅÅMMDD-XXXX)</label>
+                        <input type="text" id="personnummer" name="personnummer" placeholder="19901201-1234">
                     </div>
                     
                     <div class="form-group">
@@ -643,7 +661,7 @@
                 <p>Genom intresseanmälan samlar vi in följande personuppgifter:</p>
                 <ul>
                     <li>Förnamn och efternamn</li>
-                    <li>Personnummer</li>
+                    <li>Personnummer (valfritt)</li>
                     <li>Adress, stad och postnummer</li>
                     <li>E-postadress</li>
                     <li>Mobilnummer</li>
@@ -846,9 +864,6 @@
                             submitButton.disabled = true;
                             submitButton.textContent = 'Skickar...';
                             
-                            // Simple mailto solution (fallback)
-                            const mailtoLink = `mailto:BulldogTrainingCenter@gmail.com?subject=Intresseanmälan från ${data.firstName} ${data.lastName}&body=Ny intresseanmälan från ${data.firstName} ${data.lastName}%0D%0A%0D%0ATräningsform: ${data.sport}${data.thaiboxning_level ? ` (${data.thaiboxning_level})` : ''}%0D%0A%0D%0APersonuppgifter:%0D%0A- Namn: ${data.firstName} ${data.lastName}%0D%0A- Personnummer: ${data.personnummer}%0D%0A- E-post: ${data.email}%0D%0A- Telefon: ${data.phone}%0D%0A- Adress: ${data.address}, ${data.city} ${data.postalCode}%0D%0A%0D%0ASkickat från: bulldogtrainingcenter.se`;
-                            
                             // Prepare email data for EmailJS
                             const emailData = {
                                 to_email: 'BulldogTrainingCenter@gmail.com',
@@ -858,7 +873,7 @@
                                 thaiboxning_level: data.thaiboxning_level || 'Ej vald',
                                 firstName: data.firstName,
                                 lastName: data.lastName,
-                                personnummer: data.personnummer,
+                                personnummer: data.personnummer || 'Ej angivet',
                                 email: data.email,
                                 phone: data.phone,
                                 address: data.address,
@@ -870,7 +885,7 @@ Träningsform: ${data.sport}${data.thaiboxning_level ? ` (${data.thaiboxning_lev
 
 Personuppgifter:
 - Namn: ${data.firstName} ${data.lastName}
-- Personnummer: ${data.personnummer}
+- Personnummer: ${data.personnummer || 'Ej angivet'}
 - E-post: ${data.email}
 - Telefon: ${data.phone}
 - Adress: ${data.address}, ${data.city} ${data.postalCode}
@@ -878,12 +893,11 @@ Personuppgifter:
 Skickat från: bulldogtrainingcenter.se`
                             };
                             
-                            // If EmailJS is not configured, use mailto
+                            // Check if EmailJS is available
                             if (typeof emailjs === 'undefined' || !emailjs) {
-                                window.location.href = mailtoLink;
+                                showMessage('E-postfunktionen är inte konfigurerad. Vänligen kontakta oss direkt på BulldogTrainingCenter@gmail.com', true);
                                 submitButton.disabled = false;
                                 submitButton.textContent = originalText;
-                                showMessage('E-postklienten öppnades. Skicka e-posten för att slutföra din intresseanmälan.');
                                 return;
                             }
                             
@@ -894,6 +908,11 @@ Skickat från: bulldogtrainingcenter.se`
                                     showMessage('Tack för din intresseanmälan! Vi kontaktar dig inom kort med mer information.');
                                     interestForm.reset();
                                     
+                                    // Remove selected class from all sport options
+                                    document.querySelectorAll('.sport-option').forEach(function(option) {
+                                        option.classList.remove('selected');
+                                    });
+                                    
                                     // Hide thaiboxning suboptions after reset
                                     const thaiboxningSuboptions = document.querySelector('.thaiboxning-suboptions');
                                     if (thaiboxningSuboptions) {
@@ -902,19 +921,21 @@ Skickat från: bulldogtrainingcenter.se`
                                 }, function(error) {
                                     console.log('EmailJS FAILED...', error);
                                     showMessage('Ett fel uppstod när intresseanmälan skulle skickas. Vänligen kontakta oss direkt på BulldogTrainingCenter@gmail.com', true);
-                                    
-                                    // Fallback to mailto
-                                    window.location.href = mailtoLink;
                                 })
                                 .finally(function() {
                                     submitButton.disabled = false;
                                     submitButton.textContent = originalText;
                                 });
+                            
+                            console.log('Form data:', data);
                         });
                         
-                        // Real-time validation feedback
+                        // Real-time validation feedback (exclude personnummer from required validation)
                         const inputs = interestForm.querySelectorAll('input[required]');
                         inputs.forEach(function(input) {
+                            // Skip personnummer field since it's not required
+                            if (input.id === 'personnummer') return;
+                            
                             input.addEventListener('blur', function() {
                                 if (this.value.trim() === '') {
                                     this.style.borderColor = '#ff6b35';
