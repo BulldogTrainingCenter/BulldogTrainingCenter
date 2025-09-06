@@ -306,21 +306,20 @@
             max-width: 1000px;
         }
 
-        /* Main Logo in Hero Section */
+        /* Main Logo in Hero Section - NO ORANGE EFFECTS */
         .main-logo {
             width: 250px;
             height: 250px;
             margin: 0 auto 2rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
             transition: all 0.3s ease;
             object-fit: contain;
             display: block;
+            /* No border-radius, no box-shadow */
         }
 
         .main-logo:hover {
             transform: scale(1.05);
-            box-shadow: 0 25px 80px rgba(255, 107, 53, 0.4);
+            /* No orange glow effects */
         }
 
         .mobile-logo {
@@ -657,13 +656,36 @@
             color: white !important;
         }
 
-        /* Footer */
+        /* Footer - SINGLE LOGO ONLY */
         footer {
             background: #000;
             color: white;
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        /* Show only desktop logo by default */
+        .footer-logo-desktop {
+            display: block;
+        }
+
+        .footer-logo-mobile {
+            display: none;
         }
 
         .affiliations {
@@ -735,6 +757,7 @@
                 padding: 0 1rem;
             }
 
+            /* Switch to mobile logo */
             .main-logo.desktop-logo {
                 display: none;
             }
@@ -743,6 +766,15 @@
                 display: block;
                 width: 200px;
                 height: 200px;
+            }
+
+            /* Switch footer logo to mobile */
+            .footer-logo-desktop {
+                display: none;
+            }
+            
+            .footer-logo-mobile {
+                display: block;
             }
 
             main {
@@ -826,11 +858,11 @@
 
     <section id="hem" class="hero">
         <div class="hero-content">
-            <!-- Desktop logo -->
-            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="main-logo desktop-logo">
+            <!-- Desktop logo - NO ORANGE GLOW -->
+            <img src="https://via.placeholder.com/250x250/ffffff/000000?text=DESKTOP+LOGO" alt="Bulldog Training Center Logo" class="main-logo desktop-logo">
             
             <!-- Mobile logo -->
-            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="main-logo mobile-logo">
+            <img src="https://via.placeholder.com/200x200/ffffff/000000?text=MOBILE+LOGO" alt="Bulldog Training Center Logo" class="main-logo mobile-logo">
             
             <h1>Bulldog Training Center</h1>
             <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt.</p>
@@ -1063,9 +1095,9 @@
 
     <footer>
         <div class="footer-logo">
-            <!-- Single footer logo that switches between desktop/mobile -->
-            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
-            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
+            <!-- SINGLE footer logo that switches between desktop/mobile versions -->
+            <img src="https://via.placeholder.com/50x50/ffffff/000000?text=D" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
+            <img src="https://via.placeholder.com/50x50/ffffff/000000?text=M" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
             
             <div>
                 <h3>Bulldog Training Center</h3>
