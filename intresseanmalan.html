@@ -208,8 +208,16 @@
 
         .thaiboxning-suboptions {
             margin-left: 1rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             display: none;
+            padding: 1rem;
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #ff6b35;
+        }
+
+        .thaiboxning-suboptions.visible {
+            display: block;
         }
 
         .suboption {
@@ -221,6 +229,11 @@
             align-items: center;
             font-weight: normal;
             cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .suboption input[type="radio"] {
+            margin-right: 0.5rem;
         }
 
         .checkbox-group {
@@ -324,11 +337,11 @@
                 <strong>Viktigt:</strong> Denna intresseanmälan är helt förbindelsefri och medför inga kostnader eller förpliktelser från din sida.
             </div>
 
-            <form action="mailto:BulldogTrainingCenter@gmail.com" method="post" enctype="text/plain">
+            <form id="interestForm" action="mailto:BulldogTrainingCenter@gmail.com" method="post" enctype="text/plain">
                 <div class="sport-selection">
                     <h3>Vilken träningsform är du intresserad av? <span class="required">*</span></h3>
                     <div class="sport-options">
-                        <div class="sport-option">
+                        <div class="sport-option" data-sport="thaiboxning">
                             <label>
                                 <input type="radio" name="sport" value="Thaiboxning" required>
                                 <div class="sport-content">
@@ -336,6 +349,21 @@
                                     <p>Traditionell thaiboxning för alla nivåer</p>
                                 </div>
                             </label>
+                            <div class="thaiboxning-suboptions" id="thaiboxning-suboptions">
+                                <h4 style="margin-bottom: 0.5rem; font-size: 1rem;">Välj nivå:</h4>
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning-level" value="Basic">
+                                        <span>Thaiboxning (Basic) - För nybörjare</span>
+                                    </label>
+                                </div>
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning-level" value="Advanced">
+                                        <span>Thaiboxning (Advanced) - För erfarna</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="sport-option">
@@ -373,42 +401,42 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="firstName">Förnamn <span class="required">*</span></label>
-                        <input type="text" name="firstName" required>
+                        <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="lastName">Efternamn <span class="required">*</span></label>
-                        <input type="text" name="lastName" required>
+                        <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="personnummer">Personnummer (ÅÅÅÅMMDD-XXXX)</label>
-                        <input type="text" name="personnummer" placeholder="19901201-1234">
+                        <input type="text" id="personnummer" name="personnummer" placeholder="19901201-1234" autocomplete="off">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">E-post <span class="required">*</span></label>
-                        <input type="email" name="email" required>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Mobilnummer <span class="required">*</span></label>
-                        <input type="tel" name="phone" placeholder="070-123 45 67" required>
+                        <input type="tel" id="phone" name="phone" placeholder="070-123 45 67" autocomplete="mobile tel" required>
                     </div>
                     
                     <div class="form-group full-width">
                         <label for="address">Adress <span class="required">*</span></label>
-                        <input type="text" name="address" placeholder="Gatunamn 12" required>
+                        <input type="text" id="address" name="address" placeholder="Gatunamn 12" autocomplete="street-address" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="city">Stad <span class="required">*</span></label>
-                        <input type="text" name="city" required>
+                        <input type="text" id="city" name="city" autocomplete="address-level2" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="postalCode">Postnummer <span class="required">*</span></label>
-                        <input type="text" name="postalCode" placeholder="123 45" required>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="123 45" autocomplete="postal-code" required>
                     </div>
                 </div>
 
@@ -442,9 +470,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sportOptions = document.querySelectorAll('.sport-option');
+            const thaiboxningSuboptions = document.getElementById('thaiboxning-suboptions');
+            const form = document.getElementById('interestForm');
             
+            // Handle sport selection
             sportOptions.forEach(function(option) {
-                option.addEventListener('click', function() {
+                option.addEventListener('click', function(e) {
+                    // Prevent double triggering when clicking on radio button directly
+                    if (e.target.type === 'radio') return;
+                    
                     // Remove selected class from all options
                     sportOptions.forEach(function(opt) {
                         opt.classList.remove('selected');
@@ -458,7 +492,79 @@
                     if (radio) {
                         radio.checked = true;
                     }
+                    
+                    // Show/hide Thaiboxning suboptions
+                    if (this.dataset.sport === 'thaiboxning') {
+                        thaiboxningSuboptions.classList.add('visible');
+                    } else {
+                        thaiboxningSuboptions.classList.remove('visible');
+                        // Clear thaiboxning level selection
+                        const levelRadios = document.querySelectorAll('input[name="thaiboxning-level"]');
+                        levelRadios.forEach(radio => radio.checked = false);
+                    }
                 });
+            });
+            
+            // Handle radio button clicks directly
+            const sportRadios = document.querySelectorAll('input[name="sport"]');
+            sportRadios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    const parentOption = this.closest('.sport-option');
+                    
+                    // Remove selected class from all options
+                    sportOptions.forEach(function(opt) {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to parent option
+                    parentOption.classList.add('selected');
+                    
+                    // Show/hide Thaiboxning suboptions
+                    if (parentOption.dataset.sport === 'thaiboxning') {
+                        thaiboxningSuboptions.classList.add('visible');
+                    } else {
+                        thaiboxningSuboptions.classList.remove('visible');
+                        // Clear thaiboxning level selection
+                        const levelRadios = document.querySelectorAll('input[name="thaiboxning-level"]');
+                        levelRadios.forEach(radio => radio.checked = false);
+                    }
+                });
+            });
+            
+            // Handle form submission to create proper mailto link
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                let emailBody = 'Intresseanmälan från Bulldog Training Center\n\n';
+                
+                // Get selected sport
+                const selectedSport = formData.get('sport');
+                const selectedLevel = formData.get('thaiboxning-level');
+                
+                if (selectedSport === 'Thaiboxning' && selectedLevel) {
+                    emailBody += `Träningsform: ${selectedSport} (${selectedLevel})\n`;
+                } else {
+                    emailBody += `Träningsform: ${selectedSport}\n`;
+                }
+                
+                emailBody += `Namn: ${formData.get('firstName')} ${formData.get('lastName')}\n`;
+                
+                if (formData.get('personnummer')) {
+                    emailBody += `Personnummer: ${formData.get('personnummer')}\n`;
+                }
+                
+                emailBody += `E-post: ${formData.get('email')}\n`;
+                emailBody += `Telefon: ${formData.get('phone')}\n`;
+                emailBody += `Adress: ${formData.get('address')}, ${formData.get('city')} ${formData.get('postalCode')}\n`;
+                
+                // Create mailto link with subject and body
+                const subject = encodeURIComponent('Intresseanmälan - Bulldog Training Center');
+                const body = encodeURIComponent(emailBody);
+                const mailtoLink = `mailto:BulldogTrainingCenter@gmail.com?subject=${subject}&body=${body}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
             });
         });
     </script>
