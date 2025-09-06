@@ -18,8 +18,11 @@
             background-color: #f8f8f8;
         }
 
+        /* Same Header as Main Site */
         header {
             background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,26,26,0.85) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             color: white;
             padding: 1rem 0;
             position: fixed;
@@ -27,6 +30,31 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(255, 107, 53, 0.1) 20%,
+                rgba(255, 140, 66, 0.15) 50%,
+                rgba(255, 107, 53, 0.1) 80%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        header:hover::before {
+            opacity: 1;
         }
 
         nav {
@@ -36,70 +64,107 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+            position: relative;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .logo h2 {
-            color: white;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .logo-bulldog {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
-        }
-
-        .logo-bulldog::before {
-            content: "BDTC";
-            font-size: 16px;
-            font-weight: 900;
-            color: #000;
-        }
-
-        .back-link {
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 25px;
+            gap: 0;
+            flex-shrink: 0;
             transition: all 0.3s ease;
         }
 
+        .logo:hover {
+            transform: translateX(5px);
+        }
+
+        .header-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .header-logo.desktop {
+            display: block;
+        }
+
+        .header-logo.mobile {
+            display: none;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            position: relative;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            overflow: hidden;
+        }
+
+        .back-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
         .back-link:hover {
-            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .back-link:hover::after {
+            width: 100%;
         }
 
         main {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             margin-top: 120px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        /* Hero-style header for the form */
+        .form-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23222" width="1200" height="400"/><g fill="%23333"><circle cx="200" cy="100" r="20"/><circle cx="800" cy="200" r="30"/><circle cx="1000" cy="80" r="15"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            color: #000;
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
         }
 
-        .intro-text {
-            text-align: center;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            color: #666;
+        .form-hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .form-hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .interest-form {
@@ -107,17 +172,42 @@
             padding: 3rem 2rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
 
         .disclaimer {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 8px;
-            padding: 1rem;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
             margin: 1.5rem 0;
-            color: #2d5a2d;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disclaimer::before {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .disclaimer strong {
+            color: #ff6b35;
+            position: relative;
+            z-index: 2;
+        }
+
+        .disclaimer-content {
+            position: relative;
+            z-index: 2;
         }
 
         .form-grid {
@@ -165,30 +255,41 @@
             margin: 2rem 0;
         }
 
+        .sport-selection h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+
         .sport-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             margin: 1rem 0;
         }
 
         .sport-option {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
+            background: white;
+            border: 2px solid #e1e1e1;
             border-radius: 10px;
-            padding: 1rem;
+            padding: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .sport-option:hover {
             border-color: #ff6b35;
             background: rgba(255, 107, 53, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
         }
 
         .sport-option.selected {
             border-color: #ff6b35;
             background: rgba(255, 107, 53, 0.1);
+            border-left: 5px solid #ff6b35;
         }
 
         .sport-option input[type="radio"] {
@@ -197,24 +298,38 @@
 
         .sport-content h4 {
             margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #000;
         }
 
         .sport-content p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
         }
 
         .thaiboxning-suboptions {
-            margin-left: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             display: none;
             padding: 1.5rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: linear-gradient(135deg, #000 0%, #333 100%);
             border-radius: 12px;
             border: 2px solid #ff6b35;
             box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thaiboxning-suboptions::before {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            z-index: 1;
         }
 
         .thaiboxning-suboptions.visible {
@@ -237,20 +352,24 @@
             color: #ff6b35;
             font-size: 1.1rem;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .suboption {
             margin: 0.8rem 0;
-            padding: 0.8rem;
-            background: #333;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
             border-radius: 8px;
-            border: 1px solid #404040;
+            border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
         }
 
         .suboption:hover {
-            background: #404040;
+            background: rgba(255,255,255,0.15);
             border-color: #ff6b35;
             box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
             transform: translateX(5px);
@@ -280,9 +399,24 @@
         .checkbox-group {
             margin: 2rem 0;
             padding: 1.5rem;
-            background: rgba(255, 107, 53, 0.05);
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
             border-radius: 10px;
             border-left: 4px solid #ff6b35;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .checkbox-group::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            z-index: 1;
         }
 
         .checkbox-group label {
@@ -290,6 +424,8 @@
             align-items: flex-start;
             cursor: pointer;
             font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
         }
 
         .checkbox-group input[type="checkbox"] {
@@ -297,6 +433,7 @@
             margin-top: 0.2rem;
             transform: scale(1.2);
             flex-shrink: 0;
+            accent-color: #ff6b35;
         }
 
         .submit-button {
@@ -327,6 +464,7 @@
             box-shadow: none;
         }
 
+        /* Footer matching main site */
         footer {
             background: #000;
             color: white;
@@ -335,10 +473,62 @@
             margin-top: 4rem;
         }
 
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .footer-logo-desktop {
+            display: block;
+        }
+
+        .footer-logo-mobile {
+            display: none;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .header-logo.desktop {
+                display: none;
+            }
+            
+            .header-logo.mobile {
+                display: block;
+            }
+
+            .footer-logo-desktop {
+                display: none;
+            }
+            
+            .footer-logo-mobile {
+                display: block;
+            }
+
             main {
                 padding: 0 1rem;
                 margin-top: 100px;
+            }
+            
+            .form-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-hero-content p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
             }
             
             .form-grid {
@@ -348,19 +538,40 @@
             .sport-options {
                 grid-template-columns: 1fr;
             }
+
+            .interest-form {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .form-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .form-hero-content p {
+                font-size: 1rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <nav>
             <div class="logo">
                 <div>
-                    <div class="logo-bulldog"></div>
+                    <img src="images/image0.png" alt="Bulldog Training Center Logo" class="header-logo desktop">
+                    <img src="images/image001.png" alt="Bulldog Training Center Logo" class="header-logo mobile">
                     <small style="display: block; text-align: center; margin-top: 0.2rem; color: rgba(255,255,255,0.8);">Göteborg</small>
-                </div>
-                <div>
-                    <h2>Bulldog Training Center</h2>
                 </div>
             </div>
             <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
@@ -368,14 +579,18 @@
     </header>
 
     <main>
-        <h1>Intresseanmälan</h1>
-        <div class="intro-text">
-            <p>Är du intresserad av att börja träna hos oss? Fyll i formuläret nedan så kontaktar vi dig med mer information.</p>
+        <div class="form-hero">
+            <div class="form-hero-content">
+                <h1>Intresseanmälan</h1>
+                <p>Är du intresserad av att börja träna hos oss? Fyll i formuläret nedan så kontaktar vi dig med mer information.</p>
+            </div>
         </div>
 
         <div class="interest-form">
             <div class="disclaimer">
-                <strong>Viktigt:</strong> Denna intresseanmälan är helt förbindelsefri och medför inga kostnader eller förpliktelser från din sida.
+                <div class="disclaimer-content">
+                    <strong>Viktigt:</strong> Denna intresseanmälan är helt förbindelsefri och medför inga kostnader eller förpliktelser från din sida.
+                </div>
             </div>
 
             <form id="interestForm">
@@ -391,7 +606,7 @@
                                 </div>
                             </label>
                             <div class="thaiboxning-suboptions" id="thaiboxning-suboptions">
-                                <h4 style="margin-bottom: 0.5rem; font-size: 1rem;">Välj nivå:</h4>
+                                <h4>Välj nivå:</h4>
                                 <div class="suboption">
                                     <label>
                                         <input type="radio" name="thaiboxning-level" value="Basic">
@@ -498,13 +713,16 @@
     </main>
 
     <footer>
-        <div class="logo">
-            <div class="logo-bulldog"></div>
+        <div class="footer-logo">
+            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
+            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
+            
             <div>
                 <h3>Bulldog Training Center</h3>
                 <p>Klubben med familjekänsla</p>
             </div>
         </div>
+        
         <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
     </footer>
 
