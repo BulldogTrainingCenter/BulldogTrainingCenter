@@ -385,6 +385,17 @@
             height: 48px;
         }
 
+        /* Mobile responsive for header logos */
+        @media (max-width: 768px) {
+            .logo-bulldog.desktop {
+                display: none;
+            }
+            
+            .logo-bulldog.mobile {
+                display: block;
+            }
+        }
+
         header.scrolled .logo h2 {
             font-size: 1.3rem;
         }
