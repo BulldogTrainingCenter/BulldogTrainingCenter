@@ -291,6 +291,16 @@
             margin-right: auto;
         }
 
+        /* CTA Button Container */
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
         /* CTA Button */
         .cta-button {
             background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
@@ -302,6 +312,23 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
@@ -312,11 +339,13 @@
 
         .cta-button.secondary {
             background: linear-gradient(135deg, #333 0%, #666 100%);
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
         .cta-button.secondary:hover {
             background: linear-gradient(135deg, #444 0%, #777 100%);
             box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
+            border-color: rgba(255,255,255,0.5);
         }
 
         /* Scrolled Header State */
@@ -736,6 +765,17 @@
             .app-steps {
                 grid-template-columns: 1fr;
             }
+
+            .cta-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -798,7 +838,11 @@
             
             <h1>Bulldog Training Center</h1>
             <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt.</p>
-            <a href="#kontakt" class="cta-button">Boka ditt första pass</a>
+            
+            <div class="cta-container">
+                <a href="#kontakt" class="cta-button">Boka ditt första pass</a>
+                <a href="intresseanmalan.html" class="cta-button secondary">Intresseanmälan</a>
+            </div>
         </div>
     </section>
 
@@ -833,6 +877,30 @@
             <h2>Träningsschema</h2>
             <div class="schedule">
                 <div class="schedule-grid">
+                    <div class="day-schedule">
+                        <div class="day-header">MÅNDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">HIIT</div>
+                            <div class="class-time">17:45-18:45</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-time">19:00-20:30</div>
+                        </div>
+                    </div>
+
+                    <div class="day-schedule">
+                        <div class="day-header">TISDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Barn 6-12 år</div>
+                            <div class="class-time">17:45-18:45</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-name">Boxning</div>
+                            <div class="class-time">19:00-20:30</div>
+                        </div>
+                    </div>
+
                     <div class="day-schedule">
                         <div class="day-header">ONSDAG</div>
                         <div class="class-item">
@@ -1257,28 +1325,4 @@
         })();
     </script>
 </body>
-</html>MÅNDAG</div>
-                        <div class="class-item">
-                            <div class="class-name">HIIT</div>
-                            <div class="class-time">17:45-18:45</div>
-                        </div>
-                        <div class="class-item">
-                            <div class="class-name">Thaiboxning</div>
-                            <div class="class-time">19:00-20:30</div>
-                        </div>
-                    </div>
-
-                    <div class="day-schedule">
-                        <div class="day-header">TISDAG</div>
-                        <div class="class-item">
-                            <div class="class-name">Barn 6-12 år</div>
-                            <div class="class-time">17:45-18:45</div>
-                        </div>
-                        <div class="class-item">
-                            <div class="class-name">Boxning</div>
-                            <div class="class-time">19:00-20:30</div>
-                        </div>
-                    </div>
-
-                    <div class="day-schedule">
-                        <div class="day-header">
+</html>
