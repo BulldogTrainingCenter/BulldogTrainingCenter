@@ -207,7 +207,6 @@
             gap: 0.5rem;
         }
 
-        /* Option 1: Simple underline slide-in effect */
         .nav-links a {
             color: rgba(255, 255, 255, 0.95);
             text-decoration: none;
@@ -242,80 +241,15 @@
             width: 100%;
         }
 
-        /* ALTERNATIVE HOVER EFFECTS - Comment out the above and uncomment one below */
-
-        /* Option 2: Minimal fade effect 
-        .nav-links a:hover {
-            color: #fff;
-            opacity: 0.8;
-        }
-        */
-
-        /* Option 3: Letter spacing effect
-        .nav-links a:hover {
-            color: #fff;
-            letter-spacing: 1px;
-        }
-        */
-
-        /* Option 4: Border grow effect
-        .nav-links a {
-            border-bottom: 2px solid transparent;
-        }
-        
-        .nav-links a:hover {
-            color: #fff;
-            border-bottom: 2px solid #fff;
-        }
-        */
-
-        /* Option 5: Scale effect
-        .nav-links a:hover {
-            color: #fff;
-            transform: scale(1.05);
-        }
-        */
-
-        /* Option 6: Glow effect
-        .nav-links a:hover {
-            color: #fff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-        }
-        */
-
-        /* Option 7: Side border slide
-        .nav-links a::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 60%;
-            background: #fff;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #fff;
-            padding-left: 1.5rem;
-        }
-        
-        .nav-links a:hover::before {
-            width: 3px;
-        }
-        */
-
         .nav-links a.active {
             color: #fff;
             background: transparent;
         }
 
         .nav-links a.active::after {
-            width: 0; /* Removed permanent underline for active state */
+            width: 0;
         }
 
-        /* Active links only show underline on hover */
         .nav-links a.active:hover::after {
             width: 100%;
         }
@@ -401,6 +335,15 @@
             box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
         }
 
+        .cta-button.secondary {
+            background: linear-gradient(135deg, #333 0%, #666 100%);
+        }
+
+        .cta-button.secondary:hover {
+            background: linear-gradient(135deg, #444 0%, #777 100%);
+            box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
+        }
+
         /* Scrolled Header State */
         header.scrolled {
             background: rgba(0, 0, 0, 0.98);
@@ -448,7 +391,10 @@
         }
 
         .about-card {
-            background: white;
+            background: linear-gradient(135deg, #000 0%, #333 100%) !important;
+            color: white !important;
+            position: relative;
+            overflow: hidden;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -457,20 +403,6 @@
 
         .about-card:hover {
             transform: translateY(-5px);
-        }
-
-        .about-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #000;
-        }
-
-        /* Special styling for all about cards */
-        .about-card {
-            background: linear-gradient(135deg, #000 0%, #333 100%) !important;
-            color: white !important;
-            position: relative;
-            overflow: hidden;
         }
 
         .about-card::before {
@@ -489,6 +421,8 @@
             color: white !important;
             position: relative;
             z-index: 2;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .about-card h4 {
@@ -698,34 +632,6 @@
             color: white !important;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-
-        .social-link {
-            background: #000;
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .social-link:hover {
-            background: #ff6b35;
-            transform: translateY(-2px);
-        }
-
-        .instagram-icon {
-            font-size: 1.2rem;
-        }
-
         /* Footer */
         footer {
             background: #000;
@@ -819,15 +725,6 @@
             .app-steps {
                 grid-template-columns: 1fr;
             }
-
-            .social-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .social-link {
-                justify-content: center;
-            }
         }
 
         @media (max-width: 480px) {
@@ -876,6 +773,7 @@
                 <li><a href="#schema">Schema</a></li>
                 <li><a href="#traning">Träning</a></li>
                 <li><a href="#app">Boka Pass</a></li>
+                <li><a href="intresseanmalan.html">Intresseanmälan</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
@@ -993,13 +891,13 @@
                         </div>
                     </div>
 
-<div class="day-schedule">
-    <div class="day-header">SÖNDAG</div>
-    <div class="class-item">
-        <div class="class-name">Boxning</div>
-        <div class="class-time">13:00-14:30</div>
-    </div>
-</div>
+                    <div class="day-schedule">
+                        <div class="day-header">SÖNDAG</div>
+                        <div class="class-item">
+                            <div class="class-name">Boxning</div>
+                            <div class="class-time">13:00-14:30</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1065,6 +963,13 @@
             </div>
             
             <a href="https://bdtcgbg.gymsystem.se/" target="_blank" class="cta-button">Boka pass via Zoezi</a>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">Intresserad av att träna med oss?</p>
+                <a href="intresseanmalan.html" class="cta-button secondary">
+                    Lämna intresseanmälan
+                </a>
+            </div>
         </section>
 
         <section id="kontakt">
