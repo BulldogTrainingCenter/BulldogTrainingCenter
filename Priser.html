@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priser - Bulldog Training Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Same Header as Main Site */
+        header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,26,26,0.85) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(255, 107, 53, 0.1) 20%,
+                rgba(255, 140, 66, 0.15) 50%,
+                rgba(255, 107, 53, 0.1) 80%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        header:hover::before {
+            opacity: 1;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateX(5px);
+        }
+
+        .header-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .header-logo.desktop {
+            display: block;
+        }
+
+        .header-logo.mobile {
+            display: none;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            position: relative;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            overflow: hidden;
+        }
+
+        .back-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .back-link:hover::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            margin-top: 120px;
+        }
+
+        /* Hero-style header */
+        .price-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23222" width="1200" height="400"/><g fill="%23333"><circle cx="200" cy="100" r="20"/><circle cx="800" cy="200" r="30"/><circle cx="1000" cy="80" r="15"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .price-hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .price-hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .price-container {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .price-card {
+            background: white;
+            border: 2px solid #e1e1e1;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.15);
+        }
+
+        .price-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin: 1rem 0;
+        }
+
+        .price-details {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .family-card {
+            border: 3px solid #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 140, 66, 0.05) 100%);
+        }
+
+        .family-card h3 {
+            color: #ff6b35;
+        }
+
+        .swish-section {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swish-section::before {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .swish-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .swish-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin: 1rem 0;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 2px solid #ff6b35;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .swish-number:hover {
+            background: #ff6b35;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .swish-instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+
+
+        .payment-info {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 140, 66, 0.1) 100%);
+            border: 2px solid #ff6b35;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .payment-info h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #ff6b35;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .info-box-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-box h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer matching main site */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .footer-logo-desktop {
+            display: block;
+        }
+
+        .footer-logo-mobile {
+            display: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .header-logo.desktop {
+                display: none;
+            }
+            
+            .header-logo.mobile {
+                display: block;
+            }
+
+            .footer-logo-desktop {
+                display: none;
+            }
+            
+            .footer-logo-mobile {
+                display: block;
+            }
+
+            main {
+                padding: 0 1rem;
+                margin-top: 100px;
+            }
+            
+            .price-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .price-hero-content p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-container {
+                padding: 2rem 1rem;
+            }
+
+            .swish-number {
+                font-size: 1.5rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .price-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .price-hero-content p {
+                font-size: 1rem;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <div>
+                    <img src="images/image0.png" alt="Bulldog Training Center Logo" class="header-logo desktop">
+                    <img src="images/image001.png" alt="Bulldog Training Center Logo" class="header-logo mobile">
+                    <small style="display: block; text-align: center; margin-top: 0.2rem; color: rgba(255,255,255,0.8);">Göteborg</small>
+                </div>
+            </div>
+            <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="price-hero">
+            <div class="price-hero-content">
+                <h1>Priser</h1>
+                <p>Transparenta priser för alla våra träningsformer - ingen dold kostnad!</p>
+            </div>
+        </div>
+
+        <div class="price-container">
+            <div class="price-grid">
+                <div class="price-card">
+                    <h3>Träningskort (Vuxna)</h3>
+                    <div class="price">3 500 kr</div>
+                    <div class="price-details">
+                        Giltighet: 1 år<br>
+                        Alla träningsformer ingår<br>
+                        Fri träning alla öppettider
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Träningskort (Ungdom)</h3>
+                    <div class="price">2 000 kr</div>
+                    <div class="price-details">
+                        Under 18 år<br>
+                        Giltighet: 1 år<br>
+                        Alla träningsformer ingår<br>
+                        Fri träning alla öppettider
+                    </div>
+                </div>
+
+                <div class="price-card family-card">
+                    <h3>Träningskort+ (Familj)</h3>
+                    <div class="price">4 500 kr</div>
+                    <div class="price-details">
+                        1 vuxen + 1 ungdom (under 18 år)<br>
+                        Giltighet: 1 år<br>
+                        Alla träningsformer ingår<br>
+                        Perfekt för familjer
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Autogiro (Vuxna)</h3>
+                    <div class="price">350 kr/mån</div>
+                    <div class="price-details">
+                        Bindningstid: 6 månader<br>
+                        Månadsprenumeration<br>
+                        Alla träningsformer ingår
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Autogiro (Ungdom)</h3>
+                    <div class="price">200 kr/mån</div>
+                    <div class="price-details">
+                        Under 18 år<br>
+                        Bindningstid: 6 månader<br>
+                        Månadsprenumeration<br>
+                        Alla träningsformer ingår
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Engångskort</h3>
+                    <div class="price">120 kr</div>
+                    <div class="price-details">
+                        Gäller för ett träningspass<br>
+                        Perfekt för provträning<br>
+                        Alla träningsformer
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-content">
+                    <h3>Medlemsskap</h3>
+                    <p><strong>200 kr per år</strong> - En årlig avgift utöver träningsavgiften som betalas av alla medlemmar och de som vill bli stödmedlemmar i föreningen.</p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="swish-section">
+            <div class="swish-content">
+                <h2>Betala med Swish</h2>
+                <p>Betala enkelt och säkert med Swish</p>
+                
+                <a href="swish://payment?phone=1232299378" class="swish-number">
+                    123 229 93 78
+                </a>
+
+                <div class="swish-instructions">
+                    <strong>Viktigt vid betalning:</strong><br>
+                    Märk din betalning med ditt namn och vilket träningskort du har köpt.<br>
+                    Exempel: "Anna Andersson - Träningskort Vuxen"
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <h3>Köp träningskort i Zoezi-appen</h3>
+            <p>Alla träningskort finns att köpa direkt i Zoezi-appen som krävs för att anmäla sig till pass. Logga in på din medlemssida och klicka på fliken "Shoppa".</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
+            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
+            
+            <div>
+                <h3>Bulldog Training Center</h3>
+                <p>Klubben med familjekänsla</p>
+            </div>
+        </div>
+        
+        <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and any interactive features if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Any additional JavaScript functionality can be added here
+        });
+    </script>
+</body>
+</html>
