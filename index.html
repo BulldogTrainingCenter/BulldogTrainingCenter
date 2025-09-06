@@ -306,23 +306,30 @@
             max-width: 1000px;
         }
 
-        /* Main Logo in Hero Section - SIMPLIFIED */
+        /* Main Logo in Hero Section - FIXED */
         .main-logo {
             width: 250px;
             height: 250px;
             margin: 0 auto 2rem;
             transition: all 0.3s ease;
             object-fit: contain;
-            display: block;
+            display: block !important;
+            max-width: 100%;
+            background: transparent;
         }
 
         .main-logo:hover {
             transform: scale(1.05);
         }
 
+        /* Desktop logo shown by default */
+        .main-logo.desktop-logo {
+            display: block !important;
+        }
+
         /* Hide mobile logo by default */
         .main-logo.mobile-logo {
-            display: none;
+            display: none !important;
         }
 
         .hero-content h1 {
