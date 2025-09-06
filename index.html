@@ -306,30 +306,25 @@
             max-width: 1000px;
         }
 
-        /* Main Logo in Hero Section - FIXED */
+        /* Main Logo in Hero Section - REMOVED ORANGE GLOW */
         .main-logo {
             width: 250px;
             height: 250px;
             margin: 0 auto 2rem;
+            border-radius: 20px;
             transition: all 0.3s ease;
             object-fit: contain;
-            display: block !important;
-            max-width: 100%;
-            background: transparent;
+            display: block;
+            /* REMOVED: box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3); */
         }
 
         .main-logo:hover {
             transform: scale(1.05);
+            /* REMOVED: box-shadow: 0 25px 80px rgba(255, 107, 53, 0.4); */
         }
 
-        /* Desktop logo shown by default */
-        .main-logo.desktop-logo {
-            display: block !important;
-        }
-
-        /* Hide mobile logo by default */
-        .main-logo.mobile-logo {
-            display: none !important;
+        .mobile-logo {
+            display: none;
         }
 
         .hero-content h1 {
@@ -662,7 +657,7 @@
             color: white !important;
         }
 
-        /* Footer - SINGLE LOGO ONLY */
+        /* Footer */
         footer {
             background: #000;
             color: white;
@@ -671,6 +666,7 @@
             margin-top: 4rem;
         }
 
+        /* Updated Footer Logo */
         .footer-logo {
             display: flex;
             align-items: center;
@@ -685,7 +681,6 @@
             object-fit: contain;
         }
 
-        /* Show only desktop logo by default */
         .footer-logo-desktop {
             display: block;
         }
@@ -763,7 +758,6 @@
                 padding: 0 1rem;
             }
 
-            /* Switch to mobile logo */
             .main-logo.desktop-logo {
                 display: none;
             }
@@ -774,7 +768,6 @@
                 height: 200px;
             }
 
-            /* Switch footer logo to mobile */
             .footer-logo-desktop {
                 display: none;
             }
@@ -864,11 +857,11 @@
 
     <section id="hem" class="hero">
         <div class="hero-content">
-            <!-- Desktop logo - NO ORANGE GLOW -->
-            <img src="https://via.placeholder.com/250x250/ffffff/000000?text=DESKTOP+LOGO" alt="Bulldog Training Center Logo" class="main-logo desktop-logo">
+            <!-- Desktop logo -->
+            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="main-logo desktop-logo">
             
             <!-- Mobile logo -->
-            <img src="https://via.placeholder.com/200x200/ffffff/000000?text=MOBILE+LOGO" alt="Bulldog Training Center Logo" class="main-logo mobile-logo">
+            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="main-logo mobile-logo">
             
             <h1>Bulldog Training Center</h1>
             <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt.</p>
@@ -1101,7 +1094,7 @@
 
     <footer>
         <div class="footer-logo">
-            <!-- SINGLE footer logo that switches between desktop/mobile versions -->
+            <!-- Single footer logo that switches between desktop/mobile -->
             <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
             <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
             
