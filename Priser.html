@@ -209,6 +209,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px; /* Säkerställer samma höjd på alla kort */
         }
 
         .price-card::before {
@@ -251,6 +254,7 @@
             color: #666;
             margin-bottom: 1rem;
             line-height: 1.5;
+            flex-grow: 1; /* Tar upp tillgängligt utrymme */
         }
 
         /* Savings Calculator */
@@ -259,7 +263,7 @@
             border: 2px solid #28a745;
             border-radius: 12px;
             padding: 1rem;
-            margin-top: 1rem;
+            margin-top: auto; /* Placerar alltid i botten av kortet */
             font-size: 0.9rem;
             color: #155724;
             font-weight: 600;
@@ -487,6 +491,10 @@
                 padding: 2rem 1rem;
             }
 
+            .price-card {
+                min-height: 350px; /* Justerad för mobil */
+            }
+
             .swish-number {
                 font-size: 1.5rem;
                 padding: 0.8rem 1.5rem;
@@ -515,6 +523,19 @@
 
             .price {
                 font-size: 2rem;
+            }
+
+            .price-card {
+                min-height: 280px; /* Justerad för mindre skärmar */
+                padding-bottom: 4.5rem; /* Mindre utrymme på små skärmar */
+            }
+
+            .savings-display {
+                bottom: 15px; /* Närmare botten på små skärmar */
+                left: 15px;
+                right: 15px;
+                padding: 0.8rem;
+                font-size: 0.85rem;
             }
 
             .best-value-badge {
