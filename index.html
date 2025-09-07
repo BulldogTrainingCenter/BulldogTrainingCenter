@@ -152,13 +152,7 @@
             display: none;
         }
 
-        /* Enhanced Navigation Links */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 0.5rem;
-        }
-
+        /* Enhanced Navigation with active indicators */
         .nav-links a {
             color: rgba(255, 255, 255, 0.95);
             text-decoration: none;
@@ -173,15 +167,35 @@
             overflow: hidden;
         }
 
+        .nav-links a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 140, 66, 0.2) 100%);
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
         .nav-links a::after {
             content: "";
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.3s ease;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .nav-links a:hover {
@@ -190,20 +204,18 @@
         }
 
         .nav-links a:hover::after {
-            width: 100%;
+            width: 80%;
         }
 
         .nav-links a.active {
             color: #fff;
-            background: transparent;
+            background: rgba(255, 107, 53, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .nav-links a.active::after {
-            width: 0;
-        }
-
-        .nav-links a.active:hover::after {
-            width: 100%;
+            width: 60%;
+            opacity: 1;
         }
 
         /* Mobile Menu Button */
@@ -881,11 +893,11 @@
                     <div class="day-schedule">
                         <div class="day-header">MÅNDAG</div>
                         <div class="class-item">
-                            <div class="class-name">HIIT</div>
+                            <div class="class-name" data-type="hiit">HIIT</div>
                             <div class="class-time">17:45-18:45</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-name" data-type="thaiboxning">Thaiboxning</div>
                             <div class="class-time">19:00-20:30</div>
                         </div>
                     </div>
@@ -893,11 +905,11 @@
                     <div class="day-schedule">
                         <div class="day-header">TISDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Barn 6-12 år</div>
+                            <div class="class-name" data-type="barn">Barn 6-12 år</div>
                             <div class="class-time">17:45-18:45</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Boxning</div>
+                            <div class="class-name" data-type="boxning">Boxning</div>
                             <div class="class-time">19:00-20:30</div>
                         </div>
                     </div>
@@ -905,11 +917,11 @@
                     <div class="day-schedule">
                         <div class="day-header">ONSDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Basic)</div>
+                            <div class="class-name" data-type="thaiboxning">Thaiboxning (Basic)</div>
                             <div class="class-time">17:30-18:45</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-name" data-type="thaiboxning">Thaiboxning</div>
                             <div class="class-time">19:00-20:30</div>
                         </div>
                     </div>
@@ -917,15 +929,15 @@
                     <div class="day-schedule">
                         <div class="day-header">TORSDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Boxning</div>
+                            <div class="class-name" data-type="boxning">Boxning</div>
                             <div class="class-time">16:00-17:15</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Basic)</div>
+                            <div class="class-name" data-type="thaiboxning">Thaiboxning (Basic)</div>
                             <div class="class-time">17:30-18:40</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">HIIT Box</div>
+                            <div class="class-name" data-type="hiit">HIIT Box</div>
                             <div class="class-time">18:45-20:00</div>
                         </div>
                     </div>
@@ -933,7 +945,7 @@
                     <div class="day-schedule">
                         <div class="day-header">FREDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Öppen Matta</div>
+                            <div class="class-name" data-type="open">Öppen Matta</div>
                             <div class="class-time">18:00-19:00</div>
                         </div>
                     </div>
@@ -941,7 +953,7 @@
                     <div class="day-schedule">
                         <div class="day-header">LÖRDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning</div>
+                            <div class="class-name" data-type="thaiboxning">Thaiboxning</div>
                             <div class="class-time">13:30-15:00</div>
                         </div>
                     </div>
@@ -949,7 +961,7 @@
                     <div class="day-schedule">
                         <div class="day-header">SÖNDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Boxning</div>
+                            <div class="class-name" data-type="boxning">Boxning</div>
                             <div class="class-time">13:00-14:30</div>
                         </div>
                     </div>
