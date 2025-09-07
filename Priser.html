@@ -236,6 +236,39 @@
             line-height: 1.5;
         }
 
+        /* Best Value Badge */
+        .best-value-badge {
+            position: absolute;
+            top: -8px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 0 0 12px 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            }
+        }
+
         .family-card {
             border: 3px solid #ff6b35;
             background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 140, 66, 0.05) 100%);
@@ -302,8 +335,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
         }
-
-
 
         .payment-info {
             background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 140, 66, 0.1) 100%);
@@ -431,6 +462,12 @@
                 font-size: 1.5rem;
                 padding: 0.8rem 1.5rem;
             }
+
+            .best-value-badge {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                right: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -449,6 +486,12 @@
 
             .price {
                 font-size: 2rem;
+            }
+
+            .best-value-badge {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+                right: 8px;
             }
         }
 
@@ -482,6 +525,7 @@
         <div class="price-container">
             <div class="price-grid">
                 <div class="price-card">
+                    <div class="best-value-badge">Mest värde</div>
                     <h3>Träningskort (Vuxna)</h3>
                     <div class="price">3 500 kr</div>
                     <div class="price-details">
@@ -492,6 +536,7 @@
                 </div>
 
                 <div class="price-card">
+                    <div class="best-value-badge">Mest värde</div>
                     <h3>Träningskort (Ungdom)</h3>
                     <div class="price">2 000 kr</div>
                     <div class="price-details">
