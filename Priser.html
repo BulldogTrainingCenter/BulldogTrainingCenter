@@ -155,6 +155,25 @@
             margin-bottom: 3rem;
         }
 
+        /* Main Logo in Price Hero Section */
+        .price-main-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            object-fit: contain;
+            display: block;
+        }
+
+        .price-main-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .price-mobile-logo {
+            display: none;
+        }
+
         .price-hero-content h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
@@ -483,6 +502,16 @@
                 padding: 0 1rem;
             }
             
+            .price-main-logo.desktop-logo {
+                display: none;
+            }
+            
+            .price-main-logo.mobile-logo {
+                display: block;
+                width: 150px;
+                height: 150px;
+            }
+            
             .price-grid {
                 grid-template-columns: 1fr;
             }
@@ -567,6 +596,9 @@
     <main>
         <div class="price-hero">
             <div class="price-hero-content">
+                <img src="images/image0.png" alt="Bulldog Training Center Logo" class="price-main-logo desktop-logo">
+                <img src="images/image001.png" alt="Bulldog Training Center Logo" class="price-main-logo mobile-logo">
+                
                 <h1>Priser</h1>
                 <p>Transparenta priser för alla våra träningsformer - ingen dold kostnad!</p>
             </div>
@@ -605,16 +637,16 @@
 
                 <div class="price-card family-card">
                     <div class="best-value-badge">Mest värde</div>
-                    <h3>Träningskort+</h3>
+                    <h3>Träningskort Familj</h3>
                     <div class="price">4 500 kr</div>
                     <div class="price-details">
-                        1 vuxen + 1 ungdom (under 18 år)<br>
+                        1 vuxen + 2 ungdomar (under 18 år)<br>
                         Giltighet: 1 år<br>
                         Alla träningsformer ingår<br>
                         Perfekt för familjer
                     </div>
                     <div class="savings-display">
-                        💰 Spara 1000 kr jämfört med separata kort!
+                        💰 Spara upp till 3 000 kr jämfört med separata kort!
                     </div>
                 </div>
 
@@ -639,6 +671,17 @@
                     </div>
                 </div>
 
+                <div class="price-card family-card">
+                    <h3>Autogiro (Familj)</h3>
+                    <div class="price">499 kr/mån</div>
+                    <div class="price-details">
+                        1 vuxen + 2 ungdomar (under 18 år)<br>
+                        Bindningstid: 6 månader<br>
+                        Månadsprenumeration<br>
+                        Alla träningsformer ingår
+                    </div>
+                </div>
+
                 <div class="price-card">
                     <h3>Engångskort</h3>
                     <div class="price">120 kr</div>
@@ -656,7 +699,6 @@
                     <p><strong>200 kr per år</strong> - En årlig avgift utöver träningsavgiften som betalas av alla medlemmar och de som vill bli stödmedlemmar i föreningen.</p>
                 </div>
             </div>
-
 
         </div>
 
