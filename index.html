@@ -451,31 +451,47 @@
 
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .day-schedule {
             border: 2px solid #000;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .day-schedule:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .day-header {
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-align: center;
+            letter-spacing: 1px;
         }
 
         .class-item {
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            transition: background-color 0.2s ease;
+            min-height: 75px;
+        }
+
+        .class-item:hover {
+            background-color: #f8f8f8;
         }
 
         .class-item:last-child {
@@ -483,13 +499,27 @@
         }
 
         .class-name {
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            flex: 1;
+            padding-right: 1rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            hyphens: none;
         }
 
         .class-time {
             color: #ff6b35;
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 700;
+            white-space: nowrap;
+            background: rgba(255, 107, 53, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            flex-shrink: 0;
+            min-width: fit-content;
+            align-self: center;
         }
 
         /* Training Types */
@@ -885,11 +915,11 @@
                             <div class="class-time">16:45-17:45</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Basic)</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">(Basic)</span></div>
                             <div class="class-time">17:50-18:55</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Advanced)</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">(Advanced)</span></div>
                             <div class="class-time">19:00-20:30</div>
                         </div>
                     </div>
@@ -897,7 +927,7 @@
                     <div class="day-schedule">
                         <div class="day-header">TISDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning 6-12 år</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">6-12 år</span></div>
                             <div class="class-time">17:45-18:45</div>
                         </div>
                         <div class="class-item">
@@ -909,11 +939,11 @@
                     <div class="day-schedule">
                         <div class="day-header">ONSDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Basic)</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">(Basic)</span></div>
                             <div class="class-time">17:30-18:45</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Advanced)</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">(Advanced)</span></div>
                             <div class="class-time">19:00-20:30</div>
                         </div>
                     </div>
@@ -933,7 +963,7 @@
                     <div class="day-schedule">
                         <div class="day-header">FREDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Adv + Basic)</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">(Adv + Basic)</span></div>
                             <div class="class-time">09:45-10:45</div>
                         </div>
                         <div class="class-item">
@@ -945,7 +975,7 @@
                     <div class="day-schedule">
                         <div class="day-header">LÖRDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning (Adv + Basic)</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">(Adv + Basic)</span></div>
                             <div class="class-time">13:30-15:00</div>
                         </div>
                     </div>
@@ -953,11 +983,11 @@
                     <div class="day-schedule">
                         <div class="day-header">SÖNDAG</div>
                         <div class="class-item">
-                            <div class="class-name">Boxning (Sparring)</div>
+                            <div class="class-name">Boxning<br><span style="font-size: 0.9em; color: #666;">(Sparring)</span></div>
                             <div class="class-time">13:00-14:00</div>
                         </div>
                         <div class="class-item">
-                            <div class="class-name">Thaiboxning 6-12 år</div>
+                            <div class="class-name">Thaiboxning<br><span style="font-size: 0.9em; color: #666;">6-12 år</span></div>
                             <div class="class-time">19:00-20:00</div>
                         </div>
                     </div>
