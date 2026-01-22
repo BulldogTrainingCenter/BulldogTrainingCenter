@@ -1019,6 +1019,10 @@
                     <p>Perfekt för att komma igång eller slipa på grunderna. Vi fokuserar på de viktigaste teknikerna, korrekt utförande och försvar. Passet är öppet för alla – men i första hand nybörjare och de med lite mer erfarenhet som vill förbättra sina grundtekniker.</p>
                 </div>
                 <div class="training-card">
+                    <h3>Thaiboxning ♀ (Tjejer)</h3>
+                    <p>Nytt pass endast för tjejer! Ett välkomnande utrymme där alla nivåer är välkomna – oavsett om du tar dina allra första slag eller vill finslipa din teknik. Här tränar vi tillsammans i en trygg och stödjande miljö där fokus ligger på teknik, styrka och gemenskap. Perfekt för dig som vill testa thaiboxning i en avslappnad atmosfär med andra tjejer, eller för dig som redan tränar och vill utvecklas vidare.</p>
+                </div>
+                <div class="training-card">
                     <h3>Öppen Matta</h3>
                     <p>Fri träning för medlemmar som vill träna på egen hand eller med träningspartner. Perfekt för att öva tekniker, sparring eller konditionsträning. Tillgängligt för alla medlemmar.</p>
                 </div>
@@ -1084,8 +1088,8 @@
                         <h3>E-post</h3>
                         <div class="contact-item">
                             <span>📧</span>
-                            <a href="/cdn-cgi/l/email-protection#d290a7bebeb6bdb586a0b3bbbcbbbcb591b7bca6b7a092b5bfb3bbbefcb1bdbf" class="contact-link">
-                                <span class="__cf_email__" data-cfemail="a3e1d6cfcfc7ccc4f7d1c2cacdcacdc4e0c6cdd7c6d1e3c4cec2cacf8dc0ccce">[email&#160;protected]</span>
+                            <a href="mailto:BulldogTrainingCenter@gmail.com" class="contact-link">
+                                BulldogTrainingCenter@gmail.com
                             </a>
                         </div>
                         
@@ -1127,7 +1131,7 @@
         <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1232,3 +1236,14 @@
                     if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                         navLinksAll.forEach(function(link) {
                             link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
