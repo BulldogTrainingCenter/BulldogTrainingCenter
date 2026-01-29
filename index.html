@@ -341,17 +341,57 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 
+                0 0 10px rgba(255, 107, 53, 0.8),
+                0 0 20px rgba(255, 107, 53, 0.6),
+                0 0 30px rgba(255, 107, 53, 0.4),
+                2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #fff;
+            animation: subtle-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes subtle-glow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(255, 107, 53, 0.8),
+                    0 0 20px rgba(255, 107, 53, 0.6),
+                    0 0 30px rgba(255, 107, 53, 0.4),
+                    2px 2px 4px rgba(0,0,0,0.5);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(255, 107, 53, 0.9),
+                    0 0 25px rgba(255, 107, 53, 0.7),
+                    0 0 40px rgba(255, 107, 53, 0.5),
+                    2px 2px 4px rgba(0,0,0,0.5);
+            }
         }
 
         .hero-content p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        .hero-content p:last-of-type {
+            margin-bottom: 2rem;
+        }
+        
+        .hero-content p strong {
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .hero-content p .highlight {
+            color: #ff8c42;
+            font-weight: 600;
         }
 
         /* CTA Button Container */
@@ -809,12 +849,19 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                letter-spacing: 1px;
+                text-shadow: 
+                    0 0 8px rgba(255, 107, 53, 0.8),
+                    0 0 15px rgba(255, 107, 53, 0.6),
+                    0 0 25px rgba(255, 107, 53, 0.4),
+                    2px 2px 4px rgba(0,0,0,0.5);
             }
 
             .hero-content p {
-                font-size: 1.1rem;
+                font-size: 1.05rem;
                 padding: 0 1rem;
+                line-height: 1.7;
             }
 
             .main-logo.desktop-logo {
@@ -882,11 +929,18 @@
             }
 
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+                letter-spacing: 0.5px;
+                text-shadow: 
+                    0 0 6px rgba(255, 107, 53, 0.9),
+                    0 0 12px rgba(255, 107, 53, 0.7),
+                    0 0 20px rgba(255, 107, 53, 0.5),
+                    1px 1px 3px rgba(0,0,0,0.6);
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
             }
 
             .main-logo.mobile-logo {
@@ -934,7 +988,8 @@
             <img src="images/image001.png" alt="BDTC Göteborg - Kampsport och Fysträning" class="main-logo mobile-logo">
             
             <h1>Bulldog Training Center</h1>
-            <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt genom thaiboxning och HIIT-träning.</p>
+            <p><strong>Klubben med familjekänsla</strong> där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå.</p>
+            <p>Vår vision är att skapa en trygg gemenskap där människor utvecklas både <span class="highlight">fysiskt och mentalt</span> genom thaiboxning och HIIT-träning.</p>
             
             <div class="cta-container">
                 <a href="#kontakt" class="cta-button">Boka ditt första pass</a>
@@ -1186,8 +1241,8 @@
                         <h3>E-post</h3>
                         <div class="contact-item">
                             <span>📧</span>
-                            <a href="mailto:BulldogTrainingCenter@gmail.com" class="contact-link">
-                                BulldogTrainingCenter@gmail.com
+                            <a href="/cdn-cgi/l/email-protection#5f1d2a33333b30380b2d3e36313631381c3a312b3a2d1f38323e3633713c3032" class="contact-link">
+                                <span class="__cf_email__" data-cfemail="c280b7aeaea6ada596b0a3abacabaca581a7acb6a7b082a5afa3abaeeca1adaf">[email&#160;protected]</span>
                             </a>
                         </div>
                         
@@ -1256,7 +1311,7 @@
         </section>
 
         <!-- FAQ Structured Data for Google Rich Snippets -->
-        <script type="application/ld+json">
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -1425,9 +1480,4 @@
                 sections.forEach(function(section) {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.offsetHeight;
-                    const id = section.getAttribute('id');
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        navLinksAll.forEach(function(link) {
-                            link.classList.remove('active');
-                           
+                    const id = section.getAttribute('id
