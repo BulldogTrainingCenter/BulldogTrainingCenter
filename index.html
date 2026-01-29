@@ -6,6 +6,11 @@
     <title>Bulldog Training Center - Thaiboxning i Göteborg med Familjekänsla | BDTC</title>
     <meta name="description" content="Din thaiboxningsklubb i Göteborg där alla är välkomna! Från barn till elitutövare - alla nivåer tränar hos oss. HIIT och fysträning för alla, med eller utan kampsportsbakgrund.">
     <meta name="keywords" content="thaiboxning göteborg, boxning göteborg, kampsport göteborg, muay thai, HIIT, barn thaiboxning, bulldog training center, bdtc, träning göteborg">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Bulldog Training Center">
+    <meta name="geo.region" content="SE-O">
+    <meta name="geo.placename" content="Göteborg">
+    <meta name="geo.position" content="57.6568;11.9338">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -15,8 +20,8 @@
     <link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512x512.png">
     
     <!-- Open Graph för social media -->
-    <meta property="og:title" content="Bulldog Training Center - Thaiboxning & Boxning i Göteborg">
-    <meta property="og:description" content="Klubben med familjekänsla där alla är välkomna. Thaiboxning, Boxning och HIIT för alla åldrar och nivåer.">
+    <meta property="og:title" content="Bulldog Training Center - Thaiboxning i Göteborg med Familjekänsla">
+    <meta property="og:description" content="Din thaiboxningsklubb i Göteborg där alla är välkomna! Från barn till elitutövare. HIIT och fysträning för alla nivåer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/index.html">
     <meta property="og:image" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/images/bdtc-logo.jpg">
@@ -25,8 +30,8 @@
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bulldog Training Center - Thaiboxning & Boxning i Göteborg">
-    <meta name="twitter:description" content="Klubben med familjekänsla där alla är välkomna. Thaiboxning, Boxning och HIIT för alla åldrar och nivåer.">
+    <meta name="twitter:title" content="Bulldog Training Center - Thaiboxning i Göteborg med Familjekänsla">
+    <meta name="twitter:description" content="Din thaiboxningsklubb i Göteborg där alla är välkomna! Från barn till elitutövare. HIIT och fysträning för alla nivåer.">
     <meta name="twitter:image" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/images/bdtc-logo.jpg">
     
     <!-- Canonical URL -->
@@ -39,26 +44,77 @@
         "@type": "SportsClub",
         "name": "Bulldog Training Center",
         "alternateName": "BDTC",
-        "description": "Thaiboxning, Boxning och HIIT träning för alla åldrar och nivåer i Göteborg",
+        "description": "Din thaiboxningsklubb i Göteborg där alla är välkomna! Från barn till elitutövare - alla nivåer tränar hos oss. HIIT och fysträning för alla, med eller utan kampsportsbakgrund.",
+        "url": "https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/",
+        "logo": "https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/images/bdtc-logo.jpg",
+        "image": "https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/images/bdtc-logo.jpg",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Östra Sörredsvägn 4",
+            "streetAddress": "Östra Sörredsvägen 4",
             "postalCode": "418 78",
             "addressLocality": "Göteborg",
+            "addressRegion": "Västra Götaland",
             "addressCountry": "SE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "57.6568",
+            "longitude": "11.9338"
         },
         "email": "BulldogTrainingCenter@gmail.com",
         "sameAs": [
             "https://instagram.com/bulldogthaiboxning",
             "https://instagram.com/bdtcgbg"
         ],
-        "sport": ["Thaiboxning", "Boxning", "Muay Thai", "HIIT"],
-        "priceRange": "Se Zoezi för aktuella priser",
+        "sport": ["Thaiboxning", "Muay Thai", "HIIT", "Kampsport"],
+        "priceRange": "$$",
         "memberOf": [
-            "Svenska Boxningsförbundet",
-            "Svenska Kickboxningsförbundet", 
             "Svenska Thaiboxningsförbundet",
             "Riksidrottsförbundet"
+        ],
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Monday",
+                "opens": "16:45",
+                "closes": "20:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Tuesday",
+                "opens": "17:45",
+                "closes": "20:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Wednesday",
+                "opens": "17:30",
+                "closes": "20:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Thursday",
+                "opens": "18:45",
+                "closes": "19:45"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Friday",
+                "opens": "09:45",
+                "closes": "19:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "13:30",
+                "closes": "15:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "11:30",
+                "closes": "20:00"
+            }
         ]
     }
     </script>
@@ -813,6 +869,10 @@
                 max-width: 280px;
                 text-align: center;
             }
+
+            #hitta-hit > div > div:first-child {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -845,8 +905,8 @@
         <nav>
             <div class="logo">
                 <div>
-                    <img src="images/image0.png" alt="Bulldog Training Center Logo" class="header-logo desktop">
-                    <img src="images/image001.png" alt="Bulldog Training Center Logo" class="header-logo mobile">
+                    <img src="images/image0.png" alt="Bulldog Training Center - Thaiboxning Göteborg Logotyp" class="header-logo desktop">
+                    <img src="images/image001.png" alt="BDTC - Thaiboxningsklubb Göteborg Logo" class="header-logo mobile">
                     <small style="display: block; text-align: center; margin-top: 0.2rem; color: rgba(255,255,255,0.8);">Göteborg</small>
                 </div>
             </div>
@@ -857,7 +917,7 @@
                 <li><a href="#traning">Träning</a></li>
                 <li><a href="Priser.html">Priser</a></li>
                 <li><a href="#app">Boka Pass</a></li>
-                <li><a href="intresseanmalan.html">Intresseanmälan</a></li>
+                <li><a href="#faq">Frågor & Svar</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
@@ -870,11 +930,11 @@
 
     <section id="hem" class="hero">
         <div class="hero-content">
-            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="main-logo desktop-logo">
-            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="main-logo mobile-logo">
+            <img src="images/image0.png" alt="Bulldog Training Center - Thaiboxning och HIIT i Göteborg" class="main-logo desktop-logo">
+            <img src="images/image001.png" alt="BDTC Göteborg - Kampsport och Fysträning" class="main-logo mobile-logo">
             
-            <h1>Bulldog Training Center</h1>
-            <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt.</p>
+            <h1>Thaiboxning i Göteborg - Bulldog Training Center</h1>
+            <p>Klubben med familjekänsla där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå. Vår vision är att skapa en trygg gemenskap där människor utvecklas både fysiskt och mentalt genom thaiboxning och HIIT-träning.</p>
             
             <div class="cta-container">
                 <a href="#kontakt" class="cta-button">Boka ditt första pass</a>
@@ -1003,24 +1063,24 @@
         </section>
 
         <section id="traning">
-            <h2>Våra Träningsformer</h2>
+            <h1 style="font-size: 2.5rem; margin-bottom: 2rem;">Thaiboxning, HIIT och Kampsport i Göteborg</h1>
             <div class="training-types">
                 <div class="training-card">
-                    <h3>Thaiboxning</h3>
-                    <p>Thaiboxning, även kallat Muay Thai, är "The Art of Eight Limbs" - kampkonsternas kung. Det är en fullkontaktsport som använder händer, skenben, knän och armbågar. Träningen förbättrar kondition, styrka, flexibilitet och självförtroende. Vi har grupper för alla nivåer från nybörjare till avancerade.</p>
+                    <h3>Thaiboxning Göteborg - Muay Thai för Alla Nivåer</h3>
+                    <p>Thaiboxning, även kallat Muay Thai, är "The Art of Eight Limbs" - kampkonsternas kung. Hos Bulldog Training Center i Göteborg erbjuder vi thaiboxning för alla nivåer från nybörjare till elitutövare. Träningen använder händer, skenben, knän och armbågar vilket förbättrar kondition, styrka, flexibilitet och självförtroende. Vi har dedikerade grupper för både basic och advanced nivå.</p>
                 </div>
                 <div class="training-card">
                     <h3>Boxning</h3>
                     <p>Boxning är en av världens äldsta kampsporter som fokuserar på händer och fotarbete. Det är en fantastisk träning för hela kroppen som utvecklar koordination, snabbhet och mental toughness. Perfekt för både tävling och motion.</p>
                 </div>
                 <div class="training-card">
-                    <h3>HIIT Training</h3>
-                    <p>Ingen kampsportsvana krävs! Högintensiv intervallträning som fokuserar på styrka, kondition och mobilitet kombinerat med kampsportsinspirerade övningar. Dessa pass är designade för att maximera fettförbränning och bygga funktionell styrka. Perfekt för de som vill få en komplett träning på kort tid.</p>
+                    <h3>HIIT-Träning i Göteborg - Ingen Kampsportserfarenhet Krävs</h3>
+                    <p>Högintensiv intervallträning (HIIT) i Göteborg som fokuserar på styrka, kondition och mobilitet kombinerat med kampsportsinspirerade övningar. Ingen kampsportsvana krävs! Våra HIIT-pass på Bulldog Training Center är designade för att maximera fettförbränning och bygga funktionell styrka. Perfekt för dig som vill få en komplett träning på kort tid.</p>
                 </div>
                 <div class="training-card">
-                    <h3>Barn 6-12 år</h3>
-                    <p>Nytt för i år! Vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn 6-12 år. Träningen fokuserar på teknik, disciplin, respekt och att ha kul. En perfekt start för unga atleter.</p>
-                </div>
+                    <h3>Thaiboxning för Barn 6-12 år i Göteborg</h3>
+                    <p>Nytt för i år! Vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn redan från 6 år. På Bulldog Training Center fokuserar barnträningen på teknik, disciplin, respekt och att ha kul i en trygg miljö. En perfekt start för unga atleter som vill prova kampsport.</p>
+                </div></div>
                 <div class="training-card">
                     <h3>Thaiboxning (Basic)</h3>
                     <p>Perfekt för att komma igång eller slipa på grunderna. Vi fokuserar på de viktigaste teknikerna, korrekt utförande och försvar. Passet är öppet för alla – men i första hand nybörjare och de med lite mer erfarenhet som vill förbättra sina grundtekniker.</p>
@@ -1076,6 +1136,37 @@
             </div>
         </section>
 
+        </section>
+
+        <section id="hitta-hit" style="background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%); padding: 3rem 2rem; margin-top: 2rem; border-radius: 10px;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Hitta till Bulldog Training Center i Göteborg</h2>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #ff6b35; margin-bottom: 1rem;">📍 Adress</h3>
+                        <p><strong>Östra Sörredsvägen 4</strong><br>
+                        418 78 Göteborg</p>
+                        <p style="margin-top: 1rem;">Vår klubb ligger i ett lugnt och tryggt område i Göteborg, perfekt för fokuserad träning. Lokalen är lättillgänglig med både bil och kollektivtrafik.</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #ff6b35; margin-bottom: 1rem;">🚌 Kollektivtrafik</h3>
+                        <p>God anslutning med kollektivtrafik till vår thaiboxningsklubb. Flera busslinjer stannar i närheten vilket gör det enkelt att ta sig till träningen från hela Göteborg.</p>
+                        <p style="margin-top: 1rem;"><strong>🅿️ Parkering:</strong> Parkeringsmöjligheter finns i området för dig som kommer med bil.</p>
+                    </div>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Thaiboxning nära dig i Göteborg</h3>
+                    <p>Bulldog Training Center är din lokala thaiboxningsklubb som erbjuder kvalitetsträning i en familjär miljö. Oavsett om du bor i centrala Göteborg eller i utkanterna är vi lättillgängliga och välkomnar medlemmar från hela Göteborgsområdet.</p>
+                    <a href="https://maps.google.com/?q=Östra+Sörredsvägen+4,+418+78+Göteborg" target="_blank" style="display: inline-block; margin-top: 1.5rem; padding: 1rem 2rem; background: #ff6b35; color: white; text-decoration: none; border-radius: 25px; font-weight: bold;">
+                        Öppna i Google Maps
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="kontakt">
             <h2>Kontakta Oss</h2>
             <div class="contact-info">
@@ -1117,12 +1208,108 @@
                 </div>
             </div>
         </section>
+
+        <section id="faq" style="background-color: white; padding: 4rem 2rem; margin-top: 2rem; border-radius: 10px;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Vanliga Frågor om Thaiboxning i Göteborg</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Hur mycket kostar det att träna på Bulldog Training Center?</h3>
+                    <p>Vi erbjuder flexibla träningskort via appen Zoezi. Priserna varierar beroende på om du väljer klippkort eller månadsmedlemskap. Ladda ner Zoezi-appen för att se aktuella priser och köpa träningskort direkt. Vi har alternativ för både de som vill träna flera gånger i veckan och för de som föredrar mer flexibel träning.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Kan barn träna thaiboxning hos er?</h3>
+                    <p>Ja, absolut! Vi är den enda klubben i Göteborg som tar emot barn redan från 6 år. Vi har specialanpassade barnpass för åldersgruppen 6-12 år där fokus ligger på teknik, disciplin och glädje. För ungdomar från 12 år och uppåt finns möjlighet att träna i våra övriga grupper. Alla våra tränare har erfarenhet av att arbeta med barn och skapar en trygg och rolig träningsmiljö.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Behöver jag ha tränat kampsport tidigare?</h3>
+                    <p>Nej, inte alls! Hos Bulldog Training Center är alla välkomna oavsett erfarenhet. Vi har särskilda "Basic"-pass som är perfekta för nybörjare där vi fokuserar på grundläggande teknik och korrekt utförande. Våra erfarna tränare ser till att alla får träning på rätt nivå. Våra HIIT-pass kräver ingen kampsportserfarenhet överhuvudtaget.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Vad behöver jag ha med mig till första passet?</h3>
+                    <p>Till ditt första pass behöver du träningskläder, vattenflaska och en handduk. Vi rekommenderar att du tränar barfota eller i inomhusskor de första gångerna. När du bestämt dig för att fortsätta träna rekommenderar vi att du skaffar egna boxningshandskar, benskydd och munsskydd. Vi kan ge råd om var du köper utrustning till bra priser.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Hur bokar jag mitt första pass?</h3>
+                    <p>Det enklaste sättet är att ladda ner appen Zoezi (finns för både iPhone och Android). I appen söker du efter "Bulldog Training Center", skapar ett konto och kan sedan se alla våra pass och tider. Du kan också lämna en intresseanmälan via vår hemsida så hör vi av oss. Välkommen att höra av dig via e-post om du har frågor innan du börjar!</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Var ligger er klubb i Göteborg?</h3>
+                    <p>Vi ligger på Östra Sörredsvägen 4 i Göteborg (418 78). Lokalen är lättillgänglig med både bil och kollektivtrafik. Det finns parkering i närheten och bra förbindelser med buss. Vi ligger i ett lugnt område som är perfekt för träning.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Är Bulldog Training Center en seriös klubb?</h3>
+                    <p>Ja, vi är en 100% ideell förening ansluten till Svenska Thaiboxningsförbundet och medlem i Riksidrottsförbundet (RF). Vi är också medlemmar i SISU Idrottsutbildarna Göteborg och Göteborgs specialidrottsdistriktsforbund (SDF). Detta garanterar att vi följer höga standarder för säkerhet, tränarkompetens och idrottsetik.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Kan tjejer träna thaiboxning?</h3>
+                    <p>Självklart! Vi välkomnar alla oavsett kön. Vi har även ett speciellt pass endast för tjejer på söndagar kl 11:30-12:30 där alla nivåer är välkomna. Detta pass erbjuder en trygg och stödjande miljö för tjejer som vill träna thaiboxning tillsammans. Men naturligtvis är tjejer varmt välkomna på alla våra pass!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Structured Data for Google Rich Snippets -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Hur mycket kostar det att träna på Bulldog Training Center?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Vi erbjuder flexibla träningskort via appen Zoezi. Priserna varierar beroende på om du väljer klippkort eller månadsmedlemskap. Ladda ner Zoezi-appen för att se aktuella priser och köpa träningskort direkt."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Kan barn träna thaiboxning hos er?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ja, vi är den enda klubben i Göteborg som tar emot barn redan från 6 år. Vi har specialanpassade barnpass för åldersgruppen 6-12 år där fokus ligger på teknik, disciplin och glädje."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Behöver jag ha tränat kampsport tidigare?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Nej, inte alls! Hos Bulldog Training Center är alla välkomna oavsett erfarenhet. Vi har särskilda Basic-pass som är perfekta för nybörjare där vi fokuserar på grundläggande teknik."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Vad behöver jag ha med mig till första passet?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Till ditt första pass behöver du träningskläder, vattenflas och en handduk. Vi rekommenderar att du tränar barfota eller i inomhusskor de första gångerna."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Var ligger er klubb i Göteborg?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Vi ligger på Östra Sörredsvägen 4 i Göteborg (418 78). Lokalen är lättillgänglig med både bil och kollektivtrafik."
+                    }
+                }
+            ]
+        }
+        </script>
     </main>
 
     <footer>
         <div class="footer-logo">
-            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
-            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
+            <img src="images/image0.png" alt="Bulldog Training Center Göteborg - Thaiboxning och Kampsport" class="footer-logo-img footer-logo-desktop">
+            <img src="images/image001.png" alt="BDTC Thaiboxning Göteborg Logotyp" class="footer-logo-img footer-logo-mobile">
             
             <div>
                 <h3>Bulldog Training Center</h3>
@@ -1131,7 +1318,7 @@
         </div>
         
         <div class="affiliations">
-            <p>Ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet</p>
+            <p><strong>Ansluten till Svenska Thaiboxningsförbundet</strong> - En seriös och trygg thaiboxningsklubb i Göteborg</p>
             <p>Medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsforbund (SDF)</p>
         </div>
         
@@ -1243,4 +1430,3 @@
                     if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                         navLinksAll.forEach(function(link) {
                             link.classList.remove('active');
-                           
