@@ -304,7 +304,9 @@
 
         /* Hero Section */
         .hero {
-            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/><g fill="%23333"><circle cx="200" cy="150" r="30"/><circle cx="800" cy="300" r="40"/><circle cx="1000" cy="100" r="20"/></g></svg>');
+            background-size: cover;
+            background-position: center;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -313,30 +315,6 @@
             color: white;
             margin-top: 80px;
             padding: 2rem;
-            overflow: hidden;
-        }
-
-        /* Video Background */
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        /* Dark overlay for better text readability */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
         }
 
         .hero-content {
@@ -1010,11 +988,6 @@
     </header>
 
     <section id="hem" class="hero">
-        <!-- Background Video -->
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/videos/hero-background.mp4" type="video/mp4">
-        </video>
-        
         <div class="hero-content">
             <img src="images/image0.png" alt="Bulldog Training Center - Thaiboxning och HIIT i Göteborg" class="main-logo desktop-logo">
             <img src="images/image001.png" alt="BDTC Göteborg - Kampsport och Fysträning" class="main-logo mobile-logo">
