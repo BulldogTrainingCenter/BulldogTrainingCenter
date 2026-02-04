@@ -1154,6 +1154,13 @@
                 grid-template-columns: 1fr;
             }
 
+            /* Hide last 3 testimonials on mobile */
+            .testimonial-card:nth-child(4),
+            .testimonial-card:nth-child(5),
+            .testimonial-card:nth-child(6) {
+                display: none;
+            }
+
             .instagram-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -1447,7 +1454,7 @@
                 <div class="training-card">
                     <h3>Thaiboxning för Barn 6-12 år i Göteborg</h3>
                     <p>Nytt för i år! Vi är den enda klubben i Göteborg som erbjuder thaiboxning för barn redan från 6 år. På Bulldog Training Center fokuserar barnträningen på teknik, disciplin, respekt och att ha kul i en trygg miljö. En perfekt start för unga atleter som vill prova kampsport.</p>
-                </div></div>
+                </div>
                 <div class="training-card">
                     <h3>Thaiboxning (Basic)</h3>
                     <p>Perfekt för att komma igång eller slipa på grunderna. Vi fokuserar på de viktigaste teknikerna, korrekt utförande och försvar. Passet är öppet för alla – men i första hand nybörjare och de med lite mer erfarenhet som vill förbättra sina grundtekniker.</p>
@@ -1467,10 +1474,9 @@
         </section>
 
         <!-- Instagram Feed Section -->
-        <!-- Instagram Feed Section -->
         <section class="instagram-section">
-            <h2>Följ oss på Instagram 📸</h2>
-            <p class="instagram-subtitle">Se vad som händer på gymmet varje dag!</p>
+            <h2>Följ oss på Instagram</h2>
+            <p class="instagram-subtitle">Se vad som händer på träningslokalen varje dag!</p>
             
             <!-- Behold Instagram Widget -->
             <div style="max-width: 1200px; margin: 0 auto 2rem;">
@@ -1579,8 +1585,8 @@
                         <h3>E-post</h3>
                         <div class="contact-item">
                             <span>📧</span>
-                            <a href="/cdn-cgi/l/email-protection#8dcff8e1e1e9e2ead9ffece4e3e4e3eacee8e3f9e8ffcdeae0ece4e1a3eee2e0" class="contact-link">
-                                <span class="__cf_email__" data-cfemail="cc8eb9a0a0a8a3ab98beada5a2a5a2ab8fa9a2b8a9be8caba1ada5a0e2afa3a1">[email&#160;protected]</span>
+                            <a href="mailto:BulldogTrainingCenter@gmail.com" class="contact-link">
+                                BulldogTrainingCenter@gmail.com
                             </a>
                         </div>
                         
@@ -1649,7 +1655,7 @@
         </section>
 
         <!-- FAQ Structured Data for Google Rich Snippets -->
-        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
+        <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
