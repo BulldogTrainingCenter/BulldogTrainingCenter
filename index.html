@@ -1013,7 +1013,7 @@
                 <li><a href="#faq">Frågor & Svar</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
-            <div class="mobile-menu" id="mobileMenu" onclick="this.classList.toggle('active'); document.getElementById('navLinks').classList.toggle('active');">
+            <div class="mobile-menu" id="mobileMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1449,9 +1449,21 @@
             
             // Toggle mobile menu
             if (mobileMenu) {
+                let touchHandled = false;
+                
                 function toggleMenu(e) {
+                    console.log('Toggle menu triggered by:', e.type);
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Prevent double firing from both touch and click
+                    if (e.type === 'touchstart') {
+                        touchHandled = true;
+                        setTimeout(function() { touchHandled = false; }, 500);
+                    } else if (e.type === 'click' && touchHandled) {
+                        console.log('Click prevented - already handled by touch');
+                        return;
+                    }
                     
                     if (isMenuOpen) {
                         closeMenu();
@@ -1469,8 +1481,16 @@
             const navLinkItems = navLinks.querySelectorAll('a');
             navLinkItems.forEach(function(link) {
                 link.addEventListener('click', function(e) {
+                    console.log('Link clicked, closing menu');
+                    // Close menu immediately when link is clicked
                     closeMenu();
                 });
+                
+                // Also add touch handler for links
+                link.addEventListener('touchend', function(e) {
+                    console.log('Link touched, closing menu');
+                    closeMenu();
+                }, { passive: true });
             });
             
             // Close menu when clicking outside (but not on menu itself)
