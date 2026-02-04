@@ -134,43 +134,18 @@
             background-color: #f8f8f8;
         }
 
-        /* Enhanced Header with Glass Effect */
+        /* Enhanced Header - Pure Black */
         header {
-            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,26,26,0.85) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #000000;
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(255, 107, 53, 0.1) 20%,
-                rgba(255, 140, 66, 0.15) 50%,
-                rgba(255, 107, 53, 0.1) 80%,
-                transparent 100%
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        header:hover::before {
-            opacity: 1;
         }
 
         nav {
@@ -344,35 +319,10 @@
         .hero-content h1 {
             font-size: 3.8rem;
             margin-bottom: 1rem;
-            text-shadow: 
-                0 0 20px rgba(255, 107, 53, 0.9),
-                0 0 40px rgba(255, 107, 53, 0.7),
-                0 0 60px rgba(255, 107, 53, 0.5),
-                0 0 80px rgba(255, 107, 53, 0.3),
-                2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             font-weight: 800;
             letter-spacing: 3px;
             color: #fff;
-            animation: subtle-glow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes subtle-glow {
-            0% {
-                text-shadow: 
-                    0 0 20px rgba(255, 107, 53, 0.9),
-                    0 0 40px rgba(255, 107, 53, 0.7),
-                    0 0 60px rgba(255, 107, 53, 0.5),
-                    0 0 80px rgba(255, 107, 53, 0.3),
-                    2px 2px 4px rgba(0,0,0,0.5);
-            }
-            100% {
-                text-shadow: 
-                    0 0 30px rgba(255, 107, 53, 1),
-                    0 0 50px rgba(255, 107, 53, 0.8),
-                    0 0 70px rgba(255, 107, 53, 0.6),
-                    0 0 90px rgba(255, 107, 53, 0.4),
-                    2px 2px 4px rgba(0,0,0,0.5);
-            }
         }
 
         .hero-content p {
@@ -1055,20 +1005,20 @@
         /* Instagram Feed Section */
         .instagram-section {
             background: #000;
-            padding: 4rem 2rem;
+            padding: 2rem 2rem 3rem 2rem;
             color: white;
             margin-top: 3rem;
         }
 
         .instagram-section h2 {
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-size: 2.5rem;
         }
 
         .instagram-subtitle {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
             font-size: 1.1rem;
         }
@@ -1164,6 +1114,16 @@
             .instagram-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
+            }
+
+            /* Reduce Instagram section padding on mobile */
+            .instagram-section {
+                padding: 1.5rem 1rem 2rem 1rem;
+            }
+
+            .instagram-section h2 {
+                margin-bottom: 1.5rem;
+                font-size: 2rem;
             }
         }
 
@@ -1475,8 +1435,7 @@
 
         <!-- Instagram Feed Section -->
         <section class="instagram-section">
-            <h2>Följ oss på Instagram</h2>
-            <p class="instagram-subtitle">Se vad som händer på träningslokalen varje dag!</p>
+            <h2>Bulldog Training Center</h2>
             
             <!-- Behold Instagram Widget -->
             <div style="max-width: 1200px; margin: 0 auto 2rem;">
