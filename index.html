@@ -1680,113 +1680,124 @@
     </footer>
 
     <script>
-        // Simple and reliable mobile menu
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
-        const header = document.getElementById('header');
-        
-        // Toggle menu function
-        function toggleMenu() {
-            navLinks.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple and reliable mobile menu
+            const mobileMenu = document.getElementById('mobileMenu');
+            const navLinks = document.getElementById('navLinks');
+            const header = document.getElementById('header');
             
-            if (navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
+            if (!mobileMenu || !navLinks) {
+                console.error('Mobile menu elements not found');
+                return;
+            }
+            
+            // Toggle menu function
+            function toggleMenu() {
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                if (navLinks.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Close menu function
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
-        }
-        
-        // Close menu function
-        function closeMenu() {
-            navLinks.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        // Hamburger click with touch support
-        mobileMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMenu();
-        });
-
-        mobileMenu.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleMenu();
-        }, { passive: false });
-        
-        // Close menu when clicking any link
-        document.querySelectorAll('.nav-links a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                closeMenu();
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
-                if (navLinks.classList.contains('active')) {
-                    closeMenu();
-                }
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
+            
+            // Hamburger click - simplified
+            mobileMenu.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const headerHeight = header.offsetHeight;
-                    const targetPosition = targetElement.offsetTop - headerHeight;
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Close menu when clicking any link
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    if (navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
                     
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                    if (targetElement) {
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        });
-        
-        // Header scroll effect
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', function() {
-            const currentScroll = window.pageYOffset;
             
-            if (currentScroll > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            // Header scroll effect
+            let lastScroll = 0;
             
-            // Hide header on scroll down, show on scroll up
-            if (currentScroll > lastScroll && currentScroll > 200) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            
-            lastScroll = currentScroll;
-        });
-        
-        // Active link highlighting
-        const sections = document.querySelectorAll('section[id]');
-        const navLinksAll = document.querySelectorAll('.nav-links a');
-        
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(function(section) {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
                 
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
+                if (currentScroll > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
+                
+                // Hide header on scroll down, show on scroll up
+                if (currentScroll > lastScroll && currentScroll > 200) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                
+                lastScroll = currentScroll;
             });
             
-            navLinksAll
+            // Active link highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navLinksAll = document.querySelectorAll('.nav-links a');
+        
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(function(section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinksAll.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
