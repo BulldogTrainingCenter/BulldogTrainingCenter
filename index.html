@@ -806,11 +806,7 @@
             .hero-content h1 {
                 font-size: 2rem;
                 letter-spacing: 1px;
-                text-shadow: 
-                    0 0 8px rgba(255, 107, 53, 0.8),
-                    0 0 15px rgba(255, 107, 53, 0.6),
-                    0 0 25px rgba(255, 107, 53, 0.4),
-                    2px 2px 4px rgba(0,0,0,0.5);
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             }
 
             .hero-content p {
@@ -1708,11 +1704,17 @@
             document.body.style.overflow = '';
         }
         
-        // Hamburger click
+        // Hamburger click with touch support
         mobileMenu.addEventListener('click', function(e) {
             e.stopPropagation();
             toggleMenu();
         });
+
+        mobileMenu.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+        }, { passive: false });
         
         // Close menu when clicking any link
         document.querySelectorAll('.nav-links a').forEach(function(link) {
