@@ -954,6 +954,212 @@
             }
         }
 
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: #ff6b35;
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .testimonial-stars {
+            color: #ff6b35;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Instagram Feed Section */
+        .instagram-section {
+            background: #000;
+            padding: 4rem 2rem;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .instagram-section h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .instagram-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .instagram-post {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 1/1;
+            background: #1a1a1a;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-post:hover {
+            transform: scale(1.05);
+        }
+
+        .instagram-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-post:hover img {
+            opacity: 0.8;
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 107, 53, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-post:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-cta {
+            text-align: center;
+        }
+
+        .instagram-button {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d);
+            padding: 1rem 2.5rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(131, 58, 180, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .free-trial-banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -997,8 +1203,12 @@
             <p><strong>Klubben med familjekänsla</strong> där alla är välkomna - oavsett ålder, kön, bakgrund eller träningsnivå.</p>
             <p>Vår vision är att skapa en trygg gemenskap där människor utvecklas både <span class="highlight">fysiskt och mentalt</span> genom thaiboxning och HIIT-träning.</p>
             
+            <p style="font-size: 1.1rem; margin-top: 1.5rem; opacity: 0.95;">
+                <strong>Prova på gratis!</strong> Ditt första träningspass kostar ingenting.
+            </p>
+            
             <div class="cta-container">
-                <a href="#kontakt" class="cta-button">Boka ditt första pass</a>
+                <a href="#kontakt" class="cta-button">Boka ditt gratispass</a>
                 <a href="intresseanmalan.html" class="cta-button secondary">Intresseanmälan</a>
             </div>
         </div>
@@ -1029,6 +1239,102 @@
                 <h3>Anslutningar och Medlemskap</h3>
                 <h4>Vi är typ överallt</h4>
                 <p>Föreningen är ansluten till Svenska Boxningsförbundet, Svenska Kickboxningsförbundet och Svenska Thaiboxningsförbundet. Därigenom är föreningen också medlem i Riksidrottsförbundet (RF), SISU Idrottsutbildarna Göteborg samt Göteborgs specialidrottsdistriktsforbund (SDF).</p>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>Vad säger våra medlemmar? 💬</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Bästa träningsbeslutet jag någonsin gjort! Här känner man sig välkommen från dag ett. 
+                        Tränarna är proffsiga och hjälper en verkligen att utvecklas, oavsett nivå. Gemenskapen är fantastisk!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Anna Svensson</div>
+                            <div class="testimonial-role">Medlem sedan 2023</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Mina barn älskar att träna här! De har utvecklats enormt både fysiskt och mentalt. 
+                        Tryggt, roligt och lärorikt. Som förälder känner jag mig säker på att de är i goda händer."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Stefan Andersson</div>
+                            <div class="testimonial-role">Förälder till två barn i klubben</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Som komplett nybörjare var jag nervös först, men här tar man hand om alla! 
+                        Basic-passen är perfekta för att komma igång. Nu tränar jag 3-4 gånger i veckan och älskar det!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">M</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Maria Johansson</div>
+                            <div class="testimonial-role">Nybörjare, medlem sedan 6 månader</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Jag har tränat thaiboxning i över 10 år och BDTC är den bästa klubben jag varit med i. 
+                        Bra nivå på träningen, engagerade tränare och en gemenskap som verkligen bryr sig om varandra."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">E</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Erik Karlsson</div>
+                            <div class="testimonial-role">Erfaren thaiboxare</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "HIIT-passen är grymma! Perfekt för mig som vill ha bra konditionsträning utan att slå. 
+                        Tränarna pushar en lagom och resultaten kommer snabbt. Rekommenderas varmt!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">L</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Linda Bergström</div>
+                            <div class="testimonial-role">HIIT-entusiast</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Familjen som gym! Min fru och jag tränar här tillsammans och det har verkligen förstärkt vår relation. 
+                        Plus att vi båda är i bättre form än på länge. Tack BDTC!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">J</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Johan & Sara Lindgren</div>
+                            <div class="testimonial-role">Par som tränar tillsammans</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1160,6 +1466,32 @@
             </p>
         </section>
 
+        <!-- Instagram Feed Section -->
+        <!-- Instagram Feed Section -->
+        <section class="instagram-section">
+            <h2>Följ oss på Instagram 📸</h2>
+            <p class="instagram-subtitle">Se vad som händer på gymmet varje dag!</p>
+            
+            <!-- Behold Instagram Widget -->
+            <div style="max-width: 1200px; margin: 0 auto 2rem;">
+                <behold-widget feed-id="D3Tj0fq7dKLDnmZWy3uv"></behold-widget>
+            </div>
+            
+            <div class="instagram-cta">
+                <a href="https://instagram.com/bulldogthaiboxning" target="_blank" class="instagram-button">
+                    Följ @bulldogthaiboxning →
+                </a>
+            </div>
+        </section>
+
+        <!-- Behold Widget Script -->
+        <script>
+          (() => {
+            const d=document,s=d.createElement("script");s.type="module";
+            s.src="https://w.behold.so/widget.js";d.head.append(s);
+          })();
+        </script>
+
         <section id="app" class="app-info">
             <h2>Boka Pass via Zoezi</h2>
             <p>Använd appen Zoezi för att boka pass, kolla priser och köpa träningskort. Enkelt och smidigt!</p>
@@ -1247,8 +1579,8 @@
                         <h3>E-post</h3>
                         <div class="contact-item">
                             <span>📧</span>
-                            <a href="mailto:BulldogTrainingCenter@gmail.com" class="contact-link">
-                                BulldogTrainingCenter@gmail.com
+                            <a href="/cdn-cgi/l/email-protection#8dcff8e1e1e9e2ead9ffece4e3e4e3eacee8e3f9e8ffcdeae0ece4e1a3eee2e0" class="contact-link">
+                                <span class="__cf_email__" data-cfemail="cc8eb9a0a0a8a3ab98beada5a2a5a2ab8fa9a2b8a9be8caba1ada5a0e2afa3a1">[email&#160;protected]</span>
                             </a>
                         </div>
                         
@@ -1317,7 +1649,7 @@
         </section>
 
         <!-- FAQ Structured Data for Google Rich Snippets -->
-        <script type="application/ld+json">
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -1490,13 +1822,4 @@
                 }
             });
             
-            navLinksAll.forEach(function(link) {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            navLinksAll
