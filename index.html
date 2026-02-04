@@ -280,26 +280,31 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 10px;
+            padding: 15px;
             z-index: 1001;
             position: relative;
             background: transparent;
             border: none;
-            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+            touch-action: manipulation;
+            min-width: 50px;
+            min-height: 50px;
+            justify-content: center;
+            align-items: center;
         }
 
         .mobile-menu span {
-            width: 25px;
+            width: 28px;
             height: 3px;
             background: #fff;
-            margin: 3px 0;
+            margin: 4px 0;
             transition: all 0.3s ease;
             display: block;
             border-radius: 2px;
         }
 
         .mobile-menu.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+            transform: rotate(45deg) translate(9px, 9px);
         }
 
         .mobile-menu.active span:nth-child(2) {
@@ -308,7 +313,7 @@
         }
 
         .mobile-menu.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(9px, -9px);
         }
 
         /* Hero Section */
@@ -1008,7 +1013,7 @@
                 <li><a href="#faq">Frågor & Svar</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
-            <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu" id="mobileMenu" onclick="this.classList.toggle('active'); document.getElementById('navLinks').classList.toggle('active');">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1424,6 +1429,7 @@
             
             // Function to close menu
             function closeMenu() {
+                console.log('Closing menu');
                 navLinks.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 header.classList.remove('menu-open');
@@ -1433,6 +1439,7 @@
             
             // Function to open menu
             function openMenu() {
+                console.log('Opening menu');
                 navLinks.classList.add('active');
                 mobileMenu.classList.add('active');
                 header.classList.add('menu-open');
@@ -1442,8 +1449,7 @@
             
             // Toggle mobile menu
             if (mobileMenu) {
-                // Click handler
-                mobileMenu.addEventListener('click', function(e) {
+                function toggleMenu(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
@@ -1452,19 +1458,11 @@
                     } else {
                         openMenu();
                     }
-                });
+                }
                 
-                // Touch event to prevent conflicts on mobile
-                mobileMenu.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    if (isMenuOpen) {
-                        closeMenu();
-                    } else {
-                        openMenu();
-                    }
-                }, { passive: false });
+                // Use both click and touchstart for maximum compatibility
+                mobileMenu.addEventListener('touchstart', toggleMenu, { passive: false });
+                mobileMenu.addEventListener('click', toggleMenu);
             }
             
             // Close menu when clicking nav links
