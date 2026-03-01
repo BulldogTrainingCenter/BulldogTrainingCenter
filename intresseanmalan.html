@@ -3,604 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intresseanmälan - Bulldog Training Center</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f8f8;
-        }
-
-        /* Same Header as Main Site */
-        header {
-            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,26,26,0.85) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(255, 107, 53, 0.1) 20%,
-                rgba(255, 140, 66, 0.15) 50%,
-                rgba(255, 107, 53, 0.1) 80%,
-                transparent 100%
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        header:hover::before {
-            opacity: 1;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: translateX(5px);
-        }
-
-        .header-logo {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: contain;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .header-logo:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .header-logo.desktop {
-            display: block;
-        }
-
-        .header-logo.mobile {
-            display: none;
-        }
-
-        .back-link {
-            color: rgba(255, 255, 255, 0.95);
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-            padding: 1rem 1.5rem;
-            border-radius: 25px;
-            position: relative;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-            overflow: hidden;
-        }
-
-        .back-link::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: #fff;
-            transform: translateY(-1px);
-        }
-
-        .back-link:hover::after {
-            width: 100%;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            margin-top: 120px;
-        }
-
-        /* Hero-style header for the form */
-        .form-hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23222" width="1200" height="400"/><g fill="%23333"><circle cx="200" cy="100" r="20"/><circle cx="800" cy="200" r="30"/><circle cx="1000" cy="80" r="15"/></g></svg>');
-            background-size: cover;
-            background-position: center;
-            min-height: 40vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 3rem;
-        }
-
-        .form-hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .form-hero-content p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .interest-form {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-
-        .disclaimer {
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .disclaimer::before {
-            content: "";
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 107, 53, 0.2);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .disclaimer strong {
-            color: #ff6b35;
-            position: relative;
-            z-index: 2;
-        }
-
-        .disclaimer-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .required {
-            color: #ff6b35;
-            margin-left: 3px;
-        }
-
-        .form-group input {
-            padding: 12px 15px;
-            border: 2px solid #e1e1e1;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            border-color: #ff6b35;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-        }
-
-        .sport-selection {
-            margin: 2rem 0;
-        }
-
-        .sport-selection h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #000;
-        }
-
-        .sport-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .sport-option {
-            background: white;
-            border: 2px solid #e1e1e1;
-            border-radius: 10px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .sport-option:hover {
-            border-color: #ff6b35;
-            background: rgba(255, 107, 53, 0.05);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
-        }
-
-        .sport-option.selected {
-            border-color: #ff6b35;
-            background: rgba(255, 107, 53, 0.1);
-            border-left: 5px solid #ff6b35;
-        }
-
-        .sport-option input[type="radio"] {
-            margin-right: 0.5rem;
-        }
-
-        .sport-content h4 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.2rem;
-            color: #000;
-        }
-
-        .sport-content p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        .thaiboxning-suboptions {
-            margin-top: 1.5rem;
-            display: none;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            border-radius: 12px;
-            border: 2px solid #ff6b35;
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .thaiboxning-suboptions::before {
-            content: "";
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 107, 53, 0.2);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .thaiboxning-suboptions.visible {
-            display: block;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .thaiboxning-suboptions h4 {
-            color: #ff6b35;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .suboption {
-            margin: 0.8rem 0;
-            padding: 1rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 2;
-        }
-
-        .suboption:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: #ff6b35;
-            box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
-            transform: translateX(5px);
-        }
-
-        .suboption label {
-            display: flex;
-            align-items: center;
-            font-weight: normal;
-            cursor: pointer;
-            font-size: 0.95rem;
-            color: white;
-            margin: 0;
-        }
-
-        .suboption input[type="radio"] {
-            margin-right: 0.8rem;
-            transform: scale(1.2);
-            accent-color: #ff6b35;
-        }
-
-        .suboption input[type="radio"]:checked + span {
-            color: #ff6b35;
-            font-weight: 600;
-        }
-
-        .checkbox-group {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: white;
-            border-radius: 10px;
-            border-left: 4px solid #ff6b35;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .checkbox-group::before {
-            content: "";
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 107, 53, 0.2);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .checkbox-group label {
-            display: flex;
-            align-items: flex-start;
-            cursor: pointer;
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-right: 0.75rem;
-            margin-top: 0.2rem;
-            transform: scale(1.2);
-            flex-shrink: 0;
-            accent-color: #ff6b35;
-        }
-
-        .submit-button {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 2rem auto 0;
-            min-width: 200px;
-        }
-
-        .submit-button:hover {
-            background: linear-gradient(135deg, #e55a2d 0%, #e57a35 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
-        }
-
-        .submit-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Footer matching main site */
-        footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
-
-        .footer-logo-desktop {
-            display: block;
-        }
-
-        .footer-logo-mobile {
-            display: none;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 0 1rem;
-            }
-
-            .header-logo.desktop {
-                display: none;
-            }
-            
-            .header-logo.mobile {
-                display: block;
-            }
-
-            .footer-logo-desktop {
-                display: none;
-            }
-            
-            .footer-logo-mobile {
-                display: block;
-            }
-
-            main {
-                padding: 0 1rem;
-                margin-top: 100px;
-            }
-            
-            .form-hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .form-hero-content p {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .sport-options {
-                grid-template-columns: 1fr;
-            }
-
-            .interest-form {
-                padding: 2rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-logo {
-                width: 50px;
-                height: 50px;
-            }
-
-            .form-hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .form-hero-content p {
-                font-size: 1rem;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <title>Intresseanmälan — Bulldog Training Center | Thaiboxning Göteborg</title>
+    <meta name="description" content="Intresserad av thaiboxning, boxning eller HIIT i Göteborg? Skicka en förbindelsefri intresseanmälan till Bulldog Training Center så kontaktar vi dig.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Intresseanmälan — Bulldog Training Center Göteborg">
+    <meta property="og:description" content="Intresserad av kampsport eller HIIT? Skicka en förbindelsefri intresseanmälan så hör vi av oss.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/intresseanmalan.html">
+    <meta property="og:image" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/images/bdtc-logo.jpg">
+    <meta property="og:locale" content="sv_SE">
+
+    <link rel="canonical" href="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/intresseanmalan.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header id="header">
-        <nav>
-            <div class="logo">
+
+    <!-- HEADER -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
                 <div>
-                    <img src="images/image0.png" alt="Bulldog Training Center Logo" class="header-logo desktop">
-                    <img src="images/image001.png" alt="Bulldog Training Center Logo" class="header-logo mobile">
-                    <small style="display: block; text-align: center; margin-top: 0.2rem; color: rgba(255,255,255,0.8);">Göteborg</small>
+                    <img src="images/image0.png" alt="Bulldog Training Center" class="logo-img desktop">
+                    <img src="images/image001.png" alt="BDTC" class="logo-img mobile">
+                    <span class="logo-city">Göteborg</span>
                 </div>
-            </div>
+            </a>
             <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
-        </nav>
+        </div>
     </header>
 
-    <main>
-        <div class="form-hero">
-            <div class="form-hero-content">
+    <main style="max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; margin-top: 120px;">
+
+        <!-- Hero -->
+        <div class="page-hero">
+            <div>
+                <img src="images/image0.png" alt="Bulldog Training Center" class="page-hero-logo desktop">
+                <img src="images/image001.png" alt="BDTC" class="page-hero-logo mobile">
                 <h1>Intresseanmälan</h1>
-                <p>Är du intresserad av att börja träna hos oss? Fyll i formuläret nedan så kontaktar vi dig med mer information.</p>
+                <p>Intresserad av att träna hos oss? Fyll i formuläret så kontaktar vi dig med mer information.</p>
             </div>
         </div>
 
-        <div class="interest-form">
-            <div class="disclaimer">
-                <div class="disclaimer-content">
-                    <strong>Viktigt:</strong> Denna intresseanmälan är helt förbindelsefri och medför inga kostnader eller förpliktelser från din sida.
-                </div>
+        <!-- Form -->
+        <div class="form-wrap">
+
+            <div class="form-disclaimer">
+                <strong>Helt förbindelsefritt.</strong> Denna intresseanmälan medför inga kostnader eller förpliktelser. Vi hör av oss med information om hur du kommer igång.
             </div>
 
             <form id="interestForm">
+
+                <!-- Välj träningsform -->
                 <div class="sport-selection">
-                    <h3>Vilken träningsform är du intresserad av? <span class="required">*</span></h3>
+                    <h3>Vilken träningsform är du intresserad av? <span class="required-mark">*</span></h3>
                     <div class="sport-options">
-                        <div class="sport-option" data-sport="thaiboxning">
+                        <div class="sport-option" data-sport="thaiboxning" onclick="selectSport(this)">
                             <label>
                                 <input type="radio" name="sport" value="Thaiboxning" required>
-                                <div class="sport-content">
+                                <div>
                                     <h4>Thaiboxning</h4>
                                     <p>Traditionell thaiboxning för alla nivåer</p>
                                 </div>
@@ -610,222 +84,168 @@
                                 <div class="suboption">
                                     <label>
                                         <input type="radio" name="thaiboxning-level" value="Basic">
-                                        <span>Thaiboxning (Basic) - För nybörjare</span>
+                                        <span>Thaiboxning Basic — för nybörjare</span>
                                     </label>
                                 </div>
                                 <div class="suboption">
                                     <label>
                                         <input type="radio" name="thaiboxning-level" value="Advanced">
-                                        <span>Thaiboxning (Advanced) - För erfarna</span>
+                                        <span>Thaiboxning Advanced — för erfarna</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="sport-option">
+
+                        <div class="sport-option" onclick="selectSport(this)">
                             <label>
                                 <input type="radio" name="sport" value="Boxning" required>
-                                <div class="sport-content">
+                                <div>
                                     <h4>Boxning</h4>
                                     <p>Klassisk boxning med fokus på teknik och kondition</p>
                                 </div>
                             </label>
                         </div>
-                        
-                        <div class="sport-option">
+
+                        <div class="sport-option" onclick="selectSport(this)">
                             <label>
                                 <input type="radio" name="sport" value="HIIT" required>
-                                <div class="sport-content">
+                                <div>
                                     <h4>HIIT</h4>
-                                    <p>Högintensiv träning kombinerat med kampsport</p>
+                                    <p>Högintensiv träning — ingen kampsportserfarenhet krävs</p>
                                 </div>
                             </label>
                         </div>
-                        
-                        <div class="sport-option">
+
+                        <div class="sport-option" onclick="selectSport(this)">
                             <label>
                                 <input type="radio" name="sport" value="Barn Thaiboxning" required>
-                                <div class="sport-content">
+                                <div>
                                     <h4>Barn Thaiboxning</h4>
-                                    <p>Thaiboxning för barn 6-12 år</p>
+                                    <p>Thaiboxning för barn 6–12 år</p>
                                 </div>
                             </label>
                         </div>
                     </div>
                 </div>
 
+                <!-- Kontaktuppgifter -->
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="firstName">Förnamn <span class="required">*</span></label>
+                        <label for="firstName">Förnamn <span class="required-mark">*</span></label>
                         <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="lastName">Efternamn <span class="required">*</span></label>
+                        <label for="lastName">Efternamn <span class="required-mark">*</span></label>
                         <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="personnummer">Personnummer (ÅÅÅÅMMDD-XXXX)</label>
-                        <input type="text" id="personnummer" name="personnummer" placeholder="19901201-1234" autocomplete="off">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">E-post <span class="required">*</span></label>
+                        <label for="email">E-post <span class="required-mark">*</span></label>
                         <input type="email" id="email" name="email" autocomplete="email" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="phone">Mobilnummer <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" placeholder="070-123 45 67" autocomplete="mobile tel" required>
+                        <label for="phone">Mobilnummer <span class="required-mark">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="070-123 45 67" autocomplete="tel" required>
                     </div>
-                    
+
                     <div class="form-group full-width">
-                        <label for="address">Adress <span class="required">*</span></label>
+                        <label for="address">Adress <span class="required-mark">*</span></label>
                         <input type="text" id="address" name="address" placeholder="Gatunamn 12" autocomplete="street-address" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="city">Stad <span class="required">*</span></label>
+                        <label for="city">Stad <span class="required-mark">*</span></label>
                         <input type="text" id="city" name="city" autocomplete="address-level2" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="postalCode">Postnummer <span class="required">*</span></label>
+                        <label for="postalCode">Postnummer <span class="required-mark">*</span></label>
                         <input type="text" id="postalCode" name="postalCode" placeholder="123 45" autocomplete="postal-code" required>
                     </div>
                 </div>
 
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" name="privacyConsent" required>
-                        <span>
-                            Jag har läst och godkänner personuppgiftspolicyn och samtycker till att mina personuppgifter behandlas enligt denna policy. <span class="required">*</span>
-                        </span>
+                <!-- Samtycke -->
+                <div class="form-consent">
+                    <input type="checkbox" name="privacyConsent" id="privacyConsent" required>
+                    <label for="privacyConsent">
+                        Jag samtycker till att mina personuppgifter behandlas i syfte att hantera min intresseanmälan. <span class="required-mark">*</span>
                     </label>
                 </div>
 
-                <button type="submit" class="submit-button">
-                    Skicka intresseanmälan
-                </button>
+                <button type="submit" class="btn-submit">Skicka intresseanmälan →</button>
             </form>
         </div>
+
+        <!-- Alternativ -->
+        <div style="text-align: center; margin: 3rem 0 2rem;">
+            <p style="color: var(--gray-600); margin-bottom: 0.75rem;">Redo att boka ett gratispass direkt?</p>
+            <a href="boka.html" class="btn btn-dark">Boka gratispass →</a>
+        </div>
+
     </main>
 
-    <footer>
-        <div class="footer-logo">
-            <img src="images/image0.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-desktop">
-            <img src="images/image001.png" alt="Bulldog Training Center Logo" class="footer-logo-img footer-logo-mobile">
-            
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <img src="images/image0.png" alt="BDTC" class="footer-logo desktop">
+            <img src="images/image001.png" alt="BDTC" class="footer-logo mobile">
             <div>
-                <h3>Bulldog Training Center</h3>
-                <p>Klubben med familjekänsla</p>
+                <div class="footer-name">Bulldog Training Center</div>
+                <div class="footer-tagline">Klubben med familjekänsla</div>
             </div>
         </div>
-        
-        <p>&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
+        <p class="footer-copy">&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sportOptions = document.querySelectorAll('.sport-option');
-            const thaiboxningSuboptions = document.getElementById('thaiboxning-suboptions');
-            const form = document.getElementById('interestForm');
-            
-            // Handle sport selection
-            sportOptions.forEach(function(option) {
-                option.addEventListener('click', function(e) {
-                    // Prevent double triggering when clicking on radio button directly
-                    if (e.target.type === 'radio') return;
-                    
-                    // Remove selected class from all options
-                    sportOptions.forEach(function(opt) {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
-                    
-                    // Check the radio button
-                    const radio = this.querySelector('input[type="radio"]');
-                    if (radio) {
-                        radio.checked = true;
-                    }
-                    
-                    // Show/hide Thaiboxning suboptions
-                    if (this.dataset.sport === 'thaiboxning') {
-                        thaiboxningSuboptions.classList.add('visible');
-                    } else {
-                        thaiboxningSuboptions.classList.remove('visible');
-                        // Clear thaiboxning level selection
-                        const levelRadios = document.querySelectorAll('input[name="thaiboxning-level"]');
-                        levelRadios.forEach(radio => radio.checked = false);
-                    }
-                });
-            });
-            
-            // Handle radio button clicks directly
-            const sportRadios = document.querySelectorAll('input[name="sport"]');
-            sportRadios.forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    const parentOption = this.closest('.sport-option');
-                    
-                    // Remove selected class from all options
-                    sportOptions.forEach(function(opt) {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to parent option
-                    parentOption.classList.add('selected');
-                    
-                    // Show/hide Thaiboxning suboptions
-                    if (parentOption.dataset.sport === 'thaiboxning') {
-                        thaiboxningSuboptions.classList.add('visible');
-                    } else {
-                        thaiboxningSuboptions.classList.remove('visible');
-                        // Clear thaiboxning level selection
-                        const levelRadios = document.querySelectorAll('input[name="thaiboxning-level"]');
-                        levelRadios.forEach(radio => radio.checked = false);
-                    }
-                });
-            });
-            
-            // Handle form submission to create proper mailto link
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(form);
-                let emailBody = 'Intresseanmälan från Bulldog Training Center\n\n';
-                
-                // Get selected sport
-                const selectedSport = formData.get('sport');
-                const selectedLevel = formData.get('thaiboxning-level');
-                
-                if (selectedSport === 'Thaiboxning' && selectedLevel) {
-                    emailBody += `Träningsform: ${selectedSport} (${selectedLevel})\n`;
-                } else {
-                    emailBody += `Träningsform: ${selectedSport}\n`;
-                }
-                
-                emailBody += `Namn: ${formData.get('firstName')} ${formData.get('lastName')}\n`;
-                
-                if (formData.get('personnummer')) {
-                    emailBody += `Personnummer: ${formData.get('personnummer')}\n`;
-                }
-                
-                emailBody += `E-post: ${formData.get('email')}\n`;
-                emailBody += `Telefon: ${formData.get('phone')}\n`;
-                emailBody += `Adress: ${formData.get('address')}, ${formData.get('city')} ${formData.get('postalCode')}\n`;
-                
-                // Create mailto link with subject and body
-                const subject = encodeURIComponent('Intresseanmälan - Bulldog Training Center');
-                const body = encodeURIComponent(emailBody);
-                const mailtoLink = `mailto:BulldogTrainingCenter@gmail.com?subject=${subject}&body=${body}`;
-                
-                // Open email client
-                window.location.href = mailtoLink;
-            });
+    function selectSport(el) {
+        // Remove selected from all
+        document.querySelectorAll('.sport-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+
+        // Check radio
+        const radio = el.querySelector('input[name="sport"]');
+        if (radio) radio.checked = true;
+
+        // Show/hide thaiboxning suboptions
+        const subs = document.getElementById('thaiboxning-suboptions');
+        if (el.dataset.sport === 'thaiboxning') {
+            subs.classList.add('visible');
+        } else {
+            subs.classList.remove('visible');
+            document.querySelectorAll('input[name="thaiboxning-level"]').forEach(r => r.checked = false);
+        }
+    }
+
+    // Also handle direct radio clicks
+    document.querySelectorAll('input[name="sport"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const parent = this.closest('.sport-option');
+            selectSport(parent);
         });
+    });
+
+    // Form submission
+    document.getElementById('interestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fd = new FormData(this);
+        const sport = fd.get('sport');
+        const level = fd.get('thaiboxning-level');
+
+        let body = 'Intresseanmälan — Bulldog Training Center\n\n';
+        body += 'Träningsform: ' + sport + (sport === 'Thaiboxning' && level ? ' (' + level + ')' : '') + '\n';
+        body += 'Namn: ' + fd.get('firstName') + ' ' + fd.get('lastName') + '\n';
+        body += 'E-post: ' + fd.get('email') + '\n';
+        body += 'Telefon: ' + fd.get('phone') + '\n';
+        body += 'Adress: ' + fd.get('address') + ', ' + fd.get('city') + ' ' + fd.get('postalCode') + '\n';
+
+        const subject = encodeURIComponent('Intresseanmälan — ' + fd.get('firstName') + ' ' + fd.get('lastName'));
+        window.location.href = 'mailto:BulldogTrainingCenter@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+    });
     </script>
+
 </body>
 </html>

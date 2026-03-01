@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boka Gratispass — Bulldog Training Center</title>
+    <meta name="description" content="Boka ditt gratis första träningspass på Bulldog Training Center i Göteborg. Thaiboxning, HIIT eller barnträning — välj det som passar dig!">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Boka Gratispass — Bulldog Training Center">
+    <meta property="og:description" content="Ditt första pass är gratis! Boka thaiboxning, boxning eller HIIT i Göteborg.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/boka.html">
+    <meta property="og:image" content="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/images/bdtc-logo.jpg">
+    <meta property="og:locale" content="sv_SE">
+
+    <link rel="canonical" href="https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/boka.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div>
+                    <img src="images/image0.png" alt="Bulldog Training Center" class="logo-img desktop">
+                    <img src="images/image001.png" alt="BDTC" class="logo-img mobile">
+                    <span class="logo-city">Göteborg</span>
+                </div>
+            </a>
+            <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
+        </div>
+    </header>
+
+    <main style="max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; margin-top: 120px;">
+
+        <!-- Hero -->
+        <div class="page-hero">
+            <div>
+                <img src="images/image0.png" alt="Bulldog Training Center" class="page-hero-logo desktop">
+                <img src="images/image001.png" alt="BDTC" class="page-hero-logo mobile">
+                <h1>Boka ditt gratispass</h1>
+                <p>Ditt första träningspass kostar ingenting. Fyll i formuläret så hör vi av oss med en tid som passar.</p>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-wrap">
+
+            <div class="form-disclaimer">
+                <strong>Helt gratis & förbindelsefritt.</strong> Du bokar ett enda provpass utan kostnad eller förpliktelser. Vi kontaktar dig för att hitta en tid som passar.
+            </div>
+
+            <form id="bokaForm">
+
+                <!-- Välj pass -->
+                <div class="sport-selection">
+                    <h3>Vilket pass vill du prova? <span class="required-mark">*</span></h3>
+                    <div class="sport-options">
+                        <div class="sport-option" onclick="selectSport(this)">
+                            <label>
+                                <input type="radio" name="pass" value="Thaiboxning (Basic)" required>
+                                <div>
+                                    <h4>Thaiboxning Basic</h4>
+                                    <p>Perfekt för nybörjare</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-option" onclick="selectSport(this)">
+                            <label>
+                                <input type="radio" name="pass" value="HIIT" required>
+                                <div>
+                                    <h4>HIIT</h4>
+                                    <p>Ingen kampsportserfarenhet krävs</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-option" onclick="selectSport(this)">
+                            <label>
+                                <input type="radio" name="pass" value="Thaiboxning Barn 6-12 år" required>
+                                <div>
+                                    <h4>Barn 6–12 år</h4>
+                                    <p>Thaiboxning för de yngsta</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-option" onclick="selectSport(this)">
+                            <label>
+                                <input type="radio" name="pass" value="Thaiboxning Tjejer" required>
+                                <div>
+                                    <h4>Thaiboxning ♀</h4>
+                                    <p>Tjejpass söndagar</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kontaktuppgifter -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Namn <span class="required-mark">*</span></label>
+                        <input type="text" id="name" name="name" autocomplete="name" required placeholder="Ditt för- och efternamn">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-post <span class="required-mark">*</span></label>
+                        <input type="email" id="email" name="email" autocomplete="email" required placeholder="din@epost.se">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobilnummer <span class="required-mark">*</span></label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="070-123 45 67">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Meddelande <span style="color: var(--gray-400); font-weight: 400;">(valfritt)</span></label>
+                        <input type="text" id="message" name="message" placeholder="T.ex. önskad dag/tid, frågor...">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Boka gratispass →</button>
+            </form>
+        </div>
+
+        <!-- Alternativ -->
+        <div style="text-align: center; margin: 3rem 0 2rem;">
+            <p style="color: var(--gray-600); margin-bottom: 0.5rem;">Inte redo att boka ännu?</p>
+            <a href="intresseanmalan.html" style="color: var(--accent); font-weight: 600; text-decoration: underline;">Skicka en intresseanmälan istället →</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <img src="images/image0.png" alt="BDTC" class="footer-logo desktop">
+            <img src="images/image001.png" alt="BDTC" class="footer-logo mobile">
+            <div>
+                <div class="footer-name">Bulldog Training Center</div>
+                <div class="footer-tagline">Klubben med familjekänsla</div>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2025 Bulldog Training Center. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <script>
+    function selectSport(el) {
+        document.querySelectorAll('.sport-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        const radio = el.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+    }
+
+    document.getElementById('bokaForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const pass = formData.get('pass');
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const message = formData.get('message');
+
+        let body = 'Bokning av gratispass — Bulldog Training Center\n\n';
+        body += 'Pass: ' + pass + '\n';
+        body += 'Namn: ' + name + '\n';
+        body += 'E-post: ' + email + '\n';
+        body += 'Telefon: ' + phone + '\n';
+        if (message) body += 'Meddelande: ' + message + '\n';
+
+        const subject = encodeURIComponent('Boka gratispass — ' + name);
+        const mailtoLink = 'mailto:BulldogTrainingCenter@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+
+        window.location.href = mailtoLink;
+    });
+    </script>
+
+</body>
+</html>
