@@ -95,9 +95,9 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 }
 
 .header-inner {
-    max-width: var(--max-width);
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
