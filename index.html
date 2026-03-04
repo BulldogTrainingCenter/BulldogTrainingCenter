@@ -625,4 +625,15 @@
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(function(q) {
-            q.addEventList
+            q.addEventListener('click', function() {
+                const item = this.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>
