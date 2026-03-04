@@ -171,7 +171,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 
 .hero-content { position: relative; z-index: 2; max-width: 800px; }
 
-.hero-logo { width: 180px; height: 180px; margin: 0 auto 2rem; border-radius: var(--radius-lg); object-fit: contain; mix-blend-mode: lighten; }
+.hero-logo { width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: var(--radius-lg); object-fit: contain; }
 .hero-logo.desktop { display: block; }
 .hero-logo.mobile { display: none; }
 
