@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
 
     <!-- Open Graph -->
@@ -37,7 +38,18 @@
     <!-- Shared Styles -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Structured Data -->
+    <!-- Structured Data: WebSite (site name in search results) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Bulldog Training Center",
+        "alternateName": "BDTC",
+        "url": "https://bulldogtrainingcenter.github.io/BulldogTrainingCenter/"
+    }
+    </script>
+
+    <!-- Structured Data: SportsClub -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -466,7 +478,7 @@
                             <h3 style="margin-bottom: 1rem; color: var(--white);">E-post</h3>
                             <div class="contact-item">
                                 <span>📧</span>
-                                <a href="mailto:BulldogTrainingCenter@gmail.com" class="contact-link" style="color: rgba(255,255,255,0.85);">BulldogTrainingCenter@gmail.com</a>
+                                <a href="mailto:BulldogTrainingCenter@gmail.com" style="color: var(--accent); font-weight: 600;">BulldogTrainingCenter@gmail.com</a>
                             </div>
 
                             <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--white);">Instagram</h3>
