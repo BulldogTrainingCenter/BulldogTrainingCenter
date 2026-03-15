@@ -160,7 +160,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     transform: translate(-50%, -50%);
     width: 800px;
     height: 800px;
-    opacity: 0.08;
+    opacity: 0.15;
     pointer-events: none;
     z-index: 0;
 }
@@ -267,7 +267,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 
 /* ============================================ SCHEDULE */
-.schedule-wrap { background: rgba(255,255,255,0.8); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.schedule-wrap { background: rgba(255,255,255,0.7); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
 
 .day-card { border: 2px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
@@ -461,13 +461,15 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     .schedule-wrap { padding: 1.5rem; }
     .contact-wrap { padding: 1.5rem; }
 
-    /* Fix background images on mobile */
+    /* Fix background images on mobile - no parallax */
     .section-dark-alt,
     #bli-medlem {
         background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
     }
 
-    .app-section { background: rgba(0,0,0,0.6); }
+    .app-section { background: rgba(0,0,0,0.65); }
 
     /* Hide 4th review card on mobile */
     .reviews-grid .review-card:nth-child(n+4) { display: none; }
