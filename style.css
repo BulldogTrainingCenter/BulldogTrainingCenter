@@ -152,31 +152,28 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .back-link { color: rgba(255,255,255,0.8); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; padding: 0.6rem 1.2rem; border-radius: 6px; transition: all var(--transition); }
 .back-link:hover { color: var(--white); background: rgba(255,255,255,0.08); }
 
-/* ============================================ GALLERY BREAKS */
-.gallery-break {
+/* ============================================ GALLERY PARALLAX BREAKS */
+.gallery-parallax {
     width: 100%;
-    max-height: 450px;
-    overflow: hidden;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     position: relative;
 }
 
-.gallery-break img {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    object-position: center 30%;
-    display: block;
-    filter: brightness(0.85);
-    transition: filter 0.3s ease;
-}
-
-.gallery-break:hover img {
-    filter: brightness(1);
+.gallery-parallax::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
 }
 
 @media (max-width: 768px) {
-    .gallery-break { max-height: 250px; }
-    .gallery-break img { height: 250px; }
+    .gallery-parallax { 
+        height: 250px; 
+        background-attachment: scroll; /* parallax disabled on mobile for performance */
+    }
 }
 
 /* ============================================ HERO */
