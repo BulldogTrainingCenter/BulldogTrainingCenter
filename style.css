@@ -158,9 +158,9 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    opacity: 0.07;
+    width: 800px;
+    height: 800px;
+    opacity: 0.08;
     pointer-events: none;
     z-index: 0;
 }
@@ -174,7 +174,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 #schema .container { position: relative; z-index: 1; }
 
 @media (max-width: 768px) {
-    .schedule-watermark { width: 300px; height: 300px; }
+    .schedule-watermark { display: none; }
 }
 
 /* ============================================ GALLERY PARALLAX BREAKS */
@@ -267,7 +267,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 
 /* ============================================ SCHEDULE */
-.schedule-wrap { background: rgba(255,255,255,0.85); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); position: relative; z-index: 1; }
+.schedule-wrap { background: rgba(255,255,255,0.8); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
 
 .day-card { border: 2px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
@@ -461,11 +461,13 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     .schedule-wrap { padding: 1.5rem; }
     .contact-wrap { padding: 1.5rem; }
 
-    /* Fix parallax backgrounds on mobile */
+    /* Fix background images on mobile */
     .section-dark-alt,
     #bli-medlem {
         background-attachment: scroll !important;
     }
+
+    .app-section { background: rgba(0,0,0,0.6); }
 
     /* Hide 4th review card on mobile */
     .reviews-grid .review-card:nth-child(n+4) { display: none; }
