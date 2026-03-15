@@ -298,7 +298,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .review-source { font-size: 0.8rem; color: var(--gray-400); }
 
 /* ============================================ ZOEZI / APP */
-.app-section { background: linear-gradient(135deg, var(--black) 0%, #222 100%); color: var(--white); padding: 4rem 2rem; border-radius: var(--radius-lg); text-align: center; }
+.app-section { background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); color: var(--white); padding: 4rem 2rem; border-radius: var(--radius-lg); text-align: center; }
 .app-section h2 { color: var(--white); }
 .app-section p { max-width: 550px; margin: 0.75rem auto 0; opacity: 0.85; }
 
