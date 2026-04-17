@@ -485,3 +485,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 @media (min-width: 769px) {
     .parallax-section { background-attachment: fixed !important; }
 }
+
+/* --- Instagram section: reserve space to prevent layout shift during lazy load --- */
+.instagram-section { min-height: 700px; }
+@media (max-width: 768px) { .instagram-section { min-height: 500px; } }
