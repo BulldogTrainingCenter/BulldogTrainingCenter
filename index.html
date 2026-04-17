@@ -240,7 +240,7 @@
         <!-- ========== SCHEMA ========== -->
         <section id="schema" class="section" style="position: relative; overflow: hidden;">
             <div class="schedule-watermark">
-                <img src="images/watermark-logo.png" alt="" aria-hidden="true">
+                <img src="images/watermark-logo.png" alt="" aria-hidden="true" loading="lazy">
             </div>
             <div class="container">
                 <h2 class="text-center">Träningsschema</h2>
@@ -340,7 +340,7 @@
         </section>
 
         <!-- ========== TRÄNING ========== -->
-        <section id="traning" class="section-dark-alt" style="background: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('images/gallery-fight.jpg') center 25%/cover no-repeat; background-attachment: fixed;">
+        <section id="traning" class="section-dark-alt parallax-section" style="background: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('images/gallery-fight.jpg') center 25%/cover no-repeat;">
             <div class="container">
                 <h2 class="text-center">Våra träningsformer</h2>
                 <div class="grid-2" style="margin-top: 2rem;">
@@ -399,13 +399,27 @@
             </div>
         </section>
 
-        <!-- Behold Widget Script -->
+        <!-- Behold Widget Script — lazy loaded when section scrolls into view -->
         <script>
-            (() => { const d=document,s=d.createElement("script");s.type="module";s.src="https://w.behold.so/widget.js";d.head.append(s); })();
+            (function() {
+                var loaded = false;
+                var observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting && !loaded) {
+                        loaded = true;
+                        var s = document.createElement('script');
+                        s.type = 'module';
+                        s.src = 'https://w.behold.so/widget.js';
+                        document.head.appendChild(s);
+                        observer.disconnect();
+                    }
+                }, { rootMargin: '200px' });
+                var target = document.querySelector('.instagram-section');
+                if (target) observer.observe(target);
+            })();
         </script>
 
         <!-- ========== ZOEZI (omformulerad — för betalande kunder) ========== -->
-        <section id="bli-medlem" class="section" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/gallery-group.jpg') center 20%/cover no-repeat; background-attachment: fixed;">
+        <section id="bli-medlem" class="section parallax-section" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/gallery-group.jpg') center 20%/cover no-repeat;">
             <div class="container">
                 <div class="app-section">
                     <h2>Bli medlem — Skapa konto via Zoezi</h2>
@@ -567,8 +581,8 @@
     <!-- ========== FOOTER ========== -->
     <footer class="site-footer">
         <div class="footer-brand">
-            <img src="images/image0.png" alt="BDTC" class="footer-logo desktop">
-            <img src="images/image001.png" alt="BDTC" class="footer-logo mobile">
+            <img src="images/image0.png" alt="BDTC" class="footer-logo desktop" loading="lazy">
+            <img src="images/image001.png" alt="BDTC" class="footer-logo mobile" loading="lazy">
             <div>
                 <div class="footer-name">Bulldog Training Center</div>
                 <div class="footer-tagline">Klubben med familjekänsla</div>
@@ -617,33 +631,42 @@
             });
         });
 
-        // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', function() {
-            const y = window.pageYOffset;
-            header.classList.toggle('scrolled', y > 100);
-            header.style.transform = (y > lastScroll && y > 200) ? 'translateY(-100%)' : 'translateY(0)';
-            lastScroll = y;
-        });
+        // Throttled scroll handler — combines header effect + active link highlighting
+        var lastScroll = 0;
+        var ticking = false;
+        var sections = document.querySelectorAll('section[id]');
+        var allNavLinks = document.querySelectorAll('.nav-links a');
 
-        // Active link highlighting
-        const sections = document.querySelectorAll('section[id]');
-        const allNavLinks = document.querySelectorAll('.nav-links a');
         window.addEventListener('scroll', function() {
-            let current = '';
-            sections.forEach(s => { if (pageYOffset >= s.offsetTop - 200) current = s.getAttribute('id'); });
-            allNavLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-            });
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var y = window.pageYOffset;
+
+                    // Header scroll effect
+                    header.classList.toggle('scrolled', y > 100);
+                    header.style.transform = (y > lastScroll && y > 200) ? 'translateY(-100%)' : 'translateY(0)';
+                    lastScroll = y;
+
+                    // Active link highlighting
+                    var current = '';
+                    sections.forEach(function(s) { if (y >= s.offsetTop - 200) current = s.getAttribute('id'); });
+                    allNavLinks.forEach(function(link) {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+                    });
+
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(function(q) {
             q.addEventListener('click', function() {
-                const item = this.parentElement;
-                const wasOpen = item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                var item = this.parentElement;
+                var wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
                 if (!wasOpen) item.classList.add('open');
             });
         });
