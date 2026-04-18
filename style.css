@@ -210,8 +210,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     justify-content: center;
     text-align: center;
     color: var(--white);
-    margin-top: var(--header-height);
-    padding: 1.5rem 2rem 3rem;
+    margin-top: 0;
+    padding: calc(var(--header-height) + 1.5rem) 2rem 3rem;
     position: relative;
     overflow: hidden;
     background: var(--black);
