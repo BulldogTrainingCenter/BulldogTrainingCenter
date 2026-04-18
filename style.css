@@ -87,7 +87,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     display: flex;
     align-items: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: none;
 }
 
 .site-header.scrolled {
