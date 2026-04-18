@@ -371,15 +371,15 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .faq-answer p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; max-width: none; padding: 0 1.5rem 1.25rem; }
 
 /* ============================================ FOOTER */
-.site-footer { background: var(--black); color: var(--white); text-align: left; padding: 3rem 2rem 2rem; margin-top: 4rem; }
-.footer-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+.site-footer { background: var(--black); color: var(--white); text-align: center; padding: 3rem 2rem 2rem; margin-top: 4rem; }
+.footer-brand { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1rem; }
 .footer-logo { width: 45px; height: 45px; object-fit: contain; }
 .footer-logo.desktop { display: block; }
 .footer-logo.mobile { display: none; }
 .footer-name { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; }
 .footer-tagline { font-size: 0.85rem; opacity: 0.6; font-weight: 400; }
-.footer-affiliations { max-width: var(--max-width); margin: 1.5rem auto 0; font-size: 0.8rem; opacity: 0.5; line-height: 1.6; }
-.footer-copy { max-width: var(--max-width); margin: 2rem auto 0; font-size: 0.75rem; opacity: 0.4; }
+.footer-affiliations { margin: 1.5rem 0 0; font-size: 0.8rem; opacity: 0.5; line-height: 1.6; }
+.footer-copy { text-align: left; max-width: var(--max-width); margin: 2rem auto 0; padding: 0 2rem; font-size: 0.75rem; opacity: 0.4; }
 
 /* ============================================ FORMS */
 .form-wrap { background: var(--white); padding: 3rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); max-width: var(--max-width); margin-left: auto; margin-right: auto; }
