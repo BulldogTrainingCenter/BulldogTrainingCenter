@@ -39,7 +39,7 @@
     --transition: 0.3s ease;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--black); }
 
 body {
     font-family: var(--font-body);
