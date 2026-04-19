@@ -514,13 +514,16 @@ div.time-promise { display: none !important; }
         padding-top: env(safe-area-inset-top);
     }
 
-    /* --- Remove bottom white gap: body and footer stretch to absolute bottom --- */
-    html, body {
-        background: var(--black) !important;
+    /* --- Remove bottom white gap: footer reaches bottom, body keeps its light bg --- */
+    body {
+        background: var(--off-white) !important;
     }
     .site-footer {
         margin-bottom: 0 !important;
         padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+    }
+    html {
+        background: var(--off-white);
     }
 
     /* --- Full-bleed page-hero on mobile: edge-to-edge, no rounded corners --- */
@@ -532,6 +535,21 @@ div.time-promise { display: none !important; }
         border-radius: 0 !important;
         margin-bottom: 2rem !important;
         min-height: 65vh !important;
+        /* Center text content on mobile instead of offset-left */
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    /* --- Hero inner container: centered, full-width on mobile --- */
+    main > .page-hero > div {
+        padding: 2rem 1.5rem !important;
+        max-width: 100% !important;
+    }
+
+    /* --- Hero pre-title row: center it on mobile --- */
+    main > .page-hero > div > div:first-child {
+        justify-content: center !important;
     }
 
     /* --- Full-bleed for index hero too --- */
