@@ -29,7 +29,7 @@
     --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
     --font-body: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
 
-    --header-height: 95px;
+    --header-height: 80px;
     --max-width: 1200px;
     --radius: 10px;
     --radius-lg: 16px;
@@ -83,7 +83,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     top: 0;
     z-index: 1000;
     height: var(--header-height);
-    padding-top: 0;
+    padding-top: 4px;
     display: flex;
     align-items: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -92,7 +92,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 
 .site-header.scrolled {
     box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-    height: 70px;
+    height: 65px;
 }
 
 .header-inner {
@@ -108,8 +108,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .logo { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; transition: opacity var(--transition); }
 .logo:hover { opacity: 0.8; }
 
-.logo-img { width: 80px; height: 80px; border-radius: 50%; object-fit: contain; transition: var(--transition); }
-.site-header.scrolled .logo-img { width: 55px; height: 55px; }
+.logo-img { width: 60px; height: 60px; border-radius: 50%; object-fit: contain; transition: var(--transition); }
+.site-header.scrolled .logo-img { width: 48px; height: 48px; }
 .logo-img.desktop { display: block; }
 .logo-img.mobile { display: none; }
 
@@ -183,7 +183,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     height: 400px;
     background-size: cover;
     background-repeat: no-repeat;
-    
+    background-attachment: fixed;
     position: relative;
 }
 
@@ -209,8 +209,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
     justify-content: center;
     text-align: center;
     color: var(--white);
-    margin-top: 0;
-    padding: calc(var(--header-height) + 1.5rem) 2rem 3rem;
+    margin-top: var(--header-height);
+    padding: 1.5rem 2rem 3rem;
     position: relative;
     overflow: hidden;
     background: var(--black);
@@ -369,15 +369,15 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 .faq-answer p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; max-width: none; padding: 0 1.5rem 1.25rem; }
 
 /* ============================================ FOOTER */
-.site-footer { background: var(--black); color: var(--white); text-align: center; padding: 2.5rem 2rem 1rem; margin-top: 4rem; }
-.footer-brand { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin-bottom: 1rem; }
-.footer-logo { width: 55px; height: 55px; object-fit: contain; }
+.site-footer { background: var(--black); color: var(--white); text-align: center; padding: 3rem 2rem; margin-top: 4rem; }
+.footer-brand { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1rem; }
+.footer-logo { width: 45px; height: 45px; object-fit: contain; }
 .footer-logo.desktop { display: block; }
 .footer-logo.mobile { display: none; }
 .footer-name { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; }
-.footer-tagline { font-size: 0.85rem; opacity: 0.6; font-weight: 400; margin-top: -0.25rem; }
+.footer-tagline { font-size: 0.85rem; opacity: 0.6; font-weight: 400; }
 .footer-affiliations { margin: 1rem 0; font-size: 0.8rem; opacity: 0.5; line-height: 1.6; }
-.footer-copy { text-align: left; font-size: 0.75rem; opacity: 0.4; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-copy { font-size: 0.75rem; opacity: 0.4; margin-top: 1rem; }
 
 /* ============================================ FORMS */
 .form-wrap { background: var(--white); padding: 3rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
@@ -487,14 +487,5 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; }
 }
 
 /* --- Instagram section: reserve space to prevent layout shift during lazy load --- */
-.instagram-section { min-height: 700px; }
-@media (max-width: 768px) { .instagram-section { min-height: 500px; } }
-
-/* --- Parallax: only on desktop --- */
-@media (min-width: 769px) {
-    .parallax-section { background-attachment: fixed !important; }
-}
-
-/* --- Instagram section: reserve space to prevent layout shift --- */
 .instagram-section { min-height: 700px; }
 @media (max-width: 768px) { .instagram-section { min-height: 500px; } }
