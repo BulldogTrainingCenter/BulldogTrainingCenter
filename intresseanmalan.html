@@ -48,7 +48,8 @@
     <main style="max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; margin-top: var(--header-height);">
 
         <!-- Hero -->
-        <div class="page-hero" style="background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%), url('images/hero-intresseanmalan.webp') center center/cover no-repeat; min-height: 50vh; align-items: center; justify-content: flex-start; padding: 0; text-align: left;">
+        <div class="page-hero" style="background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%), url('images/hero-intresseanmalan.webp') center center/cover no-repeat; min-height: 50vh; align-items: center; justify-content: flex-start; padding: 0; text-align: left; position: relative;">
+            <div class="mobile-live-badge">Aktiv klubb</div>
             <div style="max-width: 600px; padding: 3rem 3rem 3rem 4rem; position: relative;">
                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                     <div style="width: 40px; height: 2px; background: var(--accent);"></div>
@@ -56,6 +57,8 @@
                 </div>
                 <h1 style="font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.95; margin-bottom: 1.5rem; text-shadow: 0 4px 30px rgba(0,0,0,0.4);">Intresse-<br><span style="color: var(--accent);">anmälan</span></h1>
                 <p style="font-size: 1.1rem; opacity: 0.9; max-width: 450px; margin: 0; line-height: 1.6; text-shadow: 0 1px 10px rgba(0,0,0,0.4);">Intresserad av att träna hos oss? Fyll i formuläret så kontaktar vi dig med mer information.</p>
+                <div class="time-promise">Vi hör av oss inom 24 timmar</div>
+                <a href="#interestForm" class="mobile-hero-cta" onclick="if(navigator.vibrate)navigator.vibrate(10)">Starta anmälan →</a>
             </div>
         </div>
 
@@ -246,6 +249,40 @@
         const subject = encodeURIComponent('Intresseanmälan — ' + fd.get('firstName') + ' ' + fd.get('lastName'));
         window.location.href = 'mailto:BulldogTrainingCenter@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(body);
     });
+    </script>
+
+    <!-- Mobile sticky CTA bar (appears after scroll past hero) -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#interestForm" class="sticky-cta-btn" onclick="if(navigator.vibrate)navigator.vibrate(10)">Fyll i anmälan →</a>
+    </div>
+
+    <script>
+    // Show sticky CTA after user scrolls past hero (mobile only)
+    (function() {
+        if (window.innerWidth > 768) return;
+        const stickyCta = document.getElementById('stickyCta');
+        const hero = document.querySelector('.page-hero');
+        if (!stickyCta || !hero) return;
+
+        let ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    const heroBottom = hero.getBoundingClientRect().bottom;
+                    const formBottom = document.getElementById('interestForm').getBoundingClientRect().bottom;
+                    // Show sticky CTA when hero is out of view AND form is still visible (hide when form is done)
+                    if (heroBottom < 0 && formBottom > 200) {
+                        stickyCta.classList.add('visible');
+                    } else {
+                        stickyCta.classList.remove('visible');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+    })();
     </script>
 
 </body>
