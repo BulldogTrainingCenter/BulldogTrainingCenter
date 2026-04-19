@@ -520,7 +520,7 @@ div.time-promise { display: none !important; }
     }
     main {
         background: var(--off-white);
-        padding-bottom: 3rem;
+        padding-bottom: 3rem !important;
     }
     .site-footer {
         margin-bottom: 0 !important;
