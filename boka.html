@@ -48,12 +48,17 @@
     <main style="max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; margin-top: var(--header-height);">
 
         <!-- Hero -->
-        <div class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/hero-bg.jpeg') center center/cover no-repeat;">
-            <div>
-                <img src="images/logo-transparent.png" alt="Bulldog Training Center" class="page-hero-logo desktop">
-                <img src="images/logo-transparent.png" alt="BDTC" class="page-hero-logo mobile">
-                <h1>Boka ditt gratispass</h1>
-                <p>Ditt första träningspass kostar ingenting. Fyll i formuläret så hör vi av oss med en tid som passar.</p>
+        <div class="page-hero" style="background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%), url('images/hero-boka.webp') center center/cover no-repeat; min-height: 50vh; align-items: center; justify-content: flex-start; padding: 0; text-align: left; position: relative;">
+            <div style="max-width: 600px; padding: 3rem 3rem 3rem 4rem; position: relative;">
+                <div class="hero-pretitle" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div class="hero-pretitle-line" style="width: 40px; height: 2px; background: var(--accent);"></div>
+                    <span style="font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 4px; color: var(--accent); text-transform: uppercase;">Första passet är gratis</span>
+                    <div class="hero-pretitle-line hero-pretitle-line-right" style="width: 40px; height: 2px; background: var(--accent);"></div>
+                </div>
+                <h1 style="font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.95; margin-bottom: 1.5rem; text-shadow: 0 4px 30px rgba(0,0,0,0.4);">Boka ditt<br><span style="color: var(--accent);">gratispass</span></h1>
+                <p style="font-size: 1.1rem; opacity: 0.9; max-width: 450px; margin: 0; line-height: 1.6; text-shadow: 0 1px 10px rgba(0,0,0,0.4);">Ditt första träningspass kostar ingenting. Fyll i formuläret så hör vi av oss med en tid som passar.</p>
+                <div class="time-promise">Vi hör av oss inom 24 timmar</div>
+                <a href="#bokaForm" class="mobile-hero-cta" onclick="if(navigator.vibrate)navigator.vibrate(10)">Boka gratispass →</a>
             </div>
         </div>
 
@@ -146,8 +151,10 @@
         <div class="footer-brand">
             <img src="images/image0.png" alt="BDTC" class="footer-logo desktop">
             <img src="images/image001.png" alt="BDTC" class="footer-logo mobile">
-            <div class="footer-name">Bulldog Training Center</div>
-            <div class="footer-tagline">Klubben med familjekänsla</div>
+            <div>
+                <div class="footer-name">Bulldog Training Center</div>
+                <div class="footer-tagline">Klubben med familjekänsla</div>
+            </div>
         </div>
         <p class="footer-copy">&copy; 2026 Bulldog Training Center. Alla rättigheter förbehållna.</p>
     </footer>
