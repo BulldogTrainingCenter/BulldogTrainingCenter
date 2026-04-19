@@ -369,7 +369,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .faq-answer p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; max-width: none; padding: 0 1.5rem 1.25rem; }
 
 /* ============================================ FOOTER */
-.site-footer { background: var(--black); color: var(--white); text-align: center; padding: 3rem 2rem; margin-top: 4rem; }
+.site-footer { background: var(--black); color: var(--white); text-align: center; padding: 2.5rem 2rem 0.75rem; margin-top: 4rem; }
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin-bottom: 1rem; }
 .footer-brand > div { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
 .footer-logo { width: 55px; height: 55px; object-fit: contain; }
