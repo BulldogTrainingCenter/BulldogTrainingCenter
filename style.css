@@ -514,16 +514,19 @@ div.time-promise { display: none !important; }
         padding-top: env(safe-area-inset-top);
     }
 
-    /* --- Remove bottom white gap: footer reaches bottom, body keeps its light bg --- */
+    /* --- Remove bottom white gap: body is black (matches footer), main stays light --- */
     body {
-        background: var(--off-white) !important;
+        background: var(--black) !important;
+    }
+    main {
+        background: var(--off-white);
     }
     .site-footer {
         margin-bottom: 0 !important;
         padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
     }
     html {
-        background: var(--off-white);
+        background: var(--black);
     }
 
     /* --- Full-bleed page-hero on mobile: edge-to-edge, no rounded corners --- */
