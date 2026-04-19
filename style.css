@@ -370,15 +370,14 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 
 /* ============================================ FOOTER */
 .site-footer { background: var(--black); color: var(--white); text-align: center; padding: 3rem 2rem; margin-top: 4rem; }
-.footer-brand { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin-bottom: 1rem; }
-.footer-brand > div { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
-.footer-logo { width: 55px; height: 55px; object-fit: contain; }
+.footer-brand { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1rem; }
+.footer-logo { width: 45px; height: 45px; object-fit: contain; }
 .footer-logo.desktop { display: block; }
 .footer-logo.mobile { display: none; }
 .footer-name { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; }
-.footer-tagline { font-size: 0.85rem; opacity: 0.6; font-weight: 400; margin-top: -0.25rem; }
+.footer-tagline { font-size: 0.85rem; opacity: 0.6; font-weight: 400; }
 .footer-affiliations { margin: 1rem 0; font-size: 0.8rem; opacity: 0.5; line-height: 1.6; }
-.footer-copy { text-align: left; font-size: 0.75rem; opacity: 0.4; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-copy { font-size: 0.75rem; opacity: 0.4; margin-top: 1rem; }
 
 /* ============================================ FORMS */
 .form-wrap { background: var(--white); padding: 3rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
