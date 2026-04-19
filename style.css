@@ -491,6 +491,9 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .instagram-section { min-height: 700px; }
 @media (max-width: 768px) { .instagram-section { min-height: 500px; } }
 
+/* --- Hero pre-title: hide the right decorative line on desktop (original design had only one on left) --- */
+.hero-pretitle-line-right { display: none; }
+
 /* ============================================ */
 /* MOBILE EXCEPTIONAL POLISH — touch only */
 /* Everything below only affects screens ≤ 768px. */
@@ -554,6 +557,15 @@ div.time-promise { display: none !important; }
     /* --- Hero pre-title row: center it on mobile --- */
     main > .page-hero > div > div:first-child {
         justify-content: center !important;
+    }
+
+    /* --- Hero pre-title: show the right decorative line on mobile, compact both lines --- */
+    .hero-pretitle-line-right {
+        display: block !important;
+    }
+    .hero-pretitle-line {
+        width: 30px !important;
+        flex-shrink: 0;
     }
 
     /* --- Full-bleed for index hero too --- */
