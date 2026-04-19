@@ -497,11 +497,11 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 /* Desktop is untouched. */
 /* ============================================ */
 
-/* Hide mobile-only elements by default (shown via media query below) */
-.mobile-live-badge,
-.mobile-hero-cta,
-.time-promise,
-.sticky-cta { display: none; }
+/* Hide mobile-only elements by default everywhere (mobile query will override) */
+a.mobile-hero-cta,
+div.mobile-live-badge,
+div.time-promise,
+div.sticky-cta { display: none !important; }
 
 @media (max-width: 768px) {
 
@@ -529,11 +529,11 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
     }
 
     /* --- Live-badge (pulsing orange dot + active-club label) --- */
-    .mobile-live-badge {
+    div.mobile-live-badge {
+        display: flex !important;
         position: absolute;
         top: 1rem;
         right: 1rem;
-        display: flex;
         align-items: center;
         gap: 0.5rem;
         padding: 0.4rem 0.75rem;
@@ -565,7 +565,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
     }
 
     /* --- Mobile hero CTA inside hero (thumb-zone position) --- */
-    .mobile-hero-cta {
+    a.mobile-hero-cta {
         display: block !important;
         margin-top: 1.25rem;
         padding: 14px 28px;
@@ -589,8 +589,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
     .desktop-only { display: none !important; }
 
     /* --- Time-promise pill under hero text --- */
-    .time-promise {
-        display: inline-flex;
+    div.time-promise {
+        display: inline-flex !important;
         align-items: center;
         gap: 0.4rem;
         margin-top: 1rem;
@@ -608,7 +608,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
     }
 
     /* --- Sticky CTA bar that appears after user scrolls past hero --- */
-    .sticky-cta {
+    div.sticky-cta {
+        display: block !important;
         position: fixed;
         bottom: 0;
         left: 0;
@@ -702,11 +703,4 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
     }
 }
 
-/* --- Hide mobile-only elements on desktop --- */
-@media (min-width: 769px) {
-    .mobile-only { display: none !important; }
-    .mobile-live-badge { display: none !important; }
-    .mobile-hero-cta { display: none !important; }
-    .sticky-cta { display: none !important; }
-    .time-promise { display: none !important; }
-}
+/* Mobile-only elements default to hidden (see top of mobile block) — shown only inside @media (max-width: 768px) */
