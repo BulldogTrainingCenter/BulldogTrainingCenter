@@ -490,3 +490,223 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 /* --- Instagram section: reserve space to prevent layout shift during lazy load --- */
 .instagram-section { min-height: 700px; }
 @media (max-width: 768px) { .instagram-section { min-height: 500px; } }
+
+/* ============================================ */
+/* MOBILE EXCEPTIONAL POLISH — touch only */
+/* Everything below only affects screens ≤ 768px. */
+/* Desktop is untouched. */
+/* ============================================ */
+
+/* Hide mobile-only elements by default (shown via media query below) */
+.mobile-live-badge,
+.mobile-hero-cta,
+.time-promise,
+.sticky-cta { display: none; }
+
+@media (max-width: 768px) {
+
+    /* --- Kill ugly tap-highlight blue flash on all interactive elements --- */
+    a, button, input, select, textarea, .btn, .sport-option, .faq-question, .day-card, .training-card, .price-card, .review-card, .suboption {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
+
+    /* --- Safe area respect for modern iPhones (notch + home indicator) --- */
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* --- Full-bleed page-hero on mobile: edge-to-edge, no rounded corners --- */
+    main > .page-hero {
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        border-radius: 0 !important;
+        width: calc(100% + 2rem) !important;
+        max-width: calc(100% + 2rem) !important;
+        margin-bottom: 2rem !important;
+        min-height: 65vh !important;
+    }
+
+    /* --- Live-badge (pulsing orange dot + active-club label) --- */
+    .mobile-live-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.75rem;
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 50px;
+        color: var(--white);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        z-index: 5;
+    }
+    .mobile-live-badge::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulse-dot 2s infinite;
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+    }
+    @keyframes pulse-dot {
+        0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); }
+        70% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+    }
+
+    /* --- Mobile hero CTA inside hero (thumb-zone position) --- */
+    .mobile-hero-cta {
+        display: block !important;
+        margin-top: 1.25rem;
+        padding: 14px 28px;
+        background: var(--accent);
+        color: var(--white);
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(255, 107, 53, 0.35);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        width: 100%;
+    }
+    .mobile-hero-cta:active {
+        transform: scale(0.97);
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+
+    /* Hide mobile-only CTA on desktop (shouldn't even reach desktop since it's in mobile query, but safety) */
+    .mobile-only { display: block; }
+    .desktop-only { display: none !important; }
+
+    /* --- Time-promise pill under hero text --- */
+    .time-promise {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 1rem;
+        padding: 0.3rem 0.75rem;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 50px;
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.9);
+        font-weight: 500;
+    }
+    .time-promise::before {
+        content: "⚡";
+        color: var(--accent);
+    }
+
+    /* --- Sticky CTA bar that appears after user scrolls past hero --- */
+    .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        z-index: 900;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .sticky-cta.visible {
+        transform: translateY(0);
+    }
+    .sticky-cta-btn {
+        display: block;
+        width: 100%;
+        padding: 14px 24px;
+        background: var(--accent);
+        color: var(--white);
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+    }
+    .sticky-cta-btn:active {
+        transform: scale(0.97);
+    }
+
+    /* --- Touch target minimum 44×44 (Apple HIG) --- */
+    .nav-links a,
+    .back-link,
+    .btn,
+    .btn-submit,
+    .faq-question,
+    .sport-option,
+    .suboption label,
+    .contact-link,
+    .form-consent label {
+        min-height: 44px;
+    }
+
+    /* --- Form inputs: prevent iOS auto-zoom (font-size must be ≥ 16px) --- */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px !important;
+    }
+
+    /* --- Smoother scrolling on iOS --- */
+    html, body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
+    }
+
+    /* --- Price cards: tighter on mobile for easier comparison --- */
+    .price-card {
+        padding: 1.5rem;
+        min-height: auto;
+    }
+
+    /* --- Back-link in hero header: make it a proper tap target --- */
+    .back-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* --- Extra bottom space so sticky CTA never covers real content --- */
+    .site-footer {
+        padding-bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+    }
+}
+
+/* --- Mobile landscape: prevent hero from hogging the whole screen --- */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 500px) {
+    main > .page-hero {
+        min-height: 80vh !important;
+    }
+    .hero {
+        min-height: 90vh !important;
+    }
+}
+
+/* --- Safe-area support on all viewport sizes --- */
+@supports (padding: max(0px)) {
+    .sticky-cta {
+        padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* --- Hide mobile-only elements on desktop --- */
+@media (min-width: 769px) {
+    .mobile-only { display: none !important; }
+    .mobile-live-badge { display: none !important; }
+    .mobile-hero-cta { display: none !important; }
+    .sticky-cta { display: none !important; }
+    .time-promise { display: none !important; }
+}
