@@ -322,6 +322,10 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .review-name { font-weight: 600; font-size: 0.9rem; color: var(--gray-800); }
 .review-source { font-size: 0.8rem; color: var(--gray-400); }
 
+/* Show-more button (mobile only) + Google link below reviews */
+.reviews-show-more { text-align: center; margin-top: 1.5rem; display: none; }
+.reviews-google-link { text-align: center; margin-top: 2rem; }
+
 /* ============================================ ZOEZI / APP */
 .app-section { background: transparent; color: var(--white); padding: 4rem 2rem; border-radius: var(--radius-lg); text-align: center; }
 .app-section h2 { color: var(--white); }
@@ -472,8 +476,10 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 
     .app-section { background: rgba(0,0,0,0.65); }
 
-    /* Hide 4th review card on mobile */
+    /* Hide 4th+ review cards on mobile, show all when toggled, show the button */
     .reviews-grid .review-card:nth-child(n+4) { display: none; }
+    .reviews-grid.show-all .review-card:nth-child(n+4) { display: block; }
+    .reviews-show-more { display: block; }
 }
 
 @media (max-width: 480px) {
