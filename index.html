@@ -11,6 +11,7 @@
     <meta name="geo.region" content="SE-O">
     <meta name="geo.placename" content="Göteborg">
     <meta name="geo.position" content="57.6568;11.9338">
+    <meta name="theme-color" content="#ff6b35">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -72,6 +73,52 @@
         "sameAs": ["https://instagram.com/bulldogthaiboxning", "https://instagram.com/bdtcgbg"],
         "sport": ["Thaiboxning", "Muay Thai", "HIIT"],
         "memberOf": ["Svenska Thaiboxningsförbundet", "Svenska Kickboxningsförbundet", "Riksidrottsförbundet"],
+        "priceRange": "Från 200 kr/månad",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "52",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Irma Ikan" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Väldigt härlig atmosfär med trevligt bemötande. Min son som är 10 år började träna här och hela familjen är så lyckliga över det. Bättre självkänsla och mer självsäker blev han. Det bästa jag har gjort för min son, han älskar det."
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Mohamed Abdulla" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Definitivt bästa klubben i Göteborgs området. Kunniga, erfarna, välkomnande tränare som lägger tid på varje individ och arbetar aktivt för att alla ska utvecklas. Underbar stämning där alla hjälper alla. Bästa!"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Adam Berg Wassberg" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Fantastiskt genomtänkt lokal, bra tränare och en stämning man söker efter på en kampsportsklubb."
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Tino Lulic" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Tränarna är kunniga, engagerade och ser till att alla oavsett nivå känner sig välkomna. Träningarna är både utmanande och roliga, och man utvecklas snabbt både tekniskt och fysiskt. Stämningen i klubben är riktigt bra och alla hjälper varandra att bli bättre."
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Rikard Ekström" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Riktigt bra klubb med engagerade och kunniga tränare med härlig stämning. Träningen passar både nybörjare och erfarna, hade aldrig testat thaiboxning tidigare men kände mig snabbt välkommen. Rekommenderas varmt!"
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Leo S" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Riktigt fint ställe och mycket trevliga träningspartners. Coacherna är tydliga och har mycket erfarenhet och vill det bästa för oss som tränar."
+            }
+        ],
         "openingHoursSpecification": [
             { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "16:45", "closes": "20:30" },
             { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "17:45", "closes": "20:30" },
@@ -107,7 +154,7 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
-            <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Öppna meny" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -180,7 +227,7 @@
                     <h2>Vad våra medlemmar säger</h2>
                     <div class="google-badge">
                         <span class="google-badge-stars">★★★★★</span>
-                        <span>5.0 på Google</span>
+                        <span>4,9 på Google · 52 recensioner</span>
                     </div>
                 </div>
 
@@ -192,6 +239,18 @@
                             <div class="review-avatar">I</div>
                             <div>
                                 <div class="review-name">Irma Ikan</div>
+                                <div class="review-source">Google-recension</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Definitivt bästa klubben i Göteborgs området. Kunniga, erfarna, välkomnande tränare som lägger tid på varje individ och arbetar aktivt för att alla ska utvecklas. Underbar stämning där alla hjälper alla. Bästa!"</p>
+                        <div class="review-author">
+                            <div class="review-avatar">M</div>
+                            <div>
+                                <div class="review-name">Mohamed Abdulla</div>
                                 <div class="review-source">Google-recension</div>
                             </div>
                         </div>
@@ -211,11 +270,11 @@
 
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"Rolig och effektiv träning. Tränarna är guldvärda!"</p>
+                        <p class="review-text">"Tränarna är kunniga, engagerade och ser till att alla oavsett nivå känner sig välkomna. Träningarna är både utmanande och roliga, och man utvecklas snabbt både tekniskt och fysiskt. Stämningen i klubben är riktigt bra och alla hjälper varandra att bli bättre."</p>
                         <div class="review-author">
-                            <div class="review-avatar">S</div>
+                            <div class="review-avatar">T</div>
                             <div>
-                                <div class="review-name">Sina Ardalani</div>
+                                <div class="review-name">Tino Lulic</div>
                                 <div class="review-source">Google-recension</div>
                             </div>
                         </div>
@@ -232,6 +291,26 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Riktigt fint ställe och mycket trevliga träningspartners. Coacherna är tydliga och har mycket erfarenhet och vill det bästa för oss som tränar. Nice 👍"</p>
+                        <div class="review-author">
+                            <div class="review-avatar">L</div>
+                            <div>
+                                <div class="review-name">Leo S</div>
+                                <div class="review-source">Google-recension</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-show-more">
+                    <button id="showMoreReviews" class="btn btn-outline" type="button" aria-expanded="false">Visa fler recensioner ↓</button>
+                </div>
+
+                <div class="reviews-google-link">
+                    <a href="https://g.page/r/CaQZoyA_IESgEAE/review" target="_blank" rel="noopener" class="btn btn-dark">Se alla 52 recensioner på Google →</a>
                 </div>
             </div>
         </section>
@@ -597,17 +676,24 @@
 
         // Mobile menu toggle
         function toggleMenu() {
-            navLinks.classList.toggle('active');
+            var isActive = navLinks.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            mobileMenu.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            mobileMenu.setAttribute('aria-label', isActive ? 'Stäng meny' : 'Öppna meny');
+            document.body.style.overflow = isActive ? 'hidden' : '';
         }
         function closeMenu() {
             navLinks.classList.remove('active');
             mobileMenu.classList.remove('active');
+            mobileMenu.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-label', 'Öppna meny');
             document.body.style.overflow = '';
         }
 
         mobileMenu.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); toggleMenu(); });
+        mobileMenu.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(); }
+        });
         document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', closeMenu));
         document.addEventListener('click', function(e) {
             if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target) && navLinks.classList.contains('active')) closeMenu();
@@ -654,13 +740,50 @@
             }
         });
 
-        // FAQ accordion
+        // Show more reviews (mobile only — knappen är dold via CSS på desktop)
+        var showMoreBtn = document.getElementById('showMoreReviews');
+        var reviewsGrid = document.querySelector('.reviews-grid');
+        if (showMoreBtn && reviewsGrid) {
+            showMoreBtn.addEventListener('click', function() {
+                var isShown = reviewsGrid.classList.toggle('show-all');
+                showMoreBtn.setAttribute('aria-expanded', isShown ? 'true' : 'false');
+                showMoreBtn.textContent = isShown ? 'Visa färre ↑' : 'Visa fler recensioner ↓';
+            });
+        }
+
+        // FAQ accordion — with ARIA setup + keyboard support
+        document.querySelectorAll('.faq-item').forEach(function(item, i) {
+            var q = item.querySelector('.faq-question');
+            var a = item.querySelector('.faq-answer');
+            if (!q || !a) return;
+            var qId = 'faq-q-' + i, aId = 'faq-a-' + i;
+            q.setAttribute('id', qId);
+            q.setAttribute('role', 'button');
+            q.setAttribute('tabindex', '0');
+            q.setAttribute('aria-expanded', 'false');
+            q.setAttribute('aria-controls', aId);
+            a.setAttribute('id', aId);
+            a.setAttribute('role', 'region');
+            a.setAttribute('aria-labelledby', qId);
+        });
+
         document.querySelectorAll('.faq-question').forEach(function(q) {
-            q.addEventListener('click', function() {
-                var item = this.parentElement;
+            function toggleFaq() {
+                var item = q.parentElement;
                 var wasOpen = item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-                if (!wasOpen) item.classList.add('open');
+                document.querySelectorAll('.faq-item').forEach(function(i) {
+                    i.classList.remove('open');
+                    var qq = i.querySelector('.faq-question');
+                    if (qq) qq.setAttribute('aria-expanded', 'false');
+                });
+                if (!wasOpen) {
+                    item.classList.add('open');
+                    q.setAttribute('aria-expanded', 'true');
+                }
+            }
+            q.addEventListener('click', toggleFaq);
+            q.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(); }
             });
         });
     });
