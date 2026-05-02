@@ -324,7 +324,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 
 /* Show-more button (mobile only) + Google link below reviews */
 .reviews-show-more { text-align: center; margin-top: 1.5rem; display: none; }
-.reviews-google-link { text-align: center; margin-top: 2rem; }
+.reviews-google-link { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 
 /* ============================================ ZOEZI / APP */
 .app-section { background: transparent; color: var(--white); padding: 4rem 2rem; border-radius: var(--radius-lg); text-align: center; }
