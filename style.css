@@ -205,6 +205,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .hero {
     min-height: 100vh;
     min-height: 100dvh;
+    min-height: 100lvh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
