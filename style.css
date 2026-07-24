@@ -593,6 +593,30 @@ div.time-promise { display: none !important; }
         justify-content: center !important;
     }
 
+    /* --- Mobilöverlägg: den inline-satta toningen går vågrätt (90deg) och är
+       byggd för vänsterställd text på desktop. På mobil centreras texten, så
+       den mörka delen hamnar inte längre bakom den. Ett lodrätt lager ovanpå
+       ger jämn kontrast oavsett bild, och botten tonar ut i sidans färg. --- */
+    main > .page-hero {
+        position: relative !important;
+        isolation: isolate;
+    }
+    main > .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg,
+            rgba(16, 14, 11, 0.45) 0%,
+            rgba(16, 14, 11, 0.68) 50%,
+            rgba(16, 14, 11, 0.97) 100%);
+        pointer-events: none;
+        z-index: 0;
+    }
+    main > .page-hero > div {
+        position: relative;
+        z-index: 1;
+    }
+
     /* --- Hero pre-title: show the right decorative line on mobile, compact both lines --- */
     .hero-pretitle-line-right {
         display: block !important;
