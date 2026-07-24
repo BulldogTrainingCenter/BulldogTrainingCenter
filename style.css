@@ -383,8 +383,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .contact-wrap { background: var(--canvas); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .contact-item { display: flex; align-items: center; gap: 0.75rem; margin: 0.75rem 0; }
-.contact-link, .instagram-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rope); border: 1px solid var(--rope-strong); border-radius: var(--radius); padding: 0.7rem 1.1rem; color: var(--gold) !important; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all var(--transition); }
-.contact-link:hover, .instagram-pill:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 6px 22px var(--gold-glow); }
+.contact-link, .instagram-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rope); border: 1px solid var(--rope-strong); border-radius: var(--radius); padding: 0.7rem 1.1rem; color: var(--bone) !important; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all var(--transition); }
+.contact-link:hover, .instagram-pill:hover { transform: translateY(-2px); color: var(--gold) !important; border-color: var(--gold); box-shadow: 0 6px 22px var(--gold-glow); }
 
 
 /* ============================================ FAQ */
