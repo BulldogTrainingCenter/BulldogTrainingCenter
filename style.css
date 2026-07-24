@@ -383,8 +383,8 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .contact-wrap { background: var(--canvas); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .contact-item { display: flex; align-items: center; gap: 0.75rem; margin: 0.75rem 0; }
-.contact-link { font-weight: 600; transition: color var(--transition); }
-.contact-link:hover { color: var(--accent); }
+.contact-link { color: var(--gold); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; transition: color var(--transition); }
+.contact-link:hover { color: var(--gold-hover); }
 .instagram-pill { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--rope); border: 1px solid var(--rope-strong); color: var(--bone) !important; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; transition: all var(--transition); }
 .instagram-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(131, 58, 180, 0.4); }
 
