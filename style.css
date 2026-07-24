@@ -285,7 +285,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .card-dark { background: var(--canvas); color: var(--bone); border: 1px solid var(--rope); }
 .card-dark h3, .card-dark h4 { color: var(--white); }
 .card-dark p { color: rgba(255,255,255,0.85); max-width: none; }
-.card-subtitle { color: var(--accent); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; text-transform: none; letter-spacing: 0; margin-bottom: 0.5rem; }
+.card .card-subtitle, .card-subtitle { color: var(--gold); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; text-transform: none; letter-spacing: 0; margin-bottom: 0.5rem; max-width: none; }
 
 /* ============================================ GRIDS */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
