@@ -295,12 +295,12 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 
 /* ============================================ SCHEDULE */
-.schedule-wrap { background: rgba(255,255,255,0.7); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.schedule-wrap { background: transparent; padding: 0; border-radius: 0; box-shadow: none; }
 .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
 
-.day-card { background: rgba(25, 22, 18, 0.72); backdrop-filter: blur(2px); border: 1px solid var(--rope-strong); border-radius: var(--radius); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
+.day-card { background: rgba(25, 22, 18, 0.78); border: 1px solid var(--rope-strong); border-radius: var(--radius); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
 .day-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--gold); }
-.day-card-header { background: rgba(36, 31, 25, 0.82); color: var(--gold); border-bottom: 2px solid var(--gold); padding: 1rem 1.2rem; font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 2px; text-align: center; }
+.day-card-header { background: rgba(36, 31, 25, 0.88); color: var(--gold); border-bottom: 2px solid var(--gold); padding: 1rem 1.2rem; font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 2px; text-align: center; }
 .class-row { padding: 1rem 1.2rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 60px; transition: background var(--transition); }
 .class-row:last-child { border-bottom: none; }
 .class-row:hover { background: var(--gray-100); }
@@ -491,7 +491,7 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
     .schedule-grid, .location-grid, .steps-grid, .price-grid, .form-grid, .sport-options { grid-template-columns: 1fr; }
     .form-wrap { padding: 2rem 1rem; }
     .app-section { padding: 3rem 1.5rem; }
-    .schedule-wrap { padding: 1.5rem; }
+    .schedule-wrap { padding: 0; }
     .contact-wrap { padding: 1.5rem; }
 
     /* Fix background images on mobile - no parallax */
