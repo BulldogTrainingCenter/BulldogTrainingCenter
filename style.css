@@ -606,9 +606,9 @@ div.time-promise { display: none !important; }
         position: absolute;
         inset: 0;
         background: linear-gradient(180deg,
-            rgba(16, 14, 11, 0.45) 0%,
-            rgba(16, 14, 11, 0.68) 50%,
-            rgba(16, 14, 11, 0.97) 100%);
+            rgba(16, 14, 11, 0.08) 0%,
+            rgba(16, 14, 11, 0.26) 55%,
+            rgba(16, 14, 11, 0.70) 100%);
         pointer-events: none;
         z-index: 0;
     }
@@ -775,18 +775,5 @@ div.time-promise { display: none !important; }
     .nav-links a.active {
         color: var(--gold);
         background: var(--gold-wash);
-    }
-
-    /* Boka Gratispass — sidans åtgärd, alltid synlig */
-    .nav-links li:nth-child(8) a {
-        background: var(--gold);
-        color: var(--ink);
-        font-weight: 700;
-        margin-left: 0.4rem;
-    }
-    .nav-links li:nth-child(8) a:hover,
-    .nav-links li:nth-child(8) a.active {
-        background: var(--gold-hover);
-        color: var(--ink);
     }
 }
