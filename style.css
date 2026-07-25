@@ -484,6 +484,11 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 @media (max-width: 768px) {
     .header-inner { padding: 0 1rem; }
 
+    /* Nivåetikett på mobil: namn och steg-pill på samma rad, pillen högerställd.
+       Fungerar här (men inte på desktop) eftersom korten ligger i en enkel
+       kolumn med fast bredd — inget rutnät som kan växa och spränga kortet. */
+    .suboption .lvl { flex-direction: row; align-items: center; justify-content: space-between; gap: 0.75rem; }
+
     .container { padding: 0 1rem; }
     .section { padding: 3rem 0; }
     .hero { padding: 2rem 1rem; }
