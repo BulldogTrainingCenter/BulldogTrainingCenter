@@ -450,6 +450,24 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 .info-box { background: var(--canvas); color: var(--bone); padding: 2rem; border-radius: var(--radius-lg); margin: 2rem 0; border-left: 4px solid var(--accent); }
 .info-box h3 { color: var(--accent); margin-bottom: 0.75rem; }
 
+/* --- Fritidskortet-box på prissidan --- */
+.fritidskort-box { background: linear-gradient(180deg, var(--gold-wash) 0%, var(--canvas) 55%); border: 2px solid var(--gold); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
+.fritidskort-head { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.fritidskort-tag { align-self: flex-start; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); background: var(--gold); border-radius: 50px; padding: 0.25rem 0.8rem; }
+.fritidskort-head h3 { color: var(--bone); font-size: 1.6rem; margin: 0; }
+.fritidskort-box p { color: var(--ash); max-width: none; margin: 0 0 1.25rem; }
+.fritidskort-box strong { color: var(--bone); }
+.fritidskort-amounts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+.fritidskort-amount { background: var(--rope); border: 1px solid var(--rope-strong); border-radius: var(--radius); padding: 1.25rem; }
+.fritidskort-kr { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: 1px; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+.fritidskort-label { font-size: 0.85rem; color: var(--ash); line-height: 1.5; }
+.fritidskort-note { font-size: 0.85rem; color: var(--ash-dim) !important; margin-bottom: 0 !important; }
+.fritidskort-note a { color: var(--gold); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 768px) {
+    .fritidskort-amounts { grid-template-columns: 1fr; }
+}
+
 /* ============================================ SPORT SELECTION (intresseanmälan) */
 .sport-selection h3 { font-family: var(--font-body); font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--bone); text-transform: none; letter-spacing: 0; }
 .sport-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin: 1rem 0; }
