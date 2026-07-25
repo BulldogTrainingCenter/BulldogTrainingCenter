@@ -75,15 +75,37 @@
                 <div class="sport-selection">
                     <h3>Vilket pass vill du prova? <span class="required-mark">*</span></h3>
                     <div class="sport-options">
-                        <div class="sport-option" onclick="selectSport(this)">
+                        <div class="sport-option" data-sport="thaiboxning" onclick="selectSport(this)">
                             <label>
-                                <input type="radio" name="pass" value="Thaiboxning (Basic)" required>
+                                <input type="radio" name="pass" value="Thaiboxning" required>
                                 <div>
-                                    <h4>Thaiboxning Basic</h4>
-                                    <p>Perfekt för nybörjare</p>
+                                    <h4>Thaiboxning</h4>
+                                    <p>Traditionell thaiboxning för alla nivåer</p>
                                 </div>
                             </label>
+                            <div class="thaiboxning-suboptions" id="thaiboxning-suboptions">
+                                <h4>Välj nivå:</h4>
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning-level" value="Basic">
+                                        <span>Basic — steg 1</span>
+                                    </label>
+                                </div>
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning-level" value="Intermediate">
+                                        <span>Intermediate — steg 2</span>
+                                    </label>
+                                </div>
+                                <div class="suboption">
+                                    <label>
+                                        <input type="radio" name="thaiboxning-level" value="Advanced">
+                                        <span>Advanced — steg 3</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="sport-option" onclick="selectSport(this)">
                             <label>
                                 <input type="radio" name="pass" value="HIIT" required>
@@ -93,12 +115,23 @@
                                 </div>
                             </label>
                         </div>
+
                         <div class="sport-option" onclick="selectSport(this)">
                             <label>
-                                <input type="radio" name="pass" value="Thaiboxning Barn 6-12 år" required>
+                                <input type="radio" name="pass" value="Barn Thaiboxning" required>
                                 <div>
                                     <h4>Barn 6–12 år</h4>
                                     <p>Thaiboxning för de yngsta</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="sport-option" onclick="selectSport(this)">
+                            <label>
+                                <input type="radio" name="pass" value="U23-Elite" required>
+                                <div>
+                                    <h4>U23-Elite</h4>
+                                    <p>Elitträning för aktiva tävlande upp till 23 år (kräver uttagning)</p>
                                 </div>
                             </label>
                         </div>
@@ -154,22 +187,40 @@
     function selectSport(el) {
         document.querySelectorAll('.sport-option').forEach(o => o.classList.remove('selected'));
         el.classList.add('selected');
-        const radio = el.querySelector('input[type="radio"]');
+
+        const radio = el.querySelector('input[name="pass"]');
         if (radio) radio.checked = true;
+
+        // Show/hide thaiboxning suboptions
+        const subs = document.getElementById('thaiboxning-suboptions');
+        if (el.dataset.sport === 'thaiboxning') {
+            subs.classList.add('visible');
+        } else {
+            subs.classList.remove('visible');
+            document.querySelectorAll('input[name="thaiboxning-level"]').forEach(r => r.checked = false);
+        }
     }
+
+    // Also handle direct radio clicks
+    document.querySelectorAll('input[name="pass"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            selectSport(this.closest('.sport-option'));
+        });
+    });
 
     document.getElementById('bokaForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
         const formData = new FormData(this);
         const pass = formData.get('pass');
+        const level = formData.get('thaiboxning-level');
         const name = formData.get('name');
         const email = formData.get('email');
         const phone = formData.get('phone');
         const message = formData.get('message');
 
         let body = 'Bokning av gratispass — Bulldog Training Center\n\n';
-        body += 'Pass: ' + pass + '\n';
+        body += 'Pass: ' + pass + (pass === 'Thaiboxning' && level ? ' (' + level + ')' : '') + '\n';
         body += 'Namn: ' + name + '\n';
         body += 'E-post: ' + email + '\n';
         body += 'Telefon: ' + phone + '\n';
