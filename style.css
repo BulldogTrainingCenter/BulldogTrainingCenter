@@ -482,9 +482,6 @@ p { font-size: 1rem; line-height: 1.7; max-width: 65ch; margin-left: auto; margi
 @media (max-width: 768px) {
     .header-inner { padding: 0 1rem; }
 
-    /* Nivå-pillen högerställs på mobil (desktop lägger den inline efter namnet) */
-    .suboption .lvl { justify-content: space-between; }
-
     .container { padding: 0 1rem; }
     .section { padding: 3rem 0; }
     .hero { padding: 2rem 1rem; }
