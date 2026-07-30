@@ -238,22 +238,55 @@
     });
 
     // Form submission
-    document.getElementById('interestForm').addEventListener('submit', function(e) {
+    document.getElementById('interestForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
+        // ►► Web3Forms access key för Intresseanmälan
+        const WEB3FORMS_KEY = '10f6f5ea-ed38-40a2-a9ca-65a2f0e50818';
+
+        const btn = this.querySelector('.btn-submit');
         const fd = new FormData(this);
+
+        // Web3Forms kräver access_key
+        fd.set('access_key', WEB3FORMS_KEY);
+
+        // Slå ihop träningsform + nivå till ett läsbart fält
         const sport = fd.get('sport');
         const level = fd.get('thaiboxning-level');
+        fd.set('Träningsform', sport + (sport === 'Thaiboxning' && level ? ' (' + level + ')' : ''));
+        fd.delete('thaiboxning-level');
+        fd.set('subject', 'Intresseanmälan — ' + (fd.get('firstName') || '') + ' ' + (fd.get('lastName') || ''));
+        fd.set('from_name', 'Intresseanmälan via bulldogtc.se');
 
-        let body = 'Intresseanmälan — Bulldog Training Center\n\n';
-        body += 'Träningsform: ' + sport + (sport === 'Thaiboxning' && level ? ' (' + level + ')' : '') + '\n';
-        body += 'Namn: ' + fd.get('firstName') + ' ' + fd.get('lastName') + '\n';
-        body += 'E-post: ' + fd.get('email') + '\n';
-        body += 'Telefon: ' + fd.get('phone') + '\n';
-        body += 'Adress: ' + fd.get('address') + ', ' + fd.get('city') + ' ' + fd.get('postalCode') + '\n';
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Skickar...';
 
-        const subject = encodeURIComponent('Intresseanmälan — ' + fd.get('firstName') + ' ' + fd.get('lastName'));
-        window.location.href = 'mailto:BulldogTrainingCenter@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+        try {
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: fd,
+                headers: { 'Accept': 'application/json' }
+            });
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+                const form = document.getElementById('interestForm');
+                form.innerHTML =
+                    '<div style="text-align:center; padding:2.5rem 1rem;">' +
+                    '<div style="font-family:var(--font-display); font-size:2rem; color:var(--accent); letter-spacing:1px; margin-bottom:0.75rem;">TACK!</div>' +
+                    '<p style="color:var(--bone); font-size:1.1rem; margin-bottom:0.5rem;">Din intresseanmälan är skickad.</p>' +
+                    '<p style="color:var(--ash);">Vi hör av oss så snart vi kan med mer information. Vi ses på mattan!</p>' +
+                    '</div>';
+                form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                throw new Error('Web3Forms svarade med fel');
+            }
+        } catch (err) {
+            btn.disabled = false;
+            btn.textContent = originalText;
+            alert('Något gick fel när anmälan skulle skickas. Försök igen, eller mejla oss direkt på BulldogTrainingCenter@gmail.com.');
+        }
     });
     </script>
 
